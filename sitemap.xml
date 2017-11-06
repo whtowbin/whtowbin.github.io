@@ -3,13 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://whtowbin.github.io/videos/brain_video/</loc>
+    <lastmod>2017-11-05T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://whtowbin.github.io/videos/olivine-phenocryst/</loc>
+    <lastmod>2017-11-04T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://whtowbin.github.io/about/</loc>
+    <lastmod>2017-05-11T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://whtowbin.github.io/videos/</loc>
+    <lastmod>2017-05-11T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://whtowbin.github.io/categories/</loc>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://whtowbin.github.io/contact/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://whtowbin.github.io/</loc>
+    <lastmod>2017-11-05T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -18,12 +53,6 @@
     <loc>https://whtowbin.github.io/tags/</loc>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://whtowbin.github.io/videos/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
   
 </urlset>
