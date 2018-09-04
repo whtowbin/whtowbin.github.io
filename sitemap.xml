@@ -31,6 +31,12 @@
   </url>
   
   <url>
+    <loc>https://whtowbin.github.io/posts/agu-abstract/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://whtowbin.github.io/categories/</loc>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
@@ -45,6 +51,18 @@
   <url>
     <loc>https://whtowbin.github.io/</loc>
     <lastmod>2017-11-05T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://whtowbin.github.io/posts/research-as-art-sumbission/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://whtowbin.github.io/posts/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
