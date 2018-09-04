@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Henry Towbin</title>
+    <link>https://whtowbin.github.io/posts/</link>
+    <description>Recent content in Posts on Henry Towbin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://whtowbin.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lamont Doherty Research As Art</title>
+      <link>https://whtowbin.github.io/posts/research-as-art-submission/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://whtowbin.github.io/posts/research-as-art-submission/</guid>
+      <description>Lamont Doherty Earth Observatory&amp;rsquo;s Annual Research as Art exhibition showcases the many creative talents of our community and links, either deliberate or incidental, between our work and art.
+Anna Barth showing off her sculptures of infrared spectra from experiments to determine the diffusivity of hydrogen in magmatic olivine.
+Here is my own submission a cluster of pyroxenes and olivine mounted for analysis by infrared spectroscopy. This image was taken prior to analysis using a cellphone camera through a microscope ocular lens to document the sample orientation</description>
+    </item>
+    
+  </channel>
+</rss>
