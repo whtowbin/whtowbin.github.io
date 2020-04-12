@@ -1,0 +1,45 @@
+---
+title: AGU Abstract Submission 2018
+description: 2018 AGU Abstract Submission
+---
+I have submitted an abstract on my work studying the preservation of trace concentrations of water in mantle xenoliths for this years fall AGU conference. I have also included some figures to help demonstrate the data being discussed.
+
+
+## Testing the Fidelity of Peridotite Xenoliths as Records of Water in the Lithospheric Mantle
+
+Towbin, W.H. (1), Plank, T. (1), Hauri, E.H. (2), Kohn S.C. (3), Brooker, R.A. (3)
+
+1)	Dept Earth & Env Sci, Lamont Doherty Earth Obs., New York, NY, USA
+
+2)	Dept Terrestrial Magnetism, Carnegie Inst Washington, Washington, DC, USA
+
+3)	School of Earth Sciences, University of Bristol, Bristol, United Kingdom
+
+
+
+Peridotite xenoliths, brought to the surface in volcanic eruption, provide an opportunity to constrain the water content of the mantle. However, rapid diffusion of water in olivine and pyroxene, and thus the potential for chemical exchange with the host magma, raises concerns as to the fidelity of xenoliths in preserving mantle water contents [1,2]. A problem in addressing these concerns is that xenolith studies seldom if ever report the water concentration of the magma host. This study aims to provide such context for peridotite xenoliths erupted from a scoria cinder cone north of the Grand Canyon.
+	Small peridotite xenoliths bombs were sectioned, doubly polished, and analyzed by ion probe and FTIR.  Olivine from the xenolith and scoria phenocrysts have the same core (5 ± 1 ppm) and rim (3 ± 1 ppm) concentrations. IR spectra reveal variations in the olivine H defect structure across the xenolith: exterior olivines reveal H associated with trivalent cation defects (Tri) and reversely zoned H hosted in metal vacancies. Interior olivines lack Tri defects and all defects are normally zoned. Xenolith clinopyroxenes have 459 - 607 ppm water, and orthopyroxenes have between 168 - 399 ppm water. The highest values were found in crystal cores and the lower values at the rims, consistent with diffusive water loss in all three minerals. Olivine-hosted melt inclusions from the host scoria contain up to 2.7 wt% H2O [3]. Using concentration dependent mineral-melt partitioning relationships [4], we find that the pyroxene cores are consistent with equilibrium with the undegassed host magma. Olivine water concentrations, however, are too low to be in equilibrium with the inferred parental magma.
+	We conclude that the xenolith minerals have significantly interacted with the host magma during transport, potentially erasing entirely the original mantle water concentrations. Due to its greater diffusivity, H in olivine continued to further equilibrate with the host magma as it degassed. This study shows the importance of examining the water content of the host magma along with peridotite xenoliths. The high temperatures and relatively slow ascent of alkali basalts that erupt in cinder cones may not be favorable to the preservation of mantle water in xenoliths.
+
+[1] Demouchy et al 2016. [2] Ferriss et al 2016. [3] Plank and Forsyth 2016. [4] Adam et al 2016.
+
+
+
+![Sample Locations](/images/GCB1A Sample Locations Jan_2018_masterspaper.jpg)
+
+Peridotite xenolith section with sampled grain locations. Grains were selected that were either close to the exterior of the xenolith were the samples were in contact with the carrying host magma of from further in the interior of the xenolith.
+
+
+
+![SIMS Results](/images/GCB SIMS plots.png)
+Core and rim water concentrations as measured by Secondary Ionization Mass Spectroscopy (SIMS) in olivine, orthopyroxene and clinopyroxene within the peridotite xenolith and single crystals from the scoria lapilli. Xenolith grains are arranged by their distance from the xenolith’s exterior which is the contact with the magma. Error bars represent the 1σ standard deviation of 5 integrations from a single SIMS spot.
+
+
+
+![Olivine FTIR Spectra](/images/GCB1A_Spectra_nogrid_1.jpg)
+
+Representative FTIR spectra of olivine from the interior and exterior of the xenolith. Exterior olivine 1 and interior olivine 4 have approximately the same orientation so comparison of their respective spectra should be free of the orientation specific absorbance effects. Note the two peaks associated with OH bonding near trivalent cations, 3328 and 3356 cm-1 present in the olivine located near the exterior of the xenolith and not the interior. Spectra have been offset for clarity.
+
+
+<meta property="og:image" content="/images/Henry_Logo.jpg"/>
+<meta property="og:title” content=“Henry Towbin”/>
