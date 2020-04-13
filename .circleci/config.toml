@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cibuilds/hugo:latest
+    working_directory: ~/hugo
+    environment:
+      HUGO_BUILD_DIR: ~/hugo/public
+    steps:
+	- run: apt-get update && apt-get install -y --no-install-recommends git
+	- checkout
+	- run: git submodule sync && git submodule update --init
