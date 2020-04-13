@@ -7,6 +7,6 @@ jobs:
     environment:
       HUGO_BUILD_DIR: ~/hugo/public
     steps:
-	- run: apt-get update && apt-get install -y --no-install-recommends git
-	- checkout
-	- run: git submodule sync && git submodule update --init
+     - run: apt-get update && apt-get install -y --no-install-recommends git
+     - checkout
+     - run: git submodule sync && git submodule update --init
