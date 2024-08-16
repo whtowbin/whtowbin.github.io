@@ -7,7 +7,7 @@ menu:
 
 ---
 
-I can be reached on by email (<wtowbin@gia.edu>)
+I can be reached on by [email](<wtowbin@gia.edu>)
 
 <meta property="og:image" content="/images/Henry_Logo.jpg"/>
 <meta property="og:title” content=“Henry Towbin”/>
