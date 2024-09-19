@@ -1,9 +1,10 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Henry Towbin"
-  output-dir: docs
+  
   navbar:
     right:
       - about.qmd
