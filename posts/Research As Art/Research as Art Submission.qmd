@@ -1,7 +1,7 @@
 ---
 title: Lamont Doherty Research As Art 
 date: 2018-04
-title-block-banner: false
+title-block-banner: false 
 ---
 ![](Research_as_Art_2.jpg){width=60%, group="my-gallery"}  
 
