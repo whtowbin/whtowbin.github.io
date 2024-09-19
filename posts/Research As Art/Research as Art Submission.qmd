@@ -1,22 +1,22 @@
 ---
-title: Lamont Doherty Research As Art
+title: Lamont Doherty Research As Art 
 date: 2018-04
+title-block-banner: false
 ---
-
-![Research As Art](Research_as_Art_2.jpg)
+![](Research_as_Art_2.jpg){width=60%, group="my-gallery"}  
 
 Lamont Doherty Earth Observatory's Annual Research as Art exhibition showcases the many creative talents of our community and links, either deliberate or incidental, between our work and art.
 
 
-![Research As Art](Research_as_Art_1.jpg)
+![](Research_as_Art_1.jpg){width=60%, group="my-gallery"}  
 
 Anna Barth showing off her sculptures of infrared spectra from experiments to determine the diffusivity of hydrogen in magmatic olivine.
 
 
-![Research As Art](Research_as_Art.jpg)
+![](Research_as_Art.jpg){width=60%, group="my-gallery"}  
 
 
-![Peridotite Gems](Towbin_Research_as_Art_Cluster.jpg)
+![](Towbin_Research_as_Art_Cluster.jpg){width=60%, group="my-gallery"}  
 Here is my own submission a cluster of pyroxenes and olivine mounted for analysis by infrared spectroscopy. This image was taken prior to analysis using a cellphone camera through a microscopy ocular lens to document the sample orientation
 
 

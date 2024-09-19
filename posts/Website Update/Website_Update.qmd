@@ -1,11 +1,11 @@
 ---
 title: "Website Update"
-description: New Website Generator
+#description: New Website Generator
 date: 2024-09-18
 lightbox: true
-image: Brain_Thumb.jpg
+title-block-banner: false
+#image: Juniper_Table.jpg
 ---
-
 It has been a few years since I last updated my website. I have switched to a new static website generator called [Quarto](https://quarto.org) which should allow me to update my website more easily. It should allow me to share some of the data analysis and science I do everyday as well as share some of my photography.  
 
 To finish things off here are some obligatory photos of my dog:

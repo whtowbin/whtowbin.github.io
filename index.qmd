@@ -8,13 +8,12 @@ listing:
   sort-ui: false
   filter-ui: false
 page-layout: full
-#stitle-block-banner: Henry_Azores_cropped.jpg
+#title-block-banner: Henry_Azores_cropped.jpg
+image: Henry_Logo.jpg
 ---
-
 ::: {.column-screen}
-![](Henry_Azores_cropped.jpg)
-:::
-
+![](Henry_Azores_cropped.jpg)  
+:::  
 I am currently a postdoctoral research associate at the Gemological Institute of America in New York studying diamond growth deep in earth's mantle. 
 Previously I studied at earth Science at Columbia University’s Lamont Doherty Earth Observatory. Prior to that background is as a microscopy and computed tomography specialist at the American Museum of Natural History in New York.
 

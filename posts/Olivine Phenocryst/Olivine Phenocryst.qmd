@@ -1,10 +1,10 @@
 ---
 title: Olivine Phenocryst
-description: Olivine Phenocryst
+#description: Olivine Phenocryst
 type: post
 date: 2017-11-04
 image: Olivine_thumb.jpg
-
+title-block-banner: false
 ---
 
 
