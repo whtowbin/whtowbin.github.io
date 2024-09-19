@@ -1,0 +1,24 @@
+---
+#title: "This Title is Too Big"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: False
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+#stitle-block-banner: Henry_Azores_cropped.jpg
+---
+
+::: {.column-screen}
+![](Henry_Azores_cropped.jpg)
+:::
+
+I am currently a postdoctoral research associate at the Gemological Institute of America in New York studying diamond growth deep in earth's mantle. 
+Previously I studied at earth Science at Columbia University’s Lamont Doherty Earth Observatory. Prior to that background is as a microscopy and computed tomography specialist at the American Museum of Natural History in New York.
+
+My research uses a suite of analytical methods and data processing routines to look at to study the chemistry of minerals formed deep in earth's mantle.    
+
+
+<hr>

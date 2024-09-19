@@ -1,0 +1,11 @@
+---
+title: "Posts"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: False
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+---

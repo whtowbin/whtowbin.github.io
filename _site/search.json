@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I am currently a postdoctoral research associate at the Gemological Institute of America in New York studying diamond growth deep in earth’s mantle. Previously I studied at earth Science at Columbia University’s Lamont Doherty Earth Observatory. Prior to that background is as a microscopy and computed tomography specialist at the American Museum of Natural History in New York.\nMy research uses a suite of analytical methods and data processing routines to look at to study the chemistry of minerals formed deep in earth’s mantle.\n\n\nColumbia University | New York, NY\nPhD in Earth and Environmental Science | Sept 2016 - March 2023\nOberlin College | Oberlin, OH\nB.A. in Geology | Sept 2009 - June 2013\n\n\n\nGemological Institute of America | New York, NY\nPostdoctoral Research Associate | May 2023 - Present\nAmerican Museum of Natural History | New York, NY\nImaging and Microscopy Lab Co-Manager | June 2013 - August 2016"
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About",
+    "section": "",
+    "text": "Columbia University | New York, NY\nPhD in Earth and Environmental Science | Sept 2016 - March 2023\nOberlin College | Oberlin, OH\nB.A. in Geology | Sept 2009 - June 2013"
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About",
+    "section": "",
+    "text": "Gemological Institute of America | New York, NY\nPostdoctoral Research Associate | May 2023 - Present\nAmerican Museum of Natural History | New York, NY\nImaging and Microscopy Lab Co-Manager | June 2013 - August 2016"
+  },
+  {
+    "objectID": "posts_listing_page.html",
+    "href": "posts_listing_page.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Website Update\n\n\n\n\n\nNew Website Generator\n\n\n\n\n\nSep 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nAGU Abstract Submission 2018\n\n\n\n\n\n\n\n\n\n\n\nAug 20, 2018\n\n\n\n\n\n\n\n\n\n\n\n\nLamont Doherty Research As Art\n\n\n\n\n\n\n\n\n\n\n\nApr 1, 2018\n\n\n\n\n\n\n\n\n\n\n\n\nBrain Anatomy MRI\n\n\n\n\n\nMy Brain\n\n\n\n\n\nNov 5, 2017\n\n\n\n\n\n\n\n\n\n\n\n\nOlivine Phenocryst\n\n\n\n\n\nOlivine Phenocryst\n\n\n\n\n\nNov 4, 2017\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/Brain_Video/Brain_Video.html",
+    "href": "posts/Brain_Video/Brain_Video.html",
+    "title": "Brain Anatomy MRI",
+    "section": "",
+    "text": "I have animated my brain anatomy from MRI data. There are a few parts I was unable to segment so for anyone with knowledge of brain anatomy please don’t diagnose me for any missing tissue quite yet."
+  },
+  {
+    "objectID": "posts/Olivine Phenocryst/Olivine Phenocryst.html",
+    "href": "posts/Olivine Phenocryst/Olivine Phenocryst.html",
+    "title": "Olivine Phenocryst",
+    "section": "",
+    "text": "These images were produced using x-ray computed tomography to demonstrate the three dimensional structure and inclusions of volcanic crystals the size of sand grains. Volcanologists use these crystals to study magma movement prior to eruptions. The crystals and magma glass trapped inside them, known as melt inclusions, offer windows into the magma’s chemical history. The crystal’s chemistry teaches us about the temperature of the magma when it grew. Changes to that chemistry can record the mixing of magmas in the volcano’s plumbing system and give estimates of time between mixing during eruptive run-up and the eruption. Additionally, we can measure volatiles (H2O, CO2, S, F, Cl) trapped inside these inclusions to learn about the gases driving the eruption. Diffusive loss of these volatiles from melt embayments and the crystal itself record ascent rates as magmas move up through the volcanic plumbing system.\nX-ray computed tomography data was collected at The American Museum of Natural History’s Microscopy and Imaging Facility and processed in collaboration with scientists at Columbia University’s Lamont Doherty Earth Observatory and the University of Nevada, Reno.\nDownload it here"
+  },
+  {
+    "objectID": "posts/Olivine Phenocryst/Olivine Phenocryst.html#olivine-crystal-from-1932-eruption-of-quizapu-volcano-in-chile",
+    "href": "posts/Olivine Phenocryst/Olivine Phenocryst.html#olivine-crystal-from-1932-eruption-of-quizapu-volcano-in-chile",
+    "title": "Olivine Phenocryst",
+    "section": "",
+    "text": "These images were produced using x-ray computed tomography to demonstrate the three dimensional structure and inclusions of volcanic crystals the size of sand grains. Volcanologists use these crystals to study magma movement prior to eruptions. The crystals and magma glass trapped inside them, known as melt inclusions, offer windows into the magma’s chemical history. The crystal’s chemistry teaches us about the temperature of the magma when it grew. Changes to that chemistry can record the mixing of magmas in the volcano’s plumbing system and give estimates of time between mixing during eruptive run-up and the eruption. Additionally, we can measure volatiles (H2O, CO2, S, F, Cl) trapped inside these inclusions to learn about the gases driving the eruption. Diffusive loss of these volatiles from melt embayments and the crystal itself record ascent rates as magmas move up through the volcanic plumbing system.\nX-ray computed tomography data was collected at The American Museum of Natural History’s Microscopy and Imaging Facility and processed in collaboration with scientists at Columbia University’s Lamont Doherty Earth Observatory and the University of Nevada, Reno.\nDownload it here"
+  },
+  {
+    "objectID": "posts/Website Update/Website_Update.html",
+    "href": "posts/Website Update/Website_Update.html",
+    "title": "Website Update",
+    "section": "",
+    "text": "It has been a few years since I last updated my website. I have switched to a new static website generator called Quarto which should allow me to update my website more easily. It should allow me to share some of the data analysis and science I do everyday as well as share some of my photography.\nTo finish things off here are some obligatory photos of my dog:"
+  },
+  {
+    "objectID": "posts/Research As Art/Research as Art Submission.html",
+    "href": "posts/Research As Art/Research as Art Submission.html",
+    "title": "Lamont Doherty Research As Art",
+    "section": "",
+    "text": "Research As Art\n\n\nLamont Doherty Earth Observatory’s Annual Research as Art exhibition showcases the many creative talents of our community and links, either deliberate or incidental, between our work and art.\n\n\n\nResearch As Art\n\n\nAnna Barth showing off her sculptures of infrared spectra from experiments to determine the diffusivity of hydrogen in magmatic olivine.\n\n\n\nResearch As Art\n\n\n Here is my own submission a cluster of pyroxenes and olivine mounted for analysis by infrared spectroscopy. This image was taken prior to analysis using a cellphone camera through a microscopy ocular lens to document the sample orientation"
+  },
+  {
+    "objectID": "posts/AGU Abstract 2018/AGU Abstract.html",
+    "href": "posts/AGU Abstract 2018/AGU Abstract.html",
+    "title": "AGU Abstract Submission 2018",
+    "section": "",
+    "text": "I have submitted an abstract on my work studying the preservation of trace concentrations of water in mantle xenoliths for this years fall AGU conference. I have also included some figures to help demonstrate the data being discussed."
+  },
+  {
+    "objectID": "posts/AGU Abstract 2018/AGU Abstract.html#testing-the-fidelity-of-peridotite-xenoliths-as-records-of-water-in-the-lithospheric-mantle",
+    "href": "posts/AGU Abstract 2018/AGU Abstract.html#testing-the-fidelity-of-peridotite-xenoliths-as-records-of-water-in-the-lithospheric-mantle",
+    "title": "AGU Abstract Submission 2018",
+    "section": "Testing the Fidelity of Peridotite Xenoliths as Records of Water in the Lithospheric Mantle",
+    "text": "Testing the Fidelity of Peridotite Xenoliths as Records of Water in the Lithospheric Mantle\nTowbin, W.H. (1), Plank, T. (1), Hauri, E.H. (2), Kohn S.C. (3), Brooker, R.A. (3)\n\nDept Earth & Env Sci, Lamont Doherty Earth Obs., New York, NY, USA\nDept Terrestrial Magnetism, Carnegie Inst Washington, Washington, DC, USA\nSchool of Earth Sciences, University of Bristol, Bristol, United Kingdom\n\nPeridotite xenoliths, brought to the surface in volcanic eruption, provide an opportunity to constrain the water content of the mantle. However, rapid diffusion of water in olivine and pyroxene, and thus the potential for chemical exchange with the host magma, raises concerns as to the fidelity of xenoliths in preserving mantle water contents [1,2]. A problem in addressing these concerns is that xenolith studies seldom if ever report the water concentration of the magma host. This study aims to provide such context for peridotite xenoliths erupted from a scoria cinder cone north of the Grand Canyon. Small peridotite xenoliths bombs were sectioned, doubly polished, and analyzed by ion probe and FTIR. Olivine from the xenolith and scoria phenocrysts have the same core (5 ± 1 ppm) and rim (3 ± 1 ppm) concentrations. IR spectra reveal variations in the olivine H defect structure across the xenolith: exterior olivines reveal H associated with trivalent cation defects (Tri) and reversely zoned H hosted in metal vacancies. Interior olivines lack Tri defects and all defects are normally zoned. Xenolith clinopyroxenes have 459 - 607 ppm water, and orthopyroxenes have between 168 - 399 ppm water. The highest values were found in crystal cores and the lower values at the rims, consistent with diffusive water loss in all three minerals. Olivine-hosted melt inclusions from the host scoria contain up to 2.7 wt% H2O [3]. Using concentration dependent mineral-melt partitioning relationships [4], we find that the pyroxene cores are consistent with equilibrium with the undegassed host magma. Olivine water concentrations, however, are too low to be in equilibrium with the inferred parental magma. We conclude that the xenolith minerals have significantly interacted with the host magma during transport, potentially erasing entirely the original mantle water concentrations. Due to its greater diffusivity, H in olivine continued to further equilibrate with the host magma as it degassed. This study shows the importance of examining the water content of the host magma along with peridotite xenoliths. The high temperatures and relatively slow ascent of alkali basalts that erupt in cinder cones may not be favorable to the preservation of mantle water in xenoliths.\n[1] Demouchy et al 2016. [2] Ferriss et al 2016. [3] Plank and Forsyth 2016. [4] Adam et al 2016.\n\n\n\nSample Locations\n\n\nPeridotite xenolith section with sampled grain locations. Grains were selected that were either close to the exterior of the xenolith were the samples were in contact with the carrying host magma of from further in the interior of the xenolith.\n Core and rim water concentrations as measured by Secondary Ionization Mass Spectroscopy (SIMS) in olivine, orthopyroxene and clinopyroxene within the peridotite xenolith and single crystals from the scoria lapilli. Xenolith grains are arranged by their distance from the xenolith’s exterior which is the contact with the magma. Error bars represent the 1σ standard deviation of 5 integrations from a single SIMS spot.\n\n\n\nOlivine FTIR Spectra\n\n\nRepresentative FTIR spectra of olivine from the interior and exterior of the xenolith. Exterior olivine 1 and interior olivine 4 have approximately the same orientation so comparison of their respective spectra should be free of the orientation specific absorbance effects. Note the two peaks associated with OH bonding near trivalent cations, 3328 and 3356 cm-1 present in the olivine located near the exterior of the xenolith and not the interior. Spectra have been offset for clarity."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Henry Towbin",
+    "section": "",
+    "text": "I am currently a postdoctoral research associate at the Gemological Institute of America in New York studying diamond growth deep in earth’s mantle. Previously I studied at earth Science at Columbia University’s Lamont Doherty Earth Observatory. Prior to that background is as a microscopy and computed tomography specialist at the American Museum of Natural History in New York.\nMy research uses a suite of analytical methods and data processing routines to look at to study the chemistry of minerals formed deep in earth’s mantle.\nThis is my personal site.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWebsite Update\n\n\n\n\n\nNew Website Generator\n\n\n\n\n\nSep 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nAGU Abstract Submission 2018\n\n\n\n\n\n\n\n\n\n\n\nAug 20, 2018\n\n\n\n\n\n\n\n\n\n\n\n\nLamont Doherty Research As Art\n\n\n\n\n\n\n\n\n\n\n\nApr 1, 2018\n\n\n\n\n\n\n\n\n\n\n\n\nBrain Anatomy MRI\n\n\n\n\n\nMy Brain\n\n\n\n\n\nNov 5, 2017\n\n\n\n\n\n\n\n\n\n\n\n\nOlivine Phenocryst\n\n\n\n\n\nOlivine Phenocryst\n\n\n\n\n\nNov 4, 2017\n\n\n\n\n\n\nNo matching items"
+  }
+]

@@ -1,0 +1,35 @@
+---
+title: "About"
+image: /images/Henry_Towbin_compressed_cropped.jpg
+about:
+  template: solana
+  # links:
+  #     - icon: linkedin
+  #       text: LinkedIn
+  #       href: https://www.linkedin.com/in/henry-towbin-22104765
+  #     - icon: github
+  #       text: Github
+  #       href: https://github.com/whtowbin
+
+---
+:::{#hero-heading}
+I am currently a postdoctoral research associate at the Gemological Institute of America in New York studying diamond growth deep in earth's mantle. 
+Previously I studied at earth Science at Columbia University’s Lamont Doherty Earth Observatory. Prior to that background is as a microscopy and computed tomography specialist at the American Museum of Natural History in New York.
+
+My research uses a suite of analytical methods and data processing routines to look at to study the chemistry of minerals formed deep in earth's mantle. 
+
+## Education
+**Columbia University** | New York, NY  
+PhD in Earth and Environmental Science | Sept 2016 - March 2023
+
+**Oberlin College** | Oberlin, OH   
+B.A. in Geology | Sept 2009 - June 2013
+
+## Experience
+
+**Gemological Institute of America** | New York, NY  
+Postdoctoral Research Associate | May 2023 - Present
+
+**American Museum of Natural History** | New York, NY  
+Imaging and Microscopy Lab Co-Manager | June 2013 - August 2016
+:::
