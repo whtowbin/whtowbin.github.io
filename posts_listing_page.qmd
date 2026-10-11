@@ -3,6 +3,7 @@ title: "Posts"
 listing:
   contents: posts
   sort: "date desc"
+  date-format: "MMMM YYYY"
   type: default
   categories: False
   sort-ui: false

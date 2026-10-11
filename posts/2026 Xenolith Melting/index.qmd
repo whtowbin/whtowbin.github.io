@@ -1,0 +1,56 @@
+---
+title: "Mantle rocks start melting on their way to the surface"
+description: "A plain-language summary of Towbin and Plank (2026), Decompression Melting of Peridotite Xenoliths, Journal of Petrology"
+date: 2026-10-07
+image: ascent-summary.png
+---
+
+Our paper on melting in mantle xenoliths is out in the *Journal of Petrology*: [Towbin and Plank (2026), Decompression Melting of Peridotite Xenoliths](https://doi.org/10.1093/petrology/egag077).
+
+[![](paper-title.png){fig-alt="Title block of the paper: Decompression Melting of Peridotite Xenoliths, W. Henry Towbin and Terry Plank, Journal of Petrology 2026"}](https://doi.org/10.1093/petrology/egag077)
+
+## Rocks from the mantle, delivered by volcanoes
+
+Xenoliths are pieces of the Earth's mantle that a rising magma rips off and carries to the surface. They are one of the few direct samples we have of rock from tens of kilometers down, so geologists use them to work out what the mantle is made of and how it behaves.
+
+Many xenoliths contain thin veins of glass and small crystals, the remains of a little melt. The question is when that melt formed. If it formed deep in the mantle, it records something about the mantle. If it formed during the trip up, it records the trip, and anyone reading the rock as a purely mantle sample needs to know that.
+
+![The path the xenoliths took. They sat in the mantle at about 40 km depth and a little over 900 °C until the magma picked them up and heated them to its own temperature, near 1300 °C (black arrow). They then rose with the magma (purple arrow). Most of that path lies above the peridotite solidus (dashed green line), so the xenoliths could start to melt on the way up. Figure 1 from Towbin and Plank (2026), *Journal of Petrology*.](pt-path.png){fig-alt="Pressure-temperature diagram showing a xenolith picked up at about 40 km depth, heated by the magma, and carried up a magma ascent path that lies mostly above the peridotite solidus"}
+
+## What we measured
+
+We studied xenoliths and the basalt that carried them from a small cinder cone north of the Grand Canyon (Sullivan Ranch, Arizona).
+
+First I scanned whole xenoliths with micro-CT, a 3D X-ray method, and segmented the scans to find the melt veins. The veins run through every xenolith we looked at, connect to each other at the millimeter scale, and make up about 10% of the rock. Many contain gas bubbles.
+
+![Inside the melt veins. (a) A slice through a micro-CT scan of a xenolith, with melt veins outlined in yellow; the black spots are bubbles. (b) to (d) Electron images and an element map of the crystals and glass inside a vein. Figure 3 from Towbin and Plank (2026), *Journal of Petrology*.](melt-vein-textures.jpg){fig-alt="Four panels: a grey micro-CT slice with melt veins outlined in yellow, two backscattered electron images, and a false-color element map of minerals in a melt vein"}
+
+Then I measured the minerals and glass with the electron microprobe, the SEM and laser-ablation mass spectrometry. From those analyses we worked out what the melt was (a basalt) and which minerals melted to make it. The reaction is close to what laboratory melting experiments produce at about 1 GPa, a little shallower than where the xenoliths started.
+
+![Melt veins in two xenoliths. (a) Optical scan of a thick section, with the veins in yellow, found by thresholding the image. (b) False-color element map of a second xenolith: melt veins yellow, olivine green, orthopyroxene brown, clinopyroxene turquoise, spinel pink. Veins cover about 10% of the area in both. Figure 2 from Towbin and Plank (2026), *Journal of Petrology*.](melt-veins.jpg){fig-alt="Top: optical scan of a xenolith slice with melt veins highlighted in yellow. Bottom: false-color phase map with yellow melt veins running between green olivine and brown orthopyroxene"}
+
+## A clock in the olivine
+
+Olivine crystals next to the veins are zoned: their iron and magnesium contents change from the edge of the crystal inward. That zoning comes from atoms diffusing after the melt appeared, and diffusion runs at a known rate for a given temperature. Fitting a diffusion model to each profile tells you how long the crystal sat next to the melt.
+
+![Fitting diffusion models to olivine profiles. Left: electron images with the measured traverse (orange arrow). Right: measured forsterite content (grey points), the assumed starting profile (dashed) and the best-fit diffusion model (solid). Top: olivine next to a melt vein, about 21 days. Middle: olivine at the edge of the xenolith in contact with the carrying magma, about 8.5 days. Bottom: a loose olivine crystal in the lava, about 2.5 days. Figure 14 from Towbin and Plank (2026), *Journal of Petrology*.](olivine-diffusion.jpg){fig-alt="Three rows, each pairing an electron image of an olivine crystal with a plot of forsterite content against distance from the rim and a fitted diffusion curve"}
+
+The olivine next to the melt veins gave one to three weeks. Olivine on the outside of the xenoliths, which exchanged with the carrying magma, gives a similar timescale of about a week. So the melting inside the rock happened during the same few weeks the xenolith spent in the magma, not long before in the mantle.
+
+The outer olivine also times the trip itself: 3 to 10 days from pickup to eruption. Over the 40 km the xenoliths travelled, that is an average ascent rate of 0.05 to 0.15 meters per second, similar to rates estimated for other cinder-cone eruptions.
+
+## Why it matters
+
+In the mantle these rocks were too cool to melt. Once the magma picked them up, it heated them to its own temperature, and the rise did the rest: as the pressure drops, the temperature at which peridotite starts to melt drops too, so a rock that is already hot can begin to melt without getting any hotter. Because the carrying magma is hot and the trip takes days to weeks, we think this kind of melting is hard to avoid in xenoliths brought up by similar volcanoes.
+
+Melting consumes clinopyroxene, so a xenolith that started as one rock type (lherzolite) can end up looking like a more depleted one (harzburgite). The carrying magma also seeped into the outer centimeter or so of each xenolith. Studies that use xenoliths to describe the mantle should check for both effects, and avoid the outer centimeter when they can.
+
+![What happens on the trip up. The magma picks up the xenolith, the xenolith heats and starts to melt, and olivine begins exchanging iron and magnesium with both the melt veins and the magma. Growing gas bubbles push magma into the outer edge of the xenolith. After eruption the vein melt loses water, cools and crystallizes. Figure 16 from Towbin and Plank (2026), *Journal of Petrology*.](ascent-summary.png){fig-alt="Cartoon of a xenolith rising in a magma-filled conduit, with zoomed panels showing melting along grain boundaries, bubble growth, magma infiltration and diffusion in olivine"}
+
+## The tools
+
+The diffusion modeling used a 1-D numerical model I wrote in Python, with kriging to interpolate the measured profiles. The code is on [GitHub](https://github.com/whtowbin/Xenolith_Melt_Vein_Modeling), and the data are in the paper's supplement and the [EarthChem Library](https://doi.org/10.60520/IEDA/114314).
+
+This paper started as the second chapter of my PhD at Columbia, with Terry Plank.
+
+*Figures reproduced from Towbin and Plank (2026), Journal of Petrology, © The Author(s) 2026, published by Oxford University Press.*

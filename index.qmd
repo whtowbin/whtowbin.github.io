@@ -3,6 +3,7 @@
 listing:
   contents: posts
   sort: "date desc"
+  date-format: "MMMM YYYY"
   type: default
   categories: False
   sort-ui: false
@@ -14,10 +15,11 @@ image: Henry_Logo.jpg
 ::: {.column-screen}
 ![](Henry_Azores_cropped.jpg)  
 :::  
-I am currently a postdoctoral research associate at the Gemological Institute of America in New York studying diamond growth deep in earth's mantle. 
-Previously I studied at earth Science at Columbia University’s Lamont Doherty Earth Observatory. Prior to that background is as a microscopy and computed tomography specialist at the American Museum of Natural History in New York.
 
-My research uses a suite of analytical methods and data processing routines to look at to study the chemistry of minerals formed deep in earth's mantle.    
+I'm a scientist in Brooklyn, NY. I use Python to analyze scientific data, combining my own measurements (spectroscopy, micro-CT, electron microprobe and SIMS) with published datasets and physical models to answer research questions.
 
+Most recently I was a postdoctoral fellow at the Gemological Institute of America (2023 to 2025), where I built data pipelines for FTIR and Raman spectra of diamonds. Before that I did my PhD at Columbia University's Lamont-Doherty Earth Observatory on how mantle rocks change on their way to the surface, and before graduate school I ran micro-CT and electron microscopy at the American Museum of Natural History.
+
+I'm looking for data science roles in New York City and am also open to imaging and geoscience work. The posts below cover my research and code; my software is on [GitHub](https://github.com/whtowbin).
 
 <hr>

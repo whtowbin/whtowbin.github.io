@@ -4,22 +4,24 @@ project:
 
 website:
   title: "Henry Towbin"
+  draft-mode: gone
   
   navbar:
     right:
       - about.qmd
+      - publications.qmd
       - posts_listing_page.qmd
       - icon: github
         href: https://github.com/whtowbin
       - icon: linkedin
-        href: https://www.linkedin.com/in/henry-towbin-22104765
+        href: https://www.linkedin.com/in/henry-towbin
   page-footer: 
     left:
-      - text: "Henry Towbin 2024"
+      - text: "Henry Towbin 2026"
     right:
       - icon: linkedin
         text: LinkedIn
-        href: https://www.linkedin.com/in/henry-towbin-22104765
+        href: https://www.linkedin.com/in/henry-towbin
       - icon: github
         text: Github
         href: https://github.com/whtowbin

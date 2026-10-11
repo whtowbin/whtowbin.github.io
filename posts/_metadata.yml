@@ -4,5 +4,8 @@
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
 freeze: true
 
+# show post dates as month and year only
+date-format: "MMMM YYYY"
+
 # Enable banner style title blocks
 title-block-banner: true

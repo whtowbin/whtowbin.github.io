@@ -1,0 +1,89 @@
+---
+title: "Publications"
+---
+
+Peer-reviewed papers, newest first. Conference abstracts are on [Google Scholar](https://scholar.google.com/citations?user=GRSeZOsAAAAJ&hl=en) and [ORCID](https://orcid.org/0000-0002-6267-3097).
+
+## 2026
+
+**Decompression melting of peridotite xenoliths.**
+**W. H. Towbin** and T. Plank. *Journal of Petrology* 67(9), egag077.
+[doi:10.1093/petrology/egag077](https://doi.org/10.1093/petrology/egag077)
+
+> Micro-CT, electron microprobe and diffusion modeling show that mantle rocks carried up by magma start melting during a rise of one to three weeks. [Plain-language summary](posts/2026%20Xenolith%20Melting/index.qmd).
+
+**High precision water quantification by Raman spectroscopy: Applications to volcanic and extraterrestrial samples.**
+E. G. Huggins, E. Gazel, M. Gavrilenko, K. Dayton, J. D. Bixler, **W. H. Towbin** and T. Plank. *Chemical Geology* 721, 123628.
+[doi:10.1016/j.chemgeo.2026.123628](https://doi.org/10.1016/j.chemgeo.2026.123628)
+
+## 2025
+
+**A study of the Winston Red: The Smithsonian's new fancy red diamond.**
+G. A. Farfan, U. F. S. D'Haenens-Johansson, S. Persaud, E. Gaillou, R. C. Feather II, **W. H. Towbin** and D. C. Jones. *Gems & Gemology* 61(1).
+[Article](https://www.gia.edu/gems-gemology/spring-2025-winston-red-diamond)
+
+**Formation of spongy clinopyroxene: insights from eclogitic inclusions in diamonds.**
+W. Wang, N. M. Korolev, E. S. Kiseeva, R. M. Davies, Y. Weiss, M. Kopylova, **W. H. Towbin**, F. Huang, A. E. Moore and E. A. Vasilev. *Journal of Petrology* 66(5), egaf036.
+[doi:10.1093/petrology/egaf036](https://doi.org/10.1093/petrology/egaf036)
+
+## 2024
+
+**PyIRoGlass: An open-source, Bayesian MCMC algorithm for fitting baselines to FTIR spectra of basaltic-andesitic glasses.**
+S. C. Shi, **W. H. Towbin**, T. Plank, A. C. Barth, D. J. Rasmussen, Y. Moussallam, H. J. Lee and W. Menke. *Volcanica* 7(2), 471–501.
+[doi:10.30909/vol.07.02.471501](https://doi.org/10.30909/vol.07.02.471501)
+
+> An open-source Python tool that measures water and CO₂ in volcanic glass from infrared spectra.
+
+**ND70 series basaltic glass reference materials for volatile element (H₂O, CO₂, S, Cl, F) measurement and the C ionisation efficiency suppression effect of water in silicate glasses in SIMS.**
+Y. Moussallam, **W. H. Towbin**, T. Plank et al. *Geostandards and Geoanalytical Research* 48(3), 637–660.
+[doi:10.1111/ggr.12572](https://doi.org/10.1111/ggr.12572)
+
+**Fast, furious, and gassy: Etna's explosive eruption from the mantle.**
+A. Barth et al. (including **W. H. Towbin**). *Earth and Planetary Science Letters* 643, 118864.
+[doi:10.1016/j.epsl.2024.118864](https://doi.org/10.1016/j.epsl.2024.118864)
+
+**Applications of X-ray radiography and X-ray computed microtomography in gemology.**
+C. Zhou and **W. H. Towbin**. *Gems & Gemology* 60(4), 582–595.
+[Article](https://www.gia.edu/gems-gemology/winter-2024-x-ray-imaging)
+
+**Glowing gems: Fluorescence and phosphorescence of diamonds, colored stones, and pearls.**
+U. F. S. D'Haenens-Johansson, S. Eaton-Magaña, **W. H. Towbin** and E. Myagkaya. *Gems & Gemology* 60(4), 560–580.
+[Article](https://www.gia.edu/gems-gemology/winter-2024-fluorescence-phosphorescence)
+
+**Large natural diamonds with asteriated cloud inclusions.**
+T. Linzmeyer, **W. H. Towbin** and S. Eaton-Magaña. *Gems & Gemology* 60(2).
+
+## 2023
+
+**Measuring H₂O concentrations in olivine by secondary ion mass spectrometry: Challenges and paths forward.**
+**W. H. Towbin**, T. Plank, E. Klein and E. Hauri. *American Mineralogist* 108(5), 928–940.
+[doi:10.2138/am-2022-8247](https://doi.org/10.2138/am-2022-8247)
+
+> Two sets of reference standards that most labs use to measure water in olivine disagree by about 50%. We traced the offset to the reference values and proposed a calibration that avoids it. [Summary](posts/2023%20Water%20in%20Olivine/index.qmd).
+
+**Rates of dehydration in hydrous, high-Fo, magmatic olivines.**
+A. Barth, T. Plank and **W. H. Towbin**. *Geochimica et Cosmochimica Acta* 342, 62–73.
+[doi:10.1016/j.gca.2022.11.009](https://doi.org/10.1016/j.gca.2022.11.009)
+
+## 2019 and earlier
+
+**Effect of polychromatic X-ray microtomography imaging on the amino acid content of the Murchison CM chondrite.**
+J. M. Friedrich, H. L. McLain, J. P. Dworkin, D. P. Glavin, **W. H. Towbin**, M. Hill et al. *Meteoritics & Planetary Science* 54(1), 220–228 (2019).
+
+**Nautilid nurseries: hatchlings and juveniles of *Eutrephoceras dekayi* from the lower Maastrichtian (Upper Cretaceous) Pierre Shale of east-central Montana.**
+N. H. Landman, J. W. Grier, J. K. Cochran, J. C. Grier, J. G. Petersen and **W. H. Towbin**. *Lethaia* 51(1), 48–74 (2018).
+
+## Dissertation
+
+**The fidelity of the mantle signal in peridotite xenoliths: Interactions during magmatic ascent.**
+**W. H. Towbin**. PhD dissertation, Columbia University (2023).
+
+## Data
+
+**Major, trace and volatile analyses of minerals in mantle xenoliths and associated host scoria from Sullivan Ranch cinder cone, AZ, Basin and Range.**
+T. Plank and **W. H. Towbin**. IEDA EarthChem Library (2026).
+[doi:10.60520/IEDA/114314](https://doi.org/10.60520/IEDA/114314)
+
+## Software
+
+**odr_bootstrap**: a Python package for fitting calibration lines when both variables have uncertainty, with bootstrap confidence intervals. [GitHub](https://github.com/whtowbin/odr_bootstrap_package)
