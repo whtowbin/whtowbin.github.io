@@ -1,5 +1,5 @@
 ---
-title: "A cheap model with a hard ceiling"
+title: "Mercury 2.5: a cheap diffusion LLM with a hard ceiling"
 description: "What Mercury 2.5, a fast and cheap diffusion language model, did inside a coding agent I built around it: where it held up, where it failed, and what it cost."
 date: 2026-10-10
 image: "figures/x3-scicode-cost-vs-solved.png"

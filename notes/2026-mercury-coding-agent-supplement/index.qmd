@@ -1,8 +1,8 @@
 ---
-title: "Supplement to \"A cheap model with a hard ceiling\""
+title: "Supplement to \"Mercury 2.5: a cheap diffusion LLM with a hard ceiling\""
 ---
 
-*Tables and figures behind [A cheap model with a hard ceiling](../../posts/2026-mercury-coding-agent/index.qmd). A section number (§) refers to the project's [design log](https://github.com/whtowbin/mercury-harness/blob/main/DESIGN-LOG.md).*
+*Tables and figures behind [Mercury 2.5: a cheap diffusion LLM with a hard ceiling](../../posts/2026-mercury-coding-agent/index.qmd). A section number (§) refers to the project's [design log](https://github.com/whtowbin/mercury-harness/blob/main/DESIGN-LOG.md).*
 
 ## The findings, by list
 
