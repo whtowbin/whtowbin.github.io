@@ -4,6 +4,9 @@ project:
 
 website:
   title: "Henry Towbin"
+  site-url: "https://www.henrytowbin.com"
+  open-graph: true
+  twitter-card: true
   draft-mode: gone
   
   navbar:
@@ -29,6 +32,7 @@ website:
 format:
   html:
     theme: cosmo
+    canonical-url: true
     css: styles.css
 
 resources:

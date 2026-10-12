@@ -1,171 +1,171 @@
 [
   {
-    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html",
-    "href": "notes/2026-mercury-coding-agent-supplement/index.html",
-    "title": "Supplement to “A cheap model with a hard ceiling”",
+    "objectID": "notes/2026-take-the-work-away-supplement/index.html",
+    "href": "notes/2026-take-the-work-away-supplement/index.html",
+    "title": "Supplement to “Take the work away from a weak model”",
     "section": "",
-    "text": "Tables and figures behind A cheap model with a hard ceiling. A section number (§) refers to the project’s design log."
+    "text": "Tables and figures behind Take the work away from a weak model. A section number (§) refers to the project’s design log."
   },
   {
-    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#the-findings-by-list",
-    "href": "notes/2026-mercury-coding-agent-supplement/index.html#the-findings-by-list",
-    "title": "Supplement to “A cheap model with a hard ceiling”",
-    "section": "The findings, by list",
-    "text": "The findings, by list\nLikely from diffusion decoding or from how Inception serves Mercury:\n\n\n\n\n\n\n\n\n\n\n\n\nLikely from diffusion decoding or from how Inception serves Mercury\n\n\nFinding\nWhat it means\nNumber\nSource\n\n\n\n\nA call is mostly the wait for the first token\nDecoding is fast, but each call waits on a round trip before any text arrives, so the number of calls sets a run's time\ngeneration 0.16 s of a 1.46 s call\n§1, §7\n\n\nStalls hide behind keep-alives\nSome calls never start, but the router sends a \"still processing\" signal at once, so a first-byte timeout never fires\n330 of 50,924 calls silent until a 504 at ~120 s; median first content 1.15 s, p99 11.7 s\n§69\n\n\nEvery call ran at temperature 1.0\nThe harness asked for low, near-deterministic sampling; the provider silently replaced it with its most random setting\nasked for 0.0-0.3; Inception resets anything outside 0.5-1.0\n§85\n\n\nTemperature 0.5, tested\nA lower setting the provider does accept, tried against the 1.0 every run had used\n32 runs a side, not distinguishable, leaned worse\n§82.2\n\n\nHidden reasoning\nMercury thinks in tokens the API never returns; only their count comes back\n~96% of output tokens (95.9% over 93,312 calls)\n§53, §82.1\n\n\nMore effort, fewer calls\nLowering the executor's reasoning effort did not save reasoning; it spread it over more calls\n12.8 calls a run at high; 14.9, 18.4, 18.3 at medium, low, none\n§53.2\n\n\nRunaway reasoning\nA rare call reasons for over a minute before a short answer; an output cap stops it\n~1% of SciCode calls, ~62,000 hidden tokens, 77 s; a 16k cap cut model time 30%\n§95, §95.1\n\n\nIntermittent prompt cache\nThe provider's cache of the repeated start of each prompt engaged on some calls and not others\n20% (SciCode night) to 67% (game project) of calls cached nothing\n§95.2\n\n\nProvider slowdown\nThe same prompts got slower over the month with no change on my side\nfirst token 28-45% later, decode ~1,640 to ~1,310 tokens/s over September\n§95, §114\n\n\n\n\n\n\nCould come from any cheap model:\n\n\n\n\n\n\n\n\n\n\n\n\nCould come from any cheap model\n\n\nFinding\nWhat it means\nNumber\nSource\n\n\n\n\nOptional tools unused\nTools offered for particular jobs, such as structural renames, were almost never called\n4 calls in ~3,100 offers over 3,915 runs\n§62\n\n\nReference notes unused\nThe tool for reading the reference notes written for the model was called once, while its catalogue rode on every call\n1 read in 59,338 executor calls, ~420 tokens a call\n§113\n\n\nRules decay over a step\nAn instruction in the system prompt is followed early in a step and ignored a few turns later\nbatching 6.0% of replies on turns 0-1, 1.5%, 0.8%, 1.2% later\n§82\n\n\nReminder after the last message\nRepeating the rule after the latest message, on every call, kept it followed\nexecute replies −21% (fixtures), −24% (django), calls −11% (django)\n§106.2, §107.3\n\n\nTool calls fail on arguments\nThe model always named a real tool; failures were arguments that did not parse\nplan call unparsable in 12% of runs; strict schemas 0 of 432 vs 9 of 524\n§63, §63.1\n\n\nWrong bug reports believed\nOn tasks whose bug report is false, the model changes the correct code instead of saying so\nmisreport-discount, misreport-documented honest 0 of 3 each\n§54.3, §96.4\n\n\nCodex CLI\nInside Codex, Mercury printed its answer in the chat and never wrote the solution file\nprinted the code and wrote no file in 11 of 15 SciCode problems\n§109.5"
+    "objectID": "notes/2026-take-the-work-away-supplement/index.html#changes-adopted",
+    "href": "notes/2026-take-the-work-away-supplement/index.html#changes-adopted",
+    "title": "Supplement to “Take the work away from a weak model”",
+    "section": "Changes adopted",
+    "text": "Changes adopted\n\n\n\n\n\n\n\n\n\n\n\n\nChanges that passed their rule\n\n\nEach against its own same-sweep control\n\n\nChange\nWhat it does\nWhat moved\nCost\n\n\n\n\nThe harness runs a step's tests after each edit turn\nWhen the model edits code without running a test, the harness runs the step's test itself and attaches the result, saving a round trip\nmodel time −31%, cost −40%\nnone\n\n\nEvery tool schema strict\nEach tool's argument schema is sent with strict: true, so the provider rejects malformed arguments such as a list sent as a double-escaped string\nmalformed calls 9 of 524 to 0 of 432\nplanner calls ~30% slower\n\n\nExecutor reasoning at high effort\nThe executor's hidden reasoning is set to high rather than medium, low or off\n12.8 calls a run against 18.3 at none\nnone\n\n\nA 30 s cut on calls with no content\nA call that has produced no content after 30 seconds is cancelled and sent again, instead of waiting about two minutes for the provider's timeout\n~29,700 s of stalls saved for ~3,000 s re-asked\nnone\n\n\nA 16,000-token output cap\nEvery Mercury call carries max_tokens of 16,000, which stops rare calls that reason for minutes\nSciCode model time −30%\nnone\n\n\nBatched, sectioned file reads\nOne read can fetch several line ranges or named functions, a too-narrow window is widened, and re-reading an unchanged file returns one line\nfile reads −40%\nnone\n\n\nA type check after each edit\nAfter each edit the harness runs the type checker on the edited files and attaches any new errors\nruns ending with new type errors 6 of 8 to 1 of 8\nnone\n\n\nThe batching rule repeated after the last message\nThe step's goal, the rule to batch reads and edits, and the turns left are appended after the last message on every executor call, never saved into the history\nexecute replies −21%\nnone\n\n\nThe reviewer handed the checks already run\nThe reviewer is given the results of the tests and checks the run already made, instead of re-running them\nreview calls −58%\nnone\n\n\nA check that a rename plan covers every caller\nBefore a rename plan is accepted, the harness finds every file that calls the renamed code and sends the plan back if one is missing\nplans missing a caller 6 of 40 to 0 of 40\nnone\n\n\nA reproduction snippet in the plan\nThe planner writes a short snippet that should show the reported bug; the harness runs it and sends the plan back if the bug does not reproduce\nwrong-report honesty 37% to 53% (not significant)\n+0.13 calls\n\n\nSkill triggers matched to the step's own files\nReference notes are attached to a step only when their keywords match that step's own files and text, not the whole goal or the verify command\nskill tokens −17% (replay)\nnone\n\n\nA gate on edits that contradict the run's evidence\nHolds, once each, an edit made after the plan's reproduction already passed, and an edit that removes or weakens an existing test\nnothing measurable either way\nnone"
   },
   {
-    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#settings-that-worked-with-mercury",
-    "href": "notes/2026-mercury-coding-agent-supplement/index.html#settings-that-worked-with-mercury",
-    "title": "Supplement to “A cheap model with a hard ceiling”",
-    "section": "Settings that worked with Mercury",
-    "text": "Settings that worked with Mercury\n\n\n\n\n\n\nSettings that worked with Mercury\n\n\nSetting\nWhat it controls\nWhat happened without it\nUse\n\n\n\n\nTemperature\nHow random the sampling is\nreset to 1.0 outside 0.5-1.0\nsend 0.5-1.0, or nothing\n\n\nReasoning effort\nHow much hidden reasoning the model does before answering\nlower effort added calls\nhigh for the executor\n\n\nmax_tokens\nThe most output tokens, hidden reasoning included, a call may produce\nrare calls reasoned for over a minute\n16,000\n\n\nStrict tool schemas\nWhether the provider enforces each tool's argument format exactly\n12% of plan calls unparsable\non for every tool\n\n\ntool_choice\nWhether a call must end in a tool call or may answer in plain text\n32 of 188 forced final calls came back as prose (§74)\nrequire the tool when a call must end in one\n\n\nWhere a rule sits\nWhere in the prompt an instruction is placed\nsystem-prompt rules decayed\nrepeat after the last message\n\n\nA cut on silent calls\nHow long a call may produce nothing before the harness cancels and re-sends it\nstalls ran to ~120 s\n30 s with no content"
+    "objectID": "notes/2026-take-the-work-away-supplement/index.html#changes-not-adopted",
+    "href": "notes/2026-take-the-work-away-supplement/index.html#changes-not-adopted",
+    "title": "Supplement to “Take the work away from a weak model”",
+    "section": "Changes not adopted",
+    "text": "Changes not adopted\n\n\n\n\n\n\n\n\n\n\n\nChanges that did not\n\n\nEach against its own same-sweep control\n\n\nChange\nWhat it does\nResult\n\n\n\n\nA test-first gate\nHolds a step's first edit to source code until a test has been run, so a failing test exists before the fix\nred-first steps 3% to 48%; accuracy −3.9 points\n\n\nSymptom-first planning\nThe planner is told to describe and confirm the reported symptom before naming a fix\nhonest 83% against 90%; the first, sequential read of +12 points was provider drift\n\n\nPlanner drafts in prose\nThe planner writes its draft plan in full sentences, with code sketches, instead of terse notes\nnamed tests 1.68 to 1.71; +1.8 calls\n\n\nA goal loop judged by a second model\nAfter a run, a second model judges whether the goal was met and, if not, re-runs it with a refined goal\nworse on all 3 django tasks\n\n\nThe batching rule moved to the end of the system prompt\nThe batch-your-reads-and-edits rule, with worked examples, moved from the middle to the end of the system prompt\nno change\n\n\nResearch first, with a findings hold\nBefore planning, the planner looks up the installed libraries' APIs, then reference notes, then the web, and records its findings; the plan is held once if they decide nothing\n+1.7 SciCode problems, then not replicated\n\n\nA numeric self-check\nThe executor is asked to run its function on a case with a known answer before finishing; a gate holds the finish after an untested Python edit\n+13 sub-steps, then −2\n\n\nA stronger model auditing the plan\nGLM reads Mercury's plan against the goal in one call and may correct it before execution\ndropped after repeats\n\n\nRequiring the planner to run code\nThe planner gets a Python tool in a throwaway copy of the workspace, and its first plan is held until it has run something\n+2.0 calls, honesty n.s.\n\n\nStructural edit tools and a plan block for renames\nAn ast-grep search-and-rewrite tool for renames, and planner instructions to plan renames as one structural step\n0 calls in 60 runs\n\n\nSearch-and-replace edit blocks\nA second batch-edit format: the model writes SEARCH and REPLACE text blocks instead of line edits\nused for 55% of edits; calls and edit turns unchanged\n\n\nWeb-research aids\nA web-research skill, a nudge to open a result instead of searching again, and a narrower trigger for the documentation notes\nthe target moved 11%, the rule needed 30%\n\n\nA tracer for probing code\nA tool that records a function's execution line by line in one call, to replace repeated print-and-run probing\n0 calls in 15 runs\n\n\nForcing the diagnosing skill\nAlways attaching the bug-diagnosis notes to the first step of a bug-fix task (tested by replaying recorded runs)\nno more honest runs (replay of 1,012)\n\n\nTemperature 0.5\nAsking for temperature 0.5, inside the range Inception accepts, instead of the 1.0 every call had been running at\nnot distinguishable, leaned worse\n\n\nA repair round for weak tests\nWhen an audit finds the run's new tests would pass on the old code, one extra round shows the model its diff and asks for better tests\nhonest +6 points, n.s., at +4 calls\n\n\nClarify questions shown the code first\nBefore asking the person anything, the question step sees the code's symbols, the README and how tests run, and is told to ask only what the code cannot answer\n−37.5% code-answerable questions against a 40% rule (later turned on by choice)\n\n\nSkills at all\nReference notes on tools and practices (uv, Ruff, testing, debugging) attached to prompts by keyword\nno measurable difference in three tests (kept by choice)\n\n\n\n\n\n\n\n\n\nEach feature test as an arrow from the arm without the feature to the arm with it\n\n\nEach test from the two tables, from the arm without the feature to the arm with it: median wall time a run and mean accuracy. Positions differ between sweeps (different tasks and days), so read the arrows.\n\n\n\nEach feature test against its same-sweep control: change in cost a run against change in accuracy, with 95% intervals. The adopted changes lean cheaper and none moved accuracy clearly."
   },
   {
-    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#the-release-candidates-final-sweep",
-    "href": "notes/2026-mercury-coding-agent-supplement/index.html#the-release-candidates-final-sweep",
-    "title": "Supplement to “A cheap model with a hard ceiling”",
-    "section": "The release candidate’s final sweep",
-    "text": "The release candidate’s final sweep\nEvery run had review on, which is now off by default (§124.10).\n\n\n\n\n\n\nThe release candidate's final sweep, 2 October\n\n\nEach suite beside a same-day control or the task's own history\n\n\nSuite\nRuns\nRelease\nCompared with\n\n\n\n\nSeeded fixtures, 16 tasks × 3\n48\naccuracy 0.917; 38 perfect; 41 honest\neach task's own history\n\n\nSciCode, 15 problems × 3, search off\n45\n23/45 solved (7.7 of 15 a round)\nearlier search-off rounds: 7.3 a round\n\n\ndjango, 10 tasks × 3\n30\n15/30\nmini-swe-agent, same model, same day: 18/30\n\n\nGAIA, 127 questions\n127\n59/127\nthe 30 Sep harness, same day and search: 61/127"
+    "objectID": "notes/2026-take-the-work-away-supplement/index.html#mistakes-the-method-caught",
+    "href": "notes/2026-take-the-work-away-supplement/index.html#mistakes-the-method-caught",
+    "title": "Supplement to “Take the work away from a weak model”",
+    "section": "Mistakes the method caught",
+    "text": "Mistakes the method caught\nEach would have changed a decision.\n\n\n\n\n\n\n\n\n\n\nMistakes the method caught\n\n\nEach would have changed a decision\n\n\nWhat looked true\nWhat it was\n\n\n\n\n102 runs wrong while green\n65 were one fixture that asked for one thing and tested another\n\n\nThe weakest task at 49%\n42 unscored plan-only runs counted as zeros\n\n\ndjango at $0.096 a run\nthe totals event counted twice; $0.048\n\n\nA stronger planner resolving 8 of 10\ntwo of its four gains fetched the upstream fix from the web\n\n\nGAIA down by a third\nthe search engines behind it blocked, for every harness version\n\n\nedit blocks saving nothing\ntwo other mechanisms did not know they were edits (0 of 23 checked)\n\n\nOther agents resolving 20-22 of 30\neleven wins read the fix from git history or the answer key"
   },
   {
-    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#the-same-model-in-other-agents-and-other-models-in-this-harness",
-    "href": "notes/2026-mercury-coding-agent-supplement/index.html#the-same-model-in-other-agents-and-other-models-in-this-harness",
-    "title": "Supplement to “A cheap model with a hard ceiling”",
-    "section": "The same model in other agents, and other models in this harness",
-    "text": "The same model in other agents, and other models in this harness\n\n\n\n\n\n\nThe same model in other agents, and other models in this harness\n\n\nMean ± SE over rounds; a dash: not run on that suite\n\n\nAgent\ndjango resolved\ndjango $ a run\nSciCode solved\nSciCode $ a run\n\n\n\n\nMercury 2.5\n\n\nMy harness (30 Sep)\n7.0 ± 0.0 of 10\n$0.048\n–\n–\n\n\nGoose\n6.7 ± 0.7 of 10\n$0.013\n7.5 ± 1.5 of 15\n$0.021\n\n\nCodex CLI\n6.0 ± 0.6 of 10\n$0.008\n4.0 ± 0.0 of 15\n$0.018\n\n\nmini-swe-agent\n6.0 ± 0.4 of 10\n$0.035\n7.7 ± 0.3 of 15\n$0.034\n\n\nMy harness\n5.0 ± 0.6 of 10\n$0.033\n7.7 ± 0.9 of 15\n$0.11\n\n\nAider\n4.3 ± 0.7 of 10\n$0.004\n7.5 ± 0.5 of 15\n$0.011\n\n\nGLM 5.3 Flash\n\n\nAider\n8.7 ± 0.3 of 10\n$0.007\n5.0 ± 0.0 of 15\n$0.012\n\n\nMy harness\n6.7 ± 0.7 of 10\n$0.036\n10.0 ± 0.0 of 15\n$0.405\n\n\nmini-swe-agent\n5.7 ± 0.7 of 10\n$0.033\n–\n–\n\n\nMy harness, GLM plans\n–\n–\n8.5 ± 1.5 of 15\n$0.255\n\n\nHaiku 4.5\n\n\nmini-swe-agent\n6.0 ± 0.0 of 10\n$0.284\n–\n–\n\n\n\n\n\n\nMean ± SE over rounds; a dash means the agent was not run on that suite. Mercury costs are at its launch price, and Goose and Codex are priced with their cached input (§122). Codex’s SciCode score reflects behaviour rather than ability: it printed code and wrote no file in 11 of 15 problems."
+    "objectID": "notes/2026-take-the-work-away-supplement/index.html#how-the-setup-with-claude-changed",
+    "href": "notes/2026-take-the-work-away-supplement/index.html#how-the-setup-with-claude-changed",
+    "title": "Supplement to “Take the work away from a weak model”",
+    "section": "How the setup with Claude changed",
+    "text": "How the setup with Claude changed\n\n\n\n\n\n\n\n\nDate\nChange\nWhy\n\n\n\n\n19 Sep\nbuild-the-tool and growing-docs-hygiene skills\nThe design log was too long to read, and the same analyses were being redone by hand\n\n\n23 Sep\nA session audit; CLAUDE.md cut from 148 always-loaded lines to 47, the rest loading by path; git hooks enforced; project commands moved into the repo\nLong context was most of the cost\n\n\n24 Sep\nverify-before-claiming, debug-root-cause, design-before-building, plan-then-execute\nMercury’s two failures, in Claude\n\n\n26 Sep\nA global CLAUDE.md, with the testing and Python rules taken from this repo\nThe rules applied to every project\n\n\n1 Oct\nhumanizer\nDrafts that read as written by a model\n\n\n2 Oct\nSeveral sessions in parallel, passing messages, with a code freeze for the release sweep\nOne session could not run the benchmarks and keep building"
   },
   {
-    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#django-every-configuration",
-    "href": "notes/2026-mercury-coding-agent-supplement/index.html#django-every-configuration",
-    "title": "Supplement to “A cheap model with a hard ceiling”",
-    "section": "django, every configuration",
-    "text": "django, every configuration\nResolved of 30 (three runs of ten tasks), after §118 voided eleven contaminated wins; the as-scored count is in brackets where it differs. Intervals are 95% bootstrap intervals on the difference in resolve rate against the release harness (15 of 30).\nCosts need two caveats (§122). Goose and Codex report their own token counts, priced here at OpenRouter’s list price with cached input at the cached price; at full list price they read $0.060 and $0.044 a django run. And Mercury’s provider cached 5-22% of the harness’s input before about 12:00 UTC on 2 October and 50-72% after, with no harness change. My harness’s rows and the §94 rows ran before that line, Goose, Codex and the GLM rows after it, so costs across the line are not like for like. Every run of my harness in these tables had review on; review is off by default since 6 October (§124.10).\n\n\n\n\n\n\ndjango, every configuration\n\n\nResolved of 30 after §118's voids (as scored in brackets)\n\n\nAgent\nResolved\n$ a run\nmin a run\nvs release harness\n\n\n\n\nGLM\n\n\nAider\n26 (27)\n0.007\n2.6\n+0.37 [+0.13, +0.57]\n\n\nMy harness\n20\n0.036\n5.9\n+0.17 [−0.07, +0.40]\n\n\nmini-swe-agent\n17 (20)\n0.033\n4.6\n+0.07 [−0.20, +0.30]\n\n\nMercury\n\n\nGoose 1.52\n20 (22)\n0.013\n1.6\n+0.17 [−0.07, +0.40]\n\n\nCodex CLI 0.160\n18 (20)\n0.008\n2.4\n+0.10 [−0.13, +0.33]\n\n\nmini-swe-agent 2.4.6\n18 and 18 (20, 19)\n0.035\n4.0\n+0.10 [−0.13, +0.33]\n\n\nMy harness, 30 Sep\n21\n0.048\n4.4\n\n\n\nMy harness, release\n15\n0.033\n4.1\n\n\n\nAider\n13\n0.004\n1.1\n\n\n\nGLM, Mercury\n\n\nMy harness, GLM plans\n23 (§94), 16 of 26 (§109)\n0.028\n4.8\n+0.12 [−0.14, +0.37]\n\n\nHaiku 4.5\n\n\nmini-swe-agent\n18\n0.284\n3.4\n\n\n\n\n\n\n\n\n\n\ndjango tasks resolved against cost a run\n\n\n\n\n\ndjango tasks resolved against wall time a run\n\n\n\n\n\nShare of runs resolved, per django task and configuration\n\n\n\nThe release against its own 30 Sep version\nThe release resolved 15 of 30 where the 30 Sep version had resolved 21, all of the gap on four tasks. Re-run the same day in isolated workspaces (§120), the two came out level, and the release used about 40 percent fewer calls:\n\n\n\n\n\n\nThe release against its own 30 Sep version, on django\n\n\n\nRelease\n30 Sep harness\n\n\n\n\nFirst rounds, ten tasks\n15/30 (2 Oct)\n21/30 (30 Sep)\n\n\nFirst rounds, the 4 tasks that differed\n6/12\n12/12\n\n\nSame 4 tasks re-run 5 Oct, isolated, same day\n21/36\n23/36\n\n\nCalls a run, re-run\n34\n57\n\n\nCost a run, re-run\n$0.0115\n$0.0179\n\n\n\n\n\n\nThe 30 Sep first rounds were one unusually good set: same provider, same cache state before 2 October, and neither set of rounds read the fix from git history."
+    "objectID": "notes/2026-take-the-work-away-supplement/index.html#what-the-claude-code-sessions-cost",
+    "href": "notes/2026-take-the-work-away-supplement/index.html#what-the-claude-code-sessions-cost",
+    "title": "Supplement to “Take the work away from a weak model”",
+    "section": "What the Claude Code sessions cost",
+    "text": "What the Claude Code sessions cost\nFrom harness sessions report, which reads Claude Code’s own transcripts and makes no model call, over 220 sessions and 16,238 API responses, run 4 October:\n\n\n\n\n\n\n\nMeasure\nValue\n\n\n\n\nShare of cost that is reading the cache\n68%\n\n\nTurns run at more than 400K tokens of context\n48% of turns, 71% of cost\n\n\nEstimated cost with context compacted at 200K\n41-51% of actual\n\n\nShare of context, by tokens times turns carried, that is shell output\n74%\n\n\nWhole-suite test runs, sequential and parallel\n835 (770 min) and 220 (135 min)"
   },
   {
-    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#scicode-15-development-problems",
-    "href": "notes/2026-mercury-coding-agent-supplement/index.html#scicode-15-development-problems",
-    "title": "Supplement to “A cheap model with a hard ceiling”",
-    "section": "SciCode, 15 development problems",
-    "text": "SciCode, 15 development problems\nProblems solved (every sub-step passing), search off.\n\n\n\n\n\n\nSciCode, 15 development problems\n\n\nProblems solved, every sub-step passing, search off\n\n\nAgent\nRuns\nMean\n$ a run\n\n\n\n\nGLM\n\n\nMy harness\n10, 10\n10.0\n0.405\n\n\nAider (no execution)\n5\n5.0\n0.012\n\n\nMercury\n\n\nMy harness\n6, 8, 9\n7.7\n0.110\n\n\nmini-swe-agent\n8, 7, 8\n7.7\n0.034\n\n\nAider (no execution)\n8, 7\n7.5\n0.011\n\n\nGoose\n6, 9\n7.5\n0.021\n\n\nCodex CLI\n4\n4.0\n0.018\n\n\n\n\n\n\n\n\n\nSciCode problems solved against cost a run"
+    "objectID": "notes/2026-take-the-work-away-supplement/index.html#running-other-agents-safely",
+    "href": "notes/2026-take-the-work-away-supplement/index.html#running-other-agents-safely",
+    "title": "Supplement to “Take the work away from a weak model”",
+    "section": "Running other agents safely",
+    "text": "Running other agents safely\nTo compare my harness with other agents, I ran four open agents locally on the same benchmarks. Each had its own workspace, a spending cap and a list of denied websites, but only Codex ran under an operating-system sandbox, and its mode limits writes, not reads. mini-swe-agent, in runs with three different models, listed my home folder and sent the listing to its model provider as part of its context; nothing was opened, copied or uploaded, and none of these logs is published. Agents with a shell also found later commits in django’s git history and read the fixes, and eleven wins were voided (§118). The setup procedure was written for my own agent, not for four others added late in the project. When the scope of a project grows, the safety assumptions need checking again, and an agent that runs shell commands should start in a sandbox whatever it is for. Every external-agent run since 5 October is sandboxed."
   },
   {
-    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#how-glm-differs-as-a-planner",
-    "href": "notes/2026-mercury-coding-agent-supplement/index.html#how-glm-differs-as-a-planner",
-    "title": "Supplement to “A cheap model with a hard ceiling”",
-    "section": "How GLM differs as a planner",
-    "text": "How GLM differs as a planner\nFrom §119 and earlier sections; measurements, not pre-registered comparisons.\n\ndjango: GLM’s plans name the upstream fix in 51% of runs, Mercury’s in 0%. GLM planning with Mercury executing resolves 11964 5 of 5 (the harness with Mercury picks the wrong file in all 6 runs) and 11848 5 of 6 (no Mercury agent in 12 runs). GLM’s losses on 11999 and 11790 are recalled code colliding with the hidden tests.\nPlans: GLM’s declare ~1.8 times as many tests and are 3-4 times more consistent in step count for the same goal (§42).\nResearch: on SciCode, 20 web searches, 53 fetches and 61 skill reads against none for Mercury, which asked 18 “Should I proceed?” questions instead (§77).\nCost and time: 2-3 times Mercury’s cost on SciCode, about 3 times the time; its planning time is round trips at 5-7 s to first token (§76, §77)."
+    "objectID": "notes/2026-take-the-work-away-supplement/index.html#where-the-numbers-come-from",
+    "href": "notes/2026-take-the-work-away-supplement/index.html#where-the-numbers-come-from",
+    "title": "Supplement to “Take the work away from a weak model”",
+    "section": "Where the numbers come from",
+    "text": "Where the numbers come from\nMethod §45.4, §46, §56, §61, §112. After-edit check §99. Strict schemas §63.1. Reasoning §53.2. Stall cut §69. Output cap §95.1. Read assists and type check §105.2. Reminder §106.2. Reviewer §108.2. Call-site check §66.1. Reproduction §54.2. Skill triggers §117. Premise gate §57.1. TDD gate §49.1. Prose drafts §60.1. Goal loop §72. Rule placement §82.1. Findings hold §87.2, §88.6. Numeric check §89.4, §89.6. Plan audit §77.2. Planner probe §54.1. Structural tools §62.1. Edit blocks §107.3. Web research §116.1. Tracer §43.1. Diagnosing skill §64. Temperature §82.2. Weak-test repair §46.8. Clarify §92, §101. Skills §117.2. Stronger models §127-127.7, §127.9, §129.4. Mistakes §47, FINDINGS row 15, §107.1, §79.1, §112.1, §106.1, §118. Session numbers harness sessions report, 4 Oct; the earlier audit §50. UI tests §27-28. The watchdog §51. Agent exposure: item 2.8 of TODO.md in the repository."
   },
   {
-    "objectID": "publications.html",
-    "href": "publications.html",
-    "title": "Publications",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "Peer-reviewed papers, newest first. Conference abstracts are on Google Scholar and ORCID."
+    "text": "I’m a scientist who works with data from instruments and the scientific literature. I write Python for spectral and image processing, statistics and numerical modeling, and I have run an imaging facility and high-pressure experiments.\nI’m looking for data science roles in New York City and am open to imaging and geoscience positions.\n\n\nIndependent Researcher | New York, NY\nFinishing research papers and building open-source scientific software | May 2025 to present\nGemological Institute of America | New York, NY\nPostdoctoral Research Fellow | May 2023 to May 2025\nColumbia University, Lamont-Doherty Earth Observatory | Palisades, NY\nPhD researcher, NSF Graduate Research Fellow | 2016 to 2023\nAmerican Museum of Natural History | New York, NY\nMicroscopy and Imaging Technician | June 2013 to August 2016\nOne of two staff running the micro-CT and electron microscopy facility: trained users, ran samples, maintained the instruments, set the schedule and coordinated service visits\n\n\n\nColumbia University | New York, NY\nPhD in Earth and Environmental Sciences | 2023\nOberlin College | Oberlin, OH\nB.A. in Geology, Highest Honors | 2013\n\n\n\nResearch Associate, Department of Earth and Planetary Sciences, American Museum of Natural History"
   },
   {
-    "objectID": "publications.html#section",
-    "href": "publications.html#section",
-    "title": "Publications",
-    "section": "2026",
-    "text": "2026\nDecompression melting of peridotite xenoliths. W. H. Towbin and T. Plank. Journal of Petrology 67(9), egag077. doi:10.1093/petrology/egag077\n\nMicro-CT, electron microprobe and diffusion modeling show that mantle rocks carried up by magma start melting during a rise of one to three weeks. Plain-language summary.\n\nHigh precision water quantification by Raman spectroscopy: Applications to volcanic and extraterrestrial samples. E. G. Huggins, E. Gazel, M. Gavrilenko, K. Dayton, J. D. Bixler, W. H. Towbin and T. Plank. Chemical Geology 721, 123628. doi:10.1016/j.chemgeo.2026.123628"
-  },
-  {
-    "objectID": "publications.html#section-1",
-    "href": "publications.html#section-1",
-    "title": "Publications",
-    "section": "2025",
-    "text": "2025\nA study of the Winston Red: The Smithsonian’s new fancy red diamond. G. A. Farfan, U. F. S. D’Haenens-Johansson, S. Persaud, E. Gaillou, R. C. Feather II, W. H. Towbin and D. C. Jones. Gems & Gemology 61(1). Article\nFormation of spongy clinopyroxene: insights from eclogitic inclusions in diamonds. W. Wang, N. M. Korolev, E. S. Kiseeva, R. M. Davies, Y. Weiss, M. Kopylova, W. H. Towbin, F. Huang, A. E. Moore and E. A. Vasilev. Journal of Petrology 66(5), egaf036. doi:10.1093/petrology/egaf036"
-  },
-  {
-    "objectID": "publications.html#section-2",
-    "href": "publications.html#section-2",
-    "title": "Publications",
-    "section": "2024",
-    "text": "2024\nPyIRoGlass: An open-source, Bayesian MCMC algorithm for fitting baselines to FTIR spectra of basaltic-andesitic glasses. S. C. Shi, W. H. Towbin, T. Plank, A. C. Barth, D. J. Rasmussen, Y. Moussallam, H. J. Lee and W. Menke. Volcanica 7(2), 471–501. doi:10.30909/vol.07.02.471501\n\nAn open-source Python tool that measures water and CO₂ in volcanic glass from infrared spectra.\n\nND70 series basaltic glass reference materials for volatile element (H₂O, CO₂, S, Cl, F) measurement and the C ionisation efficiency suppression effect of water in silicate glasses in SIMS. Y. Moussallam, W. H. Towbin, T. Plank et al. Geostandards and Geoanalytical Research 48(3), 637–660. doi:10.1111/ggr.12572\nFast, furious, and gassy: Etna’s explosive eruption from the mantle. A. Barth et al. (including W. H. Towbin). Earth and Planetary Science Letters 643, 118864. doi:10.1016/j.epsl.2024.118864\nApplications of X-ray radiography and X-ray computed microtomography in gemology. C. Zhou and W. H. Towbin. Gems & Gemology 60(4), 582–595. Article\nGlowing gems: Fluorescence and phosphorescence of diamonds, colored stones, and pearls. U. F. S. D’Haenens-Johansson, S. Eaton-Magaña, W. H. Towbin and E. Myagkaya. Gems & Gemology 60(4), 560–580. Article\nLarge natural diamonds with asteriated cloud inclusions. T. Linzmeyer, W. H. Towbin and S. Eaton-Magaña. Gems & Gemology 60(2)."
-  },
-  {
-    "objectID": "publications.html#section-3",
-    "href": "publications.html#section-3",
-    "title": "Publications",
-    "section": "2023",
-    "text": "2023\nMeasuring H₂O concentrations in olivine by secondary ion mass spectrometry: Challenges and paths forward. W. H. Towbin, T. Plank, E. Klein and E. Hauri. American Mineralogist 108(5), 928–940. doi:10.2138/am-2022-8247\n\nTwo sets of reference standards that most labs use to measure water in olivine disagree by about 50%. We traced the offset to the reference values and proposed a calibration that avoids it. Summary.\n\nRates of dehydration in hydrous, high-Fo, magmatic olivines. A. Barth, T. Plank and W. H. Towbin. Geochimica et Cosmochimica Acta 342, 62–73. doi:10.1016/j.gca.2022.11.009"
-  },
-  {
-    "objectID": "publications.html#and-earlier",
-    "href": "publications.html#and-earlier",
-    "title": "Publications",
-    "section": "2019 and earlier",
-    "text": "2019 and earlier\nEffect of polychromatic X-ray microtomography imaging on the amino acid content of the Murchison CM chondrite. J. M. Friedrich, H. L. McLain, J. P. Dworkin, D. P. Glavin, W. H. Towbin, M. Hill et al. Meteoritics & Planetary Science 54(1), 220–228 (2019).\nNautilid nurseries: hatchlings and juveniles of Eutrephoceras dekayi from the lower Maastrichtian (Upper Cretaceous) Pierre Shale of east-central Montana. N. H. Landman, J. W. Grier, J. K. Cochran, J. C. Grier, J. G. Petersen and W. H. Towbin. Lethaia 51(1), 48–74 (2018)."
-  },
-  {
-    "objectID": "publications.html#dissertation",
-    "href": "publications.html#dissertation",
-    "title": "Publications",
-    "section": "Dissertation",
-    "text": "Dissertation\nThe fidelity of the mantle signal in peridotite xenoliths: Interactions during magmatic ascent. W. H. Towbin. PhD dissertation, Columbia University (2023)."
-  },
-  {
-    "objectID": "publications.html#data",
-    "href": "publications.html#data",
-    "title": "Publications",
-    "section": "Data",
-    "text": "Data\nMajor, trace and volatile analyses of minerals in mantle xenoliths and associated host scoria from Sullivan Ranch cinder cone, AZ, Basin and Range. T. Plank and W. H. Towbin. IEDA EarthChem Library (2026). doi:10.60520/IEDA/114314"
-  },
-  {
-    "objectID": "publications.html#software",
-    "href": "publications.html#software",
-    "title": "Publications",
-    "section": "Software",
-    "text": "Software\nodr_bootstrap: a Python package for fitting calibration lines when both variables have uncertainty, with bootstrap confidence intervals. GitHub"
-  },
-  {
-    "objectID": "posts_listing_page.html",
-    "href": "posts_listing_page.html",
-    "title": "Posts",
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About",
     "section": "",
-    "text": "A cheap model with a hard ceiling\n\n\nWhat Mercury 2.5, a fast and cheap diffusion language model, did inside a coding agent I built around it: where it held up, where it failed, and what it cost.\n\n\n\n\n\nOctober 2026\n\n\n\n\n\n\n\n\n\n\n\n\nMantle rocks start melting on their way to the surface\n\n\nA plain-language summary of Towbin and Plank (2026), Decompression Melting of Peridotite Xenoliths, Journal of Petrology\n\n\n\n\n\nOctober 2026\n\n\n\n\n\n\n\n\n\n\n\n\nStudying the Winston Red diamond at the Smithsonian\n\n\nNotes on Farfan et al. (2025), A Study of the Winston Red: The Smithsonian’s New Fancy Red Diamond, Gems & Gemology\n\n\n\n\n\nApril 2025\n\n\n\n\n\n\n\n\n\n\n\n\nPyIRoGlass: fitting infrared baselines with PCA and Bayesian sampling\n\n\nA summary of Shi, Towbin et al. (2024), PyIRoGlass: An open-source, Bayesian MCMC algorithm for fitting baselines to FTIR spectra of basaltic-andesitic glasses, Volcanica\n\n\n\n\n\nJuly 2024\n\n\n\n\n\n\n\n\n\n\n\n\nMaking reference glasses for measuring volcanic gases\n\n\nA summary of Moussallam, Towbin, Plank et al. (2024), ND70 series basaltic glass reference materials for volatile element measurement, Geostandards and Geoanalytical Research\n\n\n\n\n\nJuly 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWhy measurements of water in olivine disagreed, and how to calibrate them\n\n\nA summary of Towbin, Plank, Klein and Hauri (2023), Measuring H2O Concentrations in Olivine by Secondary Ion Mass Spectrometry, American Mineralogist\n\n\n\n\n\nMay 2023\n\n\n\n\n\n\n\n\n\n\n\n\nLamont-Doherty Research As Art\n\n\n\n\n\n\n\n\nApril 2018\n\n\n\n\n\n\n\n\n\n\n\n\nBrain Anatomy MRI\n\n\n\n\n\n\n\n\nNovember 2017\n\n\n\n\n\n\n\n\n\n\n\n\nOlivine Phenocryst\n\n\n\n\n\n\n\n\nNovember 2017\n\n\n\n\n\nNo matching items"
+    "text": "Independent Researcher | New York, NY\nFinishing research papers and building open-source scientific software | May 2025 to present\nGemological Institute of America | New York, NY\nPostdoctoral Research Fellow | May 2023 to May 2025\nColumbia University, Lamont-Doherty Earth Observatory | Palisades, NY\nPhD researcher, NSF Graduate Research Fellow | 2016 to 2023\nAmerican Museum of Natural History | New York, NY\nMicroscopy and Imaging Technician | June 2013 to August 2016\nOne of two staff running the micro-CT and electron microscopy facility: trained users, ran samples, maintained the instruments, set the schedule and coordinated service visits"
   },
   {
-    "objectID": "posts/2023 Water in Olivine/index.html",
-    "href": "posts/2023 Water in Olivine/index.html",
-    "title": "Why measurements of water in olivine disagreed, and how to calibrate them",
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About",
     "section": "",
-    "text": "This post walks through Towbin, Plank, Klein and Hauri (2023), Measuring H2O Concentrations in Olivine by Secondary Ion Mass Spectrometry: Challenges and Paths Forward, published in American Mineralogist. The two sets of standards that most labs use to calibrate water measurements in olivine disagree by about 50%. We traced the offset to their reference values and proposed a calibration that avoids it."
+    "text": "Columbia University | New York, NY\nPhD in Earth and Environmental Sciences | 2023\nOberlin College | Oberlin, OH\nB.A. in Geology, Highest Honors | 2013"
   },
   {
-    "objectID": "posts/2023 Water in Olivine/index.html#the-measurement-problem",
-    "href": "posts/2023 Water in Olivine/index.html#the-measurement-problem",
-    "title": "Why measurements of water in olivine disagreed, and how to calibrate them",
-    "section": "The measurement problem",
-    "text": "The measurement problem\nOlivine, the most common mineral in the upper mantle, holds only tens of parts per million of water. That small amount still matters: it changes how easily the mantle flows and melts, and how much water the planet stores at depth.\nMeasuring it is hard. The two common methods, FTIR spectroscopy and secondary ion mass spectrometry (SIMS), are both relative. Each needs calibration against standards whose water content was measured some other way. For olivine, almost every lab relies on one of two standard sets: the olivines of Bell et al. (2003), whose water was measured by nuclear reaction analysis, and those of Withers et al. (2012), measured by elastic recoil detection. FTIR calibrations based on the two sets disagree by about 40%, and it was not clear why."
-  },
-  {
-    "objectID": "posts/2023 Water in Olivine/index.html#what-we-did",
-    "href": "posts/2023 Water in Olivine/index.html#what-we-did",
-    "title": "Why measurements of water in olivine disagreed, and how to calibrate them",
-    "section": "What we did",
-    "text": "What we did\nWe measured olivines from both standard sets in the same SIMS session, so the instrument conditions were identical, and compared each set against its own reference values.\nThe two sets fall on calibration lines with very different slopes. The Withers et al. line has about half the slope of the Bell et al. line, so the same SIMS signal reads as roughly twice as much water if you calibrate with the Bell et al. olivines. That offset of about 50% is close to the 40% already seen in FTIR. The Bell et al. olivines were also less reproducible: repeat measurements of the same crystal varied by more than 40%, which fits earlier reports that some of them contain tiny hydrous inclusions.\n\n\n\nSIMS calibration lines from one session. The Bell et al. olivines (light green circles, water measured by nuclear reaction analysis) define a line about twice as steep as the Withers et al. olivines (blue hexagons, measured by elastic recoil detection). Repeat analyses of KLV23 spread widely along the x-axis at a single reference value. The orthopyroxene standards (dark green) fall between the two, and the dashed line is the orthopyroxene calibration after we revised its reference values. Shaded bands are 95% confidence intervals from bootstrap resampling; the inset (b) shows the full concentration range. Figure 2 from Towbin et al. (2023), American Mineralogist.\n\n\nAn offset like this could come from the reference values or from the two sets of olivines absorbing infrared light differently. The SIMS signal does not depend on how the hydrogen is bonded in the crystal, while infrared absorption can. So we plotted infrared absorbance against the SIMS signal for the same olivines, which leaves the reference values out entirely. Once the infrared spectra exclude the bands from hydrous inclusions, both sets fall on one line. That puts the disagreement in the reference water contents, the nuclear reaction and elastic recoil analyses.\n\n\n\nInfrared absorbance against the SIMS signal for the same olivines. The Withers et al. olivines (blue diamonds) and the natural olivines including the Bell et al. samples (pink pentagons) fall on nearly the same line once the infrared spectra exclude the bands from hydrous inclusions. The small orange pentagons are the Bell et al. samples with those bands included. Figure 3 from Towbin et al. (2023), American Mineralogist."
-  },
-  {
-    "objectID": "posts/2023 Water in Olivine/index.html#fitting-lines-when-both-axes-are-uncertain",
-    "href": "posts/2023 Water in Olivine/index.html#fitting-lines-when-both-axes-are-uncertain",
-    "title": "Why measurements of water in olivine disagreed, and how to calibrate them",
-    "section": "Fitting lines when both axes are uncertain",
-    "text": "Fitting lines when both axes are uncertain\nCalibration data have uncertainty on both axes: the SIMS signal and the reference concentration. Ordinary least squares assumes all the error is in y, which biases the slope. I fit the calibration lines with orthogonal distance regression and estimated their uncertainty by bootstrap resampling; those are the lines and shaded bands in the calibration figure above. I later cleaned up that code and released it as a Python package, odr_bootstrap."
-  },
-  {
-    "objectID": "posts/2023 Water in Olivine/index.html#recommendations",
-    "href": "posts/2023 Water in Olivine/index.html#recommendations",
-    "title": "Why measurements of water in olivine disagreed, and how to calibrate them",
-    "section": "Recommendations",
-    "text": "Recommendations\n\nThe Withers et al. olivines gave the tightest calibration line, but very little of that material exists.\nOrthopyroxene standards make a practical substitute for SIMS: their calibration slope is similar to olivine’s. After we revised their reference values, the orthopyroxene line falls within 12% of the Withers olivine line, inside the long-term uncertainty of the measurements.\nWith that calibration, the partition coefficient for water between olivine and melt comes out at 0.0009 ± 0.0003. That brings experiments and natural melt-inclusion studies into closer agreement.\n\n\n\n\nOlivine-melt partition coefficients for water. (a) Published values from experiments (circles) sit well above those from melt inclusions (triangles). (b) Recalculated with the orthopyroxene-based calibration, the experimental values move down toward the melt-inclusion values, averaging 0.0009 (blue band). Figure 5 from Towbin et al. (2023), American Mineralogist.\n\n\nFigures reproduced from Towbin, Plank, Klein and Hauri (2023), American Mineralogist, published by the Mineralogical Society of America."
-  },
-  {
-    "objectID": "posts/Brain_Video/Brain_Video.html",
-    "href": "posts/Brain_Video/Brain_Video.html",
-    "title": "Brain Anatomy MRI",
+    "objectID": "about.html#affiliations",
+    "href": "about.html#affiliations",
+    "title": "About",
     "section": "",
-    "text": "I have animated my brain anatomy from MRI data. There are a few parts I was unable to segment so for anyone with knowledge of brain anatomy please don’t diagnose me for any missing tissue quite yet."
+    "text": "Research Associate, Department of Earth and Planetary Sciences, American Museum of Natural History"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Henry Towbin",
+    "section": "",
+    "text": "I’m a scientist in Brooklyn, NY. I use Python to analyze scientific data, combining my own measurements (spectroscopy, micro-CT, electron microprobe and SIMS) with published datasets and physical models to answer research questions.\nMost recently I was a postdoctoral fellow at the Gemological Institute of America (2023 to 2025), where I built data pipelines for FTIR and Raman spectra of diamonds. Before that I did my PhD at Columbia University’s Lamont-Doherty Earth Observatory on how mantle rocks change on their way to the surface, and before graduate school I ran micro-CT and electron microscopy at the American Museum of Natural History.\nI’m looking for data science roles in New York City and am also open to imaging and geoscience work. The posts below cover my research and code; my software is on GitHub.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA cheap model with a hard ceiling\n\n\nWhat Mercury 2.5, a fast and cheap diffusion language model, did inside a coding agent I built around it: where it held up, where it failed, and what it cost.\n\n\n\n\n\nOctober 2026\n\n\n\n\n\n\n\n\n\n\n\n\nMantle rocks start melting on their way to the surface\n\n\nA plain-language summary of Towbin and Plank (2026), Decompression Melting of Peridotite Xenoliths, Journal of Petrology\n\n\n\n\n\nOctober 2026\n\n\n\n\n\n\n\n\n\n\n\n\nStudying the Winston Red diamond at the Smithsonian\n\n\nNotes on Farfan et al. (2025), A Study of the Winston Red: The Smithsonian’s New Fancy Red Diamond, Gems & Gemology\n\n\n\n\n\nApril 2025\n\n\n\n\n\n\n\n\n\n\n\n\nPyIRoGlass: fitting infrared baselines with PCA and Bayesian sampling\n\n\nA summary of Shi, Towbin et al. (2024), PyIRoGlass: An open-source, Bayesian MCMC algorithm for fitting baselines to FTIR spectra of basaltic-andesitic glasses, Volcanica\n\n\n\n\n\nJuly 2024\n\n\n\n\n\n\n\n\n\n\n\n\nMaking reference glasses for measuring volcanic gases\n\n\nA summary of Moussallam, Towbin, Plank et al. (2024), ND70 series basaltic glass reference materials for volatile element measurement, Geostandards and Geoanalytical Research\n\n\n\n\n\nJuly 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWhy measurements of water in olivine disagreed, and how to calibrate them\n\n\nA summary of Towbin, Plank, Klein and Hauri (2023), Measuring H2O Concentrations in Olivine by Secondary Ion Mass Spectrometry, American Mineralogist\n\n\n\n\n\nMay 2023\n\n\n\n\n\n\n\n\n\n\n\n\nLamont-Doherty Research As Art\n\n\n\n\n\n\n\n\nApril 2018\n\n\n\n\n\n\n\n\n\n\n\n\nBrain Anatomy MRI\n\n\n\n\n\n\n\n\nNovember 2017\n\n\n\n\n\n\n\n\n\n\n\n\nOlivine Phenocryst\n\n\n\n\n\n\n\n\nNovember 2017\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/2026 Xenolith Melting/index.html",
+    "href": "posts/2026 Xenolith Melting/index.html",
+    "title": "Mantle rocks start melting on their way to the surface",
+    "section": "",
+    "text": "Our paper on melting in mantle xenoliths is out in the Journal of Petrology: Towbin and Plank (2026), Decompression Melting of Peridotite Xenoliths."
+  },
+  {
+    "objectID": "posts/2026 Xenolith Melting/index.html#rocks-from-the-mantle-delivered-by-volcanoes",
+    "href": "posts/2026 Xenolith Melting/index.html#rocks-from-the-mantle-delivered-by-volcanoes",
+    "title": "Mantle rocks start melting on their way to the surface",
+    "section": "Rocks from the mantle, delivered by volcanoes",
+    "text": "Rocks from the mantle, delivered by volcanoes\nXenoliths are pieces of the Earth’s mantle that a rising magma rips off and carries to the surface. They are one of the few direct samples we have of rock from tens of kilometers down, so geologists use them to work out what the mantle is made of and how it behaves.\nMany xenoliths contain thin veins of glass and small crystals, the remains of a little melt. The question is when that melt formed. If it formed deep in the mantle, it records something about the mantle. If it formed during the trip up, it records the trip, and anyone reading the rock as a purely mantle sample needs to know that.\n\n\n\nThe path the xenoliths took. They sat in the mantle at about 40 km depth and a little over 900 °C until the magma picked them up and heated them to its own temperature, near 1300 °C (black arrow). They then rose with the magma (purple arrow). Most of that path lies above the peridotite solidus (dashed green line), so the xenoliths could start to melt on the way up. Figure 1 from Towbin and Plank (2026), Journal of Petrology."
+  },
+  {
+    "objectID": "posts/2026 Xenolith Melting/index.html#what-we-measured",
+    "href": "posts/2026 Xenolith Melting/index.html#what-we-measured",
+    "title": "Mantle rocks start melting on their way to the surface",
+    "section": "What we measured",
+    "text": "What we measured\nWe studied xenoliths and the basalt that carried them from a small cinder cone north of the Grand Canyon (Sullivan Ranch, Arizona).\nFirst I scanned whole xenoliths with micro-CT, a 3D X-ray method, and segmented the scans to find the melt veins. The veins run through every xenolith we looked at, connect to each other at the millimeter scale, and make up about 10% of the rock. Many contain gas bubbles.\n\n\n\nInside the melt veins. (a) A slice through a micro-CT scan of a xenolith, with melt veins outlined in yellow; the black spots are bubbles. (b) to (d) Electron images and an element map of the crystals and glass inside a vein. Figure 3 from Towbin and Plank (2026), Journal of Petrology.\n\n\nThen I measured the minerals and glass with the electron microprobe, the SEM and laser-ablation mass spectrometry. From those analyses we worked out what the melt was (a basalt) and which minerals melted to make it. The reaction is close to what laboratory melting experiments produce at about 1 GPa, a little shallower than where the xenoliths started.\n\n\n\nMelt veins in two xenoliths. (a) Optical scan of a thick section, with the veins in yellow, found by thresholding the image. (b) False-color element map of a second xenolith: melt veins yellow, olivine green, orthopyroxene brown, clinopyroxene turquoise, spinel pink. Veins cover about 10% of the area in both. Figure 2 from Towbin and Plank (2026), Journal of Petrology."
+  },
+  {
+    "objectID": "posts/2026 Xenolith Melting/index.html#a-clock-in-the-olivine",
+    "href": "posts/2026 Xenolith Melting/index.html#a-clock-in-the-olivine",
+    "title": "Mantle rocks start melting on their way to the surface",
+    "section": "A clock in the olivine",
+    "text": "A clock in the olivine\nOlivine crystals next to the veins are zoned: their iron and magnesium contents change from the edge of the crystal inward. That zoning comes from atoms diffusing after the melt appeared, and diffusion runs at a known rate for a given temperature. Fitting a diffusion model to each profile tells you how long the crystal sat next to the melt.\n\n\n\nFitting diffusion models to olivine profiles. Left: electron images with the measured traverse (orange arrow). Right: measured forsterite content (grey points), the assumed starting profile (dashed) and the best-fit diffusion model (solid). Top: olivine next to a melt vein, about 21 days. Middle: olivine at the edge of the xenolith in contact with the carrying magma, about 8.5 days. Bottom: a loose olivine crystal in the lava, about 2.5 days. Figure 14 from Towbin and Plank (2026), Journal of Petrology.\n\n\nThe olivine next to the melt veins gave one to three weeks. Olivine on the outside of the xenoliths, which exchanged with the carrying magma, gives a similar timescale of about a week. So the melting inside the rock happened during the same few weeks the xenolith spent in the magma, not long before in the mantle.\nThe outer olivine also times the trip itself: 3 to 10 days from pickup to eruption. Over the 40 km the xenoliths travelled, that is an average ascent rate of 0.05 to 0.15 meters per second, similar to rates estimated for other cinder-cone eruptions."
+  },
+  {
+    "objectID": "posts/2026 Xenolith Melting/index.html#why-it-matters",
+    "href": "posts/2026 Xenolith Melting/index.html#why-it-matters",
+    "title": "Mantle rocks start melting on their way to the surface",
+    "section": "Why it matters",
+    "text": "Why it matters\nIn the mantle these rocks were too cool to melt. Once the magma picked them up, it heated them to its own temperature, and the rise did the rest: as the pressure drops, the temperature at which peridotite starts to melt drops too, so a rock that is already hot can begin to melt without getting any hotter. Because the carrying magma is hot and the trip takes days to weeks, we think this kind of melting is hard to avoid in xenoliths brought up by similar volcanoes.\nMelting consumes clinopyroxene, so a xenolith that started as one rock type (lherzolite) can end up looking like a more depleted one (harzburgite). The carrying magma also seeped into the outer centimeter or so of each xenolith. Studies that use xenoliths to describe the mantle should check for both effects, and avoid the outer centimeter when they can.\n\n\n\nWhat happens on the trip up. The magma picks up the xenolith, the xenolith heats and starts to melt, and olivine begins exchanging iron and magnesium with both the melt veins and the magma. Growing gas bubbles push magma into the outer edge of the xenolith. After eruption the vein melt loses water, cools and crystallizes. Figure 16 from Towbin and Plank (2026), Journal of Petrology."
+  },
+  {
+    "objectID": "posts/2026 Xenolith Melting/index.html#the-tools",
+    "href": "posts/2026 Xenolith Melting/index.html#the-tools",
+    "title": "Mantle rocks start melting on their way to the surface",
+    "section": "The tools",
+    "text": "The tools\nThe diffusion modeling used a 1-D numerical model I wrote in Python, with kriging to interpolate the measured profiles. The code is on GitHub, and the data are in the paper’s supplement and the EarthChem Library.\nThis paper started as the second chapter of my PhD at Columbia, with Terry Plank.\nFigures reproduced from Towbin and Plank (2026), Journal of Petrology, © The Author(s) 2026, published by Oxford University Press."
+  },
+  {
+    "objectID": "posts/2024 ND70 Glasses/index.html",
+    "href": "posts/2024 ND70 Glasses/index.html",
+    "title": "Making reference glasses for measuring volcanic gases",
+    "section": "",
+    "text": "Our paper on the ND70 reference glasses came out in Geostandards and Geoanalytical Research: Moussallam, Towbin, Plank et al. (2024). It describes a set of basaltic glasses with known amounts of water, CO₂, sulfur, chlorine and fluorine, made so that labs can calibrate their instruments over the full range found in nature."
+  },
+  {
+    "objectID": "posts/2024 ND70 Glasses/index.html#a-gap-in-the-calibration-data",
+    "href": "posts/2024 ND70 Glasses/index.html#a-gap-in-the-calibration-data",
+    "title": "Making reference glasses for measuring volcanic gases",
+    "section": "A gap in the calibration data",
+    "text": "A gap in the calibration data\nMuch of what we know about volcanic gases comes from tiny glass inclusions trapped in crystals, measured with an ion probe (SIMS). SIMS is a relative method: it only gives concentrations if you calibrate it against glasses whose composition is already known.\nThe available basaltic standards did not cover the range of real samples. Water calibrations above about 1 wt% were extrapolated, and the CO₂ standards stopped near a few hundred ppm, well below many natural melts. Any measurement outside that range depended on a straight line drawn past the last data point."
+  },
+  {
+    "objectID": "posts/2024 ND70 Glasses/index.html#making-the-glasses",
+    "href": "posts/2024 ND70 Glasses/index.html#making-the-glasses",
+    "title": "Making reference glasses for measuring volcanic gases",
+    "section": "Making the glasses",
+    "text": "Making the glasses\nThe ND70 series was made to fill that gap. We started from a single basalt, added known amounts of water, CO₂, sulfur, chlorine and fluorine, and melted each mix at 1 to 1.5 GPa in a piston-cylinder press so the gases stayed dissolved. The series spans 0 to 6 wt% water, 0 to 1.6 wt% CO₂, and 0 to 1 wt% sulfur, chlorine and fluorine. Older standards from earlier studies were included so the labs could cross-check them against the new ones.\nLabs in the US, France and Japan then measured the glasses by several independent methods: elastic recoil detection, nuclear reaction analysis, an elemental analyzer, infrared spectroscopy, electron microprobe, and SIMS at four different ion-probe facilities.\n\n\n\nMeasured water content against the amount loaded into each glass, for seven different methods and labs. Points fall close to the 1:1 line. Figure 1 from Moussallam et al. (2024), Geostandards and Geoanalytical Research."
+  },
+  {
+    "objectID": "posts/2024 ND70 Glasses/index.html#what-we-found",
+    "href": "posts/2024 ND70 Glasses/index.html#what-we-found",
+    "title": "Making reference glasses for measuring volcanic gases",
+    "section": "What we found",
+    "text": "What we found\nThe amounts we loaded and the amounts measured agree well across methods and labs, so the glasses can serve as reference materials.\nWe also found a problem with how SIMS measures carbon. The more water a glass contains, the weaker its carbon signal. Measuring a glass with 4 wt% water against standards with less than 2 wt% water could underestimate its CO₂ two- to three-fold, and the reverse mismatch overestimates it. The fix is to calibrate with standards whose water content matches the samples, which the ND70 series now makes possible.\n\n\n\nThe SIMS carbon signal per unit of CO₂ falls as the water content of the glass rises, in every session and at every lab. Figure 8 from Moussallam et al. (2024), Geostandards and Geoanalytical Research."
+  },
+  {
+    "objectID": "posts/2024 ND70 Glasses/index.html#where-the-glasses-are-now",
+    "href": "posts/2024 ND70 Glasses/index.html#where-the-glasses-are-now",
+    "title": "Making reference glasses for measuring volcanic gases",
+    "section": "Where the glasses are now",
+    "text": "Where the glasses are now\nPieces of each glass went to ion-probe labs in the US, Europe and Japan. The rest are held at the Smithsonian National Museum of Natural History, where any researcher can borrow them.\nI helped start the project after finding gaps in the basaltic glass standards available for calibrating water and CO₂ by SIMS and FTIR. I ran the piston-cylinder experiments at Lamont-Doherty and helped coordinate the analyses across the labs.\nFigures reproduced unchanged from Moussallam et al. (2024), Geostandards and Geoanalytical Research 48(3), 637–660, under a CC BY-NC-ND 4.0 license."
   },
   {
     "objectID": "posts/Research As Art/Research as Art Submission.html",
@@ -322,115 +322,171 @@
     "text": "Where it came from\nThe stone’s origin is not recorded, so we compared its nitrogen content and aggregation state with those of 399 Fancy red diamonds measured by FTIR at GIA. Those measurements and its color pattern place it in Group 1, the pink and red diamonds that formed in Proterozoic cratons, continental cores 0.5 to 2.5 billion years old. That rules out the sources of the other group, such as South Africa, Russia, Tanzania and Canada. Argyle in Australia, the largest source of Group 1 reds, was not discovered until 1979, four decades after Cartier sold the stone, and no red diamonds have been reported from India. The most likely sources left are the river deposits of Venezuela and Brazil, which were producing diamonds before 1938.\nImages from Farfan et al. (2025), Gems & Gemology 61(1), © GIA."
   },
   {
-    "objectID": "posts/2024 ND70 Glasses/index.html",
-    "href": "posts/2024 ND70 Glasses/index.html",
-    "title": "Making reference glasses for measuring volcanic gases",
+    "objectID": "posts/Brain_Video/Brain_Video.html",
+    "href": "posts/Brain_Video/Brain_Video.html",
+    "title": "Brain Anatomy MRI",
     "section": "",
-    "text": "Our paper on the ND70 reference glasses came out in Geostandards and Geoanalytical Research: Moussallam, Towbin, Plank et al. (2024). It describes a set of basaltic glasses with known amounts of water, CO₂, sulfur, chlorine and fluorine, made so that labs can calibrate their instruments over the full range found in nature."
+    "text": "I have animated my brain anatomy from MRI data. There are a few parts I was unable to segment so for anyone with knowledge of brain anatomy please don’t diagnose me for any missing tissue quite yet."
   },
   {
-    "objectID": "posts/2024 ND70 Glasses/index.html#a-gap-in-the-calibration-data",
-    "href": "posts/2024 ND70 Glasses/index.html#a-gap-in-the-calibration-data",
-    "title": "Making reference glasses for measuring volcanic gases",
-    "section": "A gap in the calibration data",
-    "text": "A gap in the calibration data\nMuch of what we know about volcanic gases comes from tiny glass inclusions trapped in crystals, measured with an ion probe (SIMS). SIMS is a relative method: it only gives concentrations if you calibrate it against glasses whose composition is already known.\nThe available basaltic standards did not cover the range of real samples. Water calibrations above about 1 wt% were extrapolated, and the CO₂ standards stopped near a few hundred ppm, well below many natural melts. Any measurement outside that range depended on a straight line drawn past the last data point."
-  },
-  {
-    "objectID": "posts/2024 ND70 Glasses/index.html#making-the-glasses",
-    "href": "posts/2024 ND70 Glasses/index.html#making-the-glasses",
-    "title": "Making reference glasses for measuring volcanic gases",
-    "section": "Making the glasses",
-    "text": "Making the glasses\nThe ND70 series was made to fill that gap. We started from a single basalt, added known amounts of water, CO₂, sulfur, chlorine and fluorine, and melted each mix at 1 to 1.5 GPa in a piston-cylinder press so the gases stayed dissolved. The series spans 0 to 6 wt% water, 0 to 1.6 wt% CO₂, and 0 to 1 wt% sulfur, chlorine and fluorine. Older standards from earlier studies were included so the labs could cross-check them against the new ones.\nLabs in the US, France and Japan then measured the glasses by several independent methods: elastic recoil detection, nuclear reaction analysis, an elemental analyzer, infrared spectroscopy, electron microprobe, and SIMS at four different ion-probe facilities.\n\n\n\nMeasured water content against the amount loaded into each glass, for seven different methods and labs. Points fall close to the 1:1 line. Figure 1 from Moussallam et al. (2024), Geostandards and Geoanalytical Research."
-  },
-  {
-    "objectID": "posts/2024 ND70 Glasses/index.html#what-we-found",
-    "href": "posts/2024 ND70 Glasses/index.html#what-we-found",
-    "title": "Making reference glasses for measuring volcanic gases",
-    "section": "What we found",
-    "text": "What we found\nThe amounts we loaded and the amounts measured agree well across methods and labs, so the glasses can serve as reference materials.\nWe also found a problem with how SIMS measures carbon. The more water a glass contains, the weaker its carbon signal. Measuring a glass with 4 wt% water against standards with less than 2 wt% water could underestimate its CO₂ two- to three-fold, and the reverse mismatch overestimates it. The fix is to calibrate with standards whose water content matches the samples, which the ND70 series now makes possible.\n\n\n\nThe SIMS carbon signal per unit of CO₂ falls as the water content of the glass rises, in every session and at every lab. Figure 8 from Moussallam et al. (2024), Geostandards and Geoanalytical Research."
-  },
-  {
-    "objectID": "posts/2024 ND70 Glasses/index.html#where-the-glasses-are-now",
-    "href": "posts/2024 ND70 Glasses/index.html#where-the-glasses-are-now",
-    "title": "Making reference glasses for measuring volcanic gases",
-    "section": "Where the glasses are now",
-    "text": "Where the glasses are now\nPieces of each glass went to ion-probe labs in the US, Europe and Japan. The rest are held at the Smithsonian National Museum of Natural History, where any researcher can borrow them.\nI helped start the project after finding gaps in the basaltic glass standards available for calibrating water and CO₂ by SIMS and FTIR. I ran the piston-cylinder experiments at Lamont-Doherty and helped coordinate the analyses across the labs.\nFigures reproduced unchanged from Moussallam et al. (2024), Geostandards and Geoanalytical Research 48(3), 637–660, under a CC BY-NC-ND 4.0 license."
-  },
-  {
-    "objectID": "posts/2026 Xenolith Melting/index.html",
-    "href": "posts/2026 Xenolith Melting/index.html",
-    "title": "Mantle rocks start melting on their way to the surface",
+    "objectID": "posts/2023 Water in Olivine/index.html",
+    "href": "posts/2023 Water in Olivine/index.html",
+    "title": "Why measurements of water in olivine disagreed, and how to calibrate them",
     "section": "",
-    "text": "Our paper on melting in mantle xenoliths is out in the Journal of Petrology: Towbin and Plank (2026), Decompression Melting of Peridotite Xenoliths."
+    "text": "This post walks through Towbin, Plank, Klein and Hauri (2023), Measuring H2O Concentrations in Olivine by Secondary Ion Mass Spectrometry: Challenges and Paths Forward, published in American Mineralogist. The two sets of standards that most labs use to calibrate water measurements in olivine disagree by about 50%. We traced the offset to their reference values and proposed a calibration that avoids it."
   },
   {
-    "objectID": "posts/2026 Xenolith Melting/index.html#rocks-from-the-mantle-delivered-by-volcanoes",
-    "href": "posts/2026 Xenolith Melting/index.html#rocks-from-the-mantle-delivered-by-volcanoes",
-    "title": "Mantle rocks start melting on their way to the surface",
-    "section": "Rocks from the mantle, delivered by volcanoes",
-    "text": "Rocks from the mantle, delivered by volcanoes\nXenoliths are pieces of the Earth’s mantle that a rising magma rips off and carries to the surface. They are one of the few direct samples we have of rock from tens of kilometers down, so geologists use them to work out what the mantle is made of and how it behaves.\nMany xenoliths contain thin veins of glass and small crystals, the remains of a little melt. The question is when that melt formed. If it formed deep in the mantle, it records something about the mantle. If it formed during the trip up, it records the trip, and anyone reading the rock as a purely mantle sample needs to know that.\n\n\n\nThe path the xenoliths took. They sat in the mantle at about 40 km depth and a little over 900 °C until the magma picked them up and heated them to its own temperature, near 1300 °C (black arrow). They then rose with the magma (purple arrow). Most of that path lies above the peridotite solidus (dashed green line), so the xenoliths could start to melt on the way up. Figure 1 from Towbin and Plank (2026), Journal of Petrology."
+    "objectID": "posts/2023 Water in Olivine/index.html#the-measurement-problem",
+    "href": "posts/2023 Water in Olivine/index.html#the-measurement-problem",
+    "title": "Why measurements of water in olivine disagreed, and how to calibrate them",
+    "section": "The measurement problem",
+    "text": "The measurement problem\nOlivine, the most common mineral in the upper mantle, holds only tens of parts per million of water. That small amount still matters: it changes how easily the mantle flows and melts, and how much water the planet stores at depth.\nMeasuring it is hard. The two common methods, FTIR spectroscopy and secondary ion mass spectrometry (SIMS), are both relative. Each needs calibration against standards whose water content was measured some other way. For olivine, almost every lab relies on one of two standard sets: the olivines of Bell et al. (2003), whose water was measured by nuclear reaction analysis, and those of Withers et al. (2012), measured by elastic recoil detection. FTIR calibrations based on the two sets disagree by about 40%, and it was not clear why."
   },
   {
-    "objectID": "posts/2026 Xenolith Melting/index.html#what-we-measured",
-    "href": "posts/2026 Xenolith Melting/index.html#what-we-measured",
-    "title": "Mantle rocks start melting on their way to the surface",
-    "section": "What we measured",
-    "text": "What we measured\nWe studied xenoliths and the basalt that carried them from a small cinder cone north of the Grand Canyon (Sullivan Ranch, Arizona).\nFirst I scanned whole xenoliths with micro-CT, a 3D X-ray method, and segmented the scans to find the melt veins. The veins run through every xenolith we looked at, connect to each other at the millimeter scale, and make up about 10% of the rock. Many contain gas bubbles.\n\n\n\nInside the melt veins. (a) A slice through a micro-CT scan of a xenolith, with melt veins outlined in yellow; the black spots are bubbles. (b) to (d) Electron images and an element map of the crystals and glass inside a vein. Figure 3 from Towbin and Plank (2026), Journal of Petrology.\n\n\nThen I measured the minerals and glass with the electron microprobe, the SEM and laser-ablation mass spectrometry. From those analyses we worked out what the melt was (a basalt) and which minerals melted to make it. The reaction is close to what laboratory melting experiments produce at about 1 GPa, a little shallower than where the xenoliths started.\n\n\n\nMelt veins in two xenoliths. (a) Optical scan of a thick section, with the veins in yellow, found by thresholding the image. (b) False-color element map of a second xenolith: melt veins yellow, olivine green, orthopyroxene brown, clinopyroxene turquoise, spinel pink. Veins cover about 10% of the area in both. Figure 2 from Towbin and Plank (2026), Journal of Petrology."
+    "objectID": "posts/2023 Water in Olivine/index.html#what-we-did",
+    "href": "posts/2023 Water in Olivine/index.html#what-we-did",
+    "title": "Why measurements of water in olivine disagreed, and how to calibrate them",
+    "section": "What we did",
+    "text": "What we did\nWe measured olivines from both standard sets in the same SIMS session, so the instrument conditions were identical, and compared each set against its own reference values.\nThe two sets fall on calibration lines with very different slopes. The Withers et al. line has about half the slope of the Bell et al. line, so the same SIMS signal reads as roughly twice as much water if you calibrate with the Bell et al. olivines. That offset of about 50% is close to the 40% already seen in FTIR. The Bell et al. olivines were also less reproducible: repeat measurements of the same crystal varied by more than 40%, which fits earlier reports that some of them contain tiny hydrous inclusions.\n\n\n\nSIMS calibration lines from one session. The Bell et al. olivines (light green circles, water measured by nuclear reaction analysis) define a line about twice as steep as the Withers et al. olivines (blue hexagons, measured by elastic recoil detection). Repeat analyses of KLV23 spread widely along the x-axis at a single reference value. The orthopyroxene standards (dark green) fall between the two, and the dashed line is the orthopyroxene calibration after we revised its reference values. Shaded bands are 95% confidence intervals from bootstrap resampling; the inset (b) shows the full concentration range. Figure 2 from Towbin et al. (2023), American Mineralogist.\n\n\nAn offset like this could come from the reference values or from the two sets of olivines absorbing infrared light differently. The SIMS signal does not depend on how the hydrogen is bonded in the crystal, while infrared absorption can. So we plotted infrared absorbance against the SIMS signal for the same olivines, which leaves the reference values out entirely. Once the infrared spectra exclude the bands from hydrous inclusions, both sets fall on one line. That puts the disagreement in the reference water contents, the nuclear reaction and elastic recoil analyses.\n\n\n\nInfrared absorbance against the SIMS signal for the same olivines. The Withers et al. olivines (blue diamonds) and the natural olivines including the Bell et al. samples (pink pentagons) fall on nearly the same line once the infrared spectra exclude the bands from hydrous inclusions. The small orange pentagons are the Bell et al. samples with those bands included. Figure 3 from Towbin et al. (2023), American Mineralogist."
   },
   {
-    "objectID": "posts/2026 Xenolith Melting/index.html#a-clock-in-the-olivine",
-    "href": "posts/2026 Xenolith Melting/index.html#a-clock-in-the-olivine",
-    "title": "Mantle rocks start melting on their way to the surface",
-    "section": "A clock in the olivine",
-    "text": "A clock in the olivine\nOlivine crystals next to the veins are zoned: their iron and magnesium contents change from the edge of the crystal inward. That zoning comes from atoms diffusing after the melt appeared, and diffusion runs at a known rate for a given temperature. Fitting a diffusion model to each profile tells you how long the crystal sat next to the melt.\n\n\n\nFitting diffusion models to olivine profiles. Left: electron images with the measured traverse (orange arrow). Right: measured forsterite content (grey points), the assumed starting profile (dashed) and the best-fit diffusion model (solid). Top: olivine next to a melt vein, about 21 days. Middle: olivine at the edge of the xenolith in contact with the carrying magma, about 8.5 days. Bottom: a loose olivine crystal in the lava, about 2.5 days. Figure 14 from Towbin and Plank (2026), Journal of Petrology.\n\n\nThe olivine next to the melt veins gave one to three weeks. Olivine on the outside of the xenoliths, which exchanged with the carrying magma, gives a similar timescale of about a week. So the melting inside the rock happened during the same few weeks the xenolith spent in the magma, not long before in the mantle.\nThe outer olivine also times the trip itself: 3 to 10 days from pickup to eruption. Over the 40 km the xenoliths travelled, that is an average ascent rate of 0.05 to 0.15 meters per second, similar to rates estimated for other cinder-cone eruptions."
+    "objectID": "posts/2023 Water in Olivine/index.html#fitting-lines-when-both-axes-are-uncertain",
+    "href": "posts/2023 Water in Olivine/index.html#fitting-lines-when-both-axes-are-uncertain",
+    "title": "Why measurements of water in olivine disagreed, and how to calibrate them",
+    "section": "Fitting lines when both axes are uncertain",
+    "text": "Fitting lines when both axes are uncertain\nCalibration data have uncertainty on both axes: the SIMS signal and the reference concentration. Ordinary least squares assumes all the error is in y, which biases the slope. I fit the calibration lines with orthogonal distance regression and estimated their uncertainty by bootstrap resampling; those are the lines and shaded bands in the calibration figure above. I later cleaned up that code and released it as a Python package, odr_bootstrap."
   },
   {
-    "objectID": "posts/2026 Xenolith Melting/index.html#why-it-matters",
-    "href": "posts/2026 Xenolith Melting/index.html#why-it-matters",
-    "title": "Mantle rocks start melting on their way to the surface",
-    "section": "Why it matters",
-    "text": "Why it matters\nIn the mantle these rocks were too cool to melt. Once the magma picked them up, it heated them to its own temperature, and the rise did the rest: as the pressure drops, the temperature at which peridotite starts to melt drops too, so a rock that is already hot can begin to melt without getting any hotter. Because the carrying magma is hot and the trip takes days to weeks, we think this kind of melting is hard to avoid in xenoliths brought up by similar volcanoes.\nMelting consumes clinopyroxene, so a xenolith that started as one rock type (lherzolite) can end up looking like a more depleted one (harzburgite). The carrying magma also seeped into the outer centimeter or so of each xenolith. Studies that use xenoliths to describe the mantle should check for both effects, and avoid the outer centimeter when they can.\n\n\n\nWhat happens on the trip up. The magma picks up the xenolith, the xenolith heats and starts to melt, and olivine begins exchanging iron and magnesium with both the melt veins and the magma. Growing gas bubbles push magma into the outer edge of the xenolith. After eruption the vein melt loses water, cools and crystallizes. Figure 16 from Towbin and Plank (2026), Journal of Petrology."
+    "objectID": "posts/2023 Water in Olivine/index.html#recommendations",
+    "href": "posts/2023 Water in Olivine/index.html#recommendations",
+    "title": "Why measurements of water in olivine disagreed, and how to calibrate them",
+    "section": "Recommendations",
+    "text": "Recommendations\n\nThe Withers et al. olivines gave the tightest calibration line, but very little of that material exists.\nOrthopyroxene standards make a practical substitute for SIMS: their calibration slope is similar to olivine’s. After we revised their reference values, the orthopyroxene line falls within 12% of the Withers olivine line, inside the long-term uncertainty of the measurements.\nWith that calibration, the partition coefficient for water between olivine and melt comes out at 0.0009 ± 0.0003. That brings experiments and natural melt-inclusion studies into closer agreement.\n\n\n\n\nOlivine-melt partition coefficients for water. (a) Published values from experiments (circles) sit well above those from melt inclusions (triangles). (b) Recalculated with the orthopyroxene-based calibration, the experimental values move down toward the melt-inclusion values, averaging 0.0009 (blue band). Figure 5 from Towbin et al. (2023), American Mineralogist.\n\n\nFigures reproduced from Towbin, Plank, Klein and Hauri (2023), American Mineralogist, published by the Mineralogical Society of America."
   },
   {
-    "objectID": "posts/2026 Xenolith Melting/index.html#the-tools",
-    "href": "posts/2026 Xenolith Melting/index.html#the-tools",
-    "title": "Mantle rocks start melting on their way to the surface",
-    "section": "The tools",
-    "text": "The tools\nThe diffusion modeling used a 1-D numerical model I wrote in Python, with kriging to interpolate the measured profiles. The code is on GitHub, and the data are in the paper’s supplement and the EarthChem Library.\nThis paper started as the second chapter of my PhD at Columbia, with Terry Plank.\nFigures reproduced from Towbin and Plank (2026), Journal of Petrology, © The Author(s) 2026, published by Oxford University Press."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Henry Towbin",
+    "objectID": "posts_listing_page.html",
+    "href": "posts_listing_page.html",
+    "title": "Posts",
     "section": "",
-    "text": "I’m a scientist in Brooklyn, NY. I use Python to analyze scientific data, combining my own measurements (spectroscopy, micro-CT, electron microprobe and SIMS) with published datasets and physical models to answer research questions.\nMost recently I was a postdoctoral fellow at the Gemological Institute of America (2023 to 2025), where I built data pipelines for FTIR and Raman spectra of diamonds. Before that I did my PhD at Columbia University’s Lamont-Doherty Earth Observatory on how mantle rocks change on their way to the surface, and before graduate school I ran micro-CT and electron microscopy at the American Museum of Natural History.\nI’m looking for data science roles in New York City and am also open to imaging and geoscience work. The posts below cover my research and code; my software is on GitHub.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA cheap model with a hard ceiling\n\n\nWhat Mercury 2.5, a fast and cheap diffusion language model, did inside a coding agent I built around it: where it held up, where it failed, and what it cost.\n\n\n\n\n\nOctober 2026\n\n\n\n\n\n\n\n\n\n\n\n\nMantle rocks start melting on their way to the surface\n\n\nA plain-language summary of Towbin and Plank (2026), Decompression Melting of Peridotite Xenoliths, Journal of Petrology\n\n\n\n\n\nOctober 2026\n\n\n\n\n\n\n\n\n\n\n\n\nStudying the Winston Red diamond at the Smithsonian\n\n\nNotes on Farfan et al. (2025), A Study of the Winston Red: The Smithsonian’s New Fancy Red Diamond, Gems & Gemology\n\n\n\n\n\nApril 2025\n\n\n\n\n\n\n\n\n\n\n\n\nPyIRoGlass: fitting infrared baselines with PCA and Bayesian sampling\n\n\nA summary of Shi, Towbin et al. (2024), PyIRoGlass: An open-source, Bayesian MCMC algorithm for fitting baselines to FTIR spectra of basaltic-andesitic glasses, Volcanica\n\n\n\n\n\nJuly 2024\n\n\n\n\n\n\n\n\n\n\n\n\nMaking reference glasses for measuring volcanic gases\n\n\nA summary of Moussallam, Towbin, Plank et al. (2024), ND70 series basaltic glass reference materials for volatile element measurement, Geostandards and Geoanalytical Research\n\n\n\n\n\nJuly 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWhy measurements of water in olivine disagreed, and how to calibrate them\n\n\nA summary of Towbin, Plank, Klein and Hauri (2023), Measuring H2O Concentrations in Olivine by Secondary Ion Mass Spectrometry, American Mineralogist\n\n\n\n\n\nMay 2023\n\n\n\n\n\n\n\n\n\n\n\n\nLamont-Doherty Research As Art\n\n\n\n\n\n\n\n\nApril 2018\n\n\n\n\n\n\n\n\n\n\n\n\nBrain Anatomy MRI\n\n\n\n\n\n\n\n\nNovember 2017\n\n\n\n\n\n\n\n\n\n\n\n\nOlivine Phenocryst\n\n\n\n\n\n\n\n\nNovember 2017\n\n\n\n\n\nNo matching items"
+    "text": "A cheap model with a hard ceiling\n\n\nWhat Mercury 2.5, a fast and cheap diffusion language model, did inside a coding agent I built around it: where it held up, where it failed, and what it cost.\n\n\n\n\n\nOctober 2026\n\n\n\n\n\n\n\n\n\n\n\n\nMantle rocks start melting on their way to the surface\n\n\nA plain-language summary of Towbin and Plank (2026), Decompression Melting of Peridotite Xenoliths, Journal of Petrology\n\n\n\n\n\nOctober 2026\n\n\n\n\n\n\n\n\n\n\n\n\nStudying the Winston Red diamond at the Smithsonian\n\n\nNotes on Farfan et al. (2025), A Study of the Winston Red: The Smithsonian’s New Fancy Red Diamond, Gems & Gemology\n\n\n\n\n\nApril 2025\n\n\n\n\n\n\n\n\n\n\n\n\nPyIRoGlass: fitting infrared baselines with PCA and Bayesian sampling\n\n\nA summary of Shi, Towbin et al. (2024), PyIRoGlass: An open-source, Bayesian MCMC algorithm for fitting baselines to FTIR spectra of basaltic-andesitic glasses, Volcanica\n\n\n\n\n\nJuly 2024\n\n\n\n\n\n\n\n\n\n\n\n\nMaking reference glasses for measuring volcanic gases\n\n\nA summary of Moussallam, Towbin, Plank et al. (2024), ND70 series basaltic glass reference materials for volatile element measurement, Geostandards and Geoanalytical Research\n\n\n\n\n\nJuly 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWhy measurements of water in olivine disagreed, and how to calibrate them\n\n\nA summary of Towbin, Plank, Klein and Hauri (2023), Measuring H2O Concentrations in Olivine by Secondary Ion Mass Spectrometry, American Mineralogist\n\n\n\n\n\nMay 2023\n\n\n\n\n\n\n\n\n\n\n\n\nLamont-Doherty Research As Art\n\n\n\n\n\n\n\n\nApril 2018\n\n\n\n\n\n\n\n\n\n\n\n\nBrain Anatomy MRI\n\n\n\n\n\n\n\n\nNovember 2017\n\n\n\n\n\n\n\n\n\n\n\n\nOlivine Phenocryst\n\n\n\n\n\n\n\n\nNovember 2017\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
     "section": "",
-    "text": "I’m a scientist who works with data from instruments and the scientific literature. I write Python for spectral and image processing, statistics and numerical modeling, and I have run an imaging facility and high-pressure experiments.\nI’m looking for data science roles in New York City and am open to imaging and geoscience positions.\n\n\nIndependent Researcher | New York, NY\nFinishing research papers and building open-source scientific software | May 2025 to present\nGemological Institute of America | New York, NY\nPostdoctoral Research Fellow | May 2023 to May 2025\nColumbia University, Lamont-Doherty Earth Observatory | Palisades, NY\nPhD researcher, NSF Graduate Research Fellow | 2016 to 2023\nAmerican Museum of Natural History | New York, NY\nMicroscopy and Imaging Technician | June 2013 to August 2016\nOne of two staff running the micro-CT and electron microscopy facility: trained users, ran samples, maintained the instruments, set the schedule and coordinated service visits\n\n\n\nColumbia University | New York, NY\nPhD in Earth and Environmental Sciences | 2023\nOberlin College | Oberlin, OH\nB.A. in Geology, Highest Honors | 2013\n\n\n\nResearch Associate, Department of Earth and Planetary Sciences, American Museum of Natural History"
+    "text": "Peer-reviewed papers, newest first. Conference abstracts are on Google Scholar and ORCID."
   },
   {
-    "objectID": "about.html#experience",
-    "href": "about.html#experience",
-    "title": "About",
-    "section": "",
-    "text": "Independent Researcher | New York, NY\nFinishing research papers and building open-source scientific software | May 2025 to present\nGemological Institute of America | New York, NY\nPostdoctoral Research Fellow | May 2023 to May 2025\nColumbia University, Lamont-Doherty Earth Observatory | Palisades, NY\nPhD researcher, NSF Graduate Research Fellow | 2016 to 2023\nAmerican Museum of Natural History | New York, NY\nMicroscopy and Imaging Technician | June 2013 to August 2016\nOne of two staff running the micro-CT and electron microscopy facility: trained users, ran samples, maintained the instruments, set the schedule and coordinated service visits"
+    "objectID": "publications.html#section",
+    "href": "publications.html#section",
+    "title": "Publications",
+    "section": "2026",
+    "text": "2026\nDecompression melting of peridotite xenoliths. W. H. Towbin and T. Plank. Journal of Petrology 67(9), egag077. doi:10.1093/petrology/egag077\n\nMicro-CT, electron microprobe and diffusion modeling show that mantle rocks carried up by magma start melting during a rise of one to three weeks. Plain-language summary.\n\nHigh precision water quantification by Raman spectroscopy: Applications to volcanic and extraterrestrial samples. E. G. Huggins, E. Gazel, M. Gavrilenko, K. Dayton, J. D. Bixler, W. H. Towbin and T. Plank. Chemical Geology 721, 123628. doi:10.1016/j.chemgeo.2026.123628"
   },
   {
-    "objectID": "about.html#education",
-    "href": "about.html#education",
-    "title": "About",
-    "section": "",
-    "text": "Columbia University | New York, NY\nPhD in Earth and Environmental Sciences | 2023\nOberlin College | Oberlin, OH\nB.A. in Geology, Highest Honors | 2013"
+    "objectID": "publications.html#section-1",
+    "href": "publications.html#section-1",
+    "title": "Publications",
+    "section": "2025",
+    "text": "2025\nA study of the Winston Red: The Smithsonian’s new fancy red diamond. G. A. Farfan, U. F. S. D’Haenens-Johansson, S. Persaud, E. Gaillou, R. C. Feather II, W. H. Towbin and D. C. Jones. Gems & Gemology 61(1). Article\nFormation of spongy clinopyroxene: insights from eclogitic inclusions in diamonds. W. Wang, N. M. Korolev, E. S. Kiseeva, R. M. Davies, Y. Weiss, M. Kopylova, W. H. Towbin, F. Huang, A. E. Moore and E. A. Vasilev. Journal of Petrology 66(5), egaf036. doi:10.1093/petrology/egaf036"
   },
   {
-    "objectID": "about.html#affiliations",
-    "href": "about.html#affiliations",
-    "title": "About",
+    "objectID": "publications.html#section-2",
+    "href": "publications.html#section-2",
+    "title": "Publications",
+    "section": "2024",
+    "text": "2024\nPyIRoGlass: An open-source, Bayesian MCMC algorithm for fitting baselines to FTIR spectra of basaltic-andesitic glasses. S. C. Shi, W. H. Towbin, T. Plank, A. C. Barth, D. J. Rasmussen, Y. Moussallam, H. J. Lee and W. Menke. Volcanica 7(2), 471–501. doi:10.30909/vol.07.02.471501\n\nAn open-source Python tool that measures water and CO₂ in volcanic glass from infrared spectra.\n\nND70 series basaltic glass reference materials for volatile element (H₂O, CO₂, S, Cl, F) measurement and the C ionisation efficiency suppression effect of water in silicate glasses in SIMS. Y. Moussallam, W. H. Towbin, T. Plank et al. Geostandards and Geoanalytical Research 48(3), 637–660. doi:10.1111/ggr.12572\nFast, furious, and gassy: Etna’s explosive eruption from the mantle. A. Barth et al. (including W. H. Towbin). Earth and Planetary Science Letters 643, 118864. doi:10.1016/j.epsl.2024.118864\nApplications of X-ray radiography and X-ray computed microtomography in gemology. C. Zhou and W. H. Towbin. Gems & Gemology 60(4), 582–595. Article\nGlowing gems: Fluorescence and phosphorescence of diamonds, colored stones, and pearls. U. F. S. D’Haenens-Johansson, S. Eaton-Magaña, W. H. Towbin and E. Myagkaya. Gems & Gemology 60(4), 560–580. Article\nLarge natural diamonds with asteriated cloud inclusions. T. Linzmeyer, W. H. Towbin and S. Eaton-Magaña. Gems & Gemology 60(2)."
+  },
+  {
+    "objectID": "publications.html#section-3",
+    "href": "publications.html#section-3",
+    "title": "Publications",
+    "section": "2023",
+    "text": "2023\nMeasuring H₂O concentrations in olivine by secondary ion mass spectrometry: Challenges and paths forward. W. H. Towbin, T. Plank, E. Klein and E. Hauri. American Mineralogist 108(5), 928–940. doi:10.2138/am-2022-8247\n\nTwo sets of reference standards that most labs use to measure water in olivine disagree by about 50%. We traced the offset to the reference values and proposed a calibration that avoids it. Summary.\n\nRates of dehydration in hydrous, high-Fo, magmatic olivines. A. Barth, T. Plank and W. H. Towbin. Geochimica et Cosmochimica Acta 342, 62–73. doi:10.1016/j.gca.2022.11.009"
+  },
+  {
+    "objectID": "publications.html#and-earlier",
+    "href": "publications.html#and-earlier",
+    "title": "Publications",
+    "section": "2019 and earlier",
+    "text": "2019 and earlier\nEffect of polychromatic X-ray microtomography imaging on the amino acid content of the Murchison CM chondrite. J. M. Friedrich, H. L. McLain, J. P. Dworkin, D. P. Glavin, W. H. Towbin, M. Hill et al. Meteoritics & Planetary Science 54(1), 220–228 (2019).\nNautilid nurseries: hatchlings and juveniles of Eutrephoceras dekayi from the lower Maastrichtian (Upper Cretaceous) Pierre Shale of east-central Montana. N. H. Landman, J. W. Grier, J. K. Cochran, J. C. Grier, J. G. Petersen and W. H. Towbin. Lethaia 51(1), 48–74 (2018)."
+  },
+  {
+    "objectID": "publications.html#dissertation",
+    "href": "publications.html#dissertation",
+    "title": "Publications",
+    "section": "Dissertation",
+    "text": "Dissertation\nThe fidelity of the mantle signal in peridotite xenoliths: Interactions during magmatic ascent. W. H. Towbin. PhD dissertation, Columbia University (2023)."
+  },
+  {
+    "objectID": "publications.html#data",
+    "href": "publications.html#data",
+    "title": "Publications",
+    "section": "Data",
+    "text": "Data\nMajor, trace and volatile analyses of minerals in mantle xenoliths and associated host scoria from Sullivan Ranch cinder cone, AZ, Basin and Range. T. Plank and W. H. Towbin. IEDA EarthChem Library (2026). doi:10.60520/IEDA/114314"
+  },
+  {
+    "objectID": "publications.html#software",
+    "href": "publications.html#software",
+    "title": "Publications",
+    "section": "Software",
+    "text": "Software\nodr_bootstrap: a Python package for fitting calibration lines when both variables have uncertainty, with bootstrap confidence intervals. GitHub"
+  },
+  {
+    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html",
+    "href": "notes/2026-mercury-coding-agent-supplement/index.html",
+    "title": "Supplement to “A cheap model with a hard ceiling”",
     "section": "",
-    "text": "Research Associate, Department of Earth and Planetary Sciences, American Museum of Natural History"
+    "text": "Tables and figures behind A cheap model with a hard ceiling. A section number (§) refers to the project’s design log."
+  },
+  {
+    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#the-findings-by-list",
+    "href": "notes/2026-mercury-coding-agent-supplement/index.html#the-findings-by-list",
+    "title": "Supplement to “A cheap model with a hard ceiling”",
+    "section": "The findings, by list",
+    "text": "The findings, by list\nLikely from diffusion decoding or from how Inception serves Mercury:\n\n\n\n\n\n\n\n\n\n\n\n\nLikely from diffusion decoding or from how Inception serves Mercury\n\n\nFinding\nWhat it means\nNumber\nSource\n\n\n\n\nA call is mostly the wait for the first token\nDecoding is fast, but each call waits on a round trip before any text arrives, so the number of calls sets a run's time\ngeneration 0.16 s of a 1.46 s call\n§1, §7\n\n\nStalls hide behind keep-alives\nSome calls never start, but the router sends a \"still processing\" signal at once, so a first-byte timeout never fires\n330 of 50,924 calls silent until a 504 at ~120 s; median first content 1.15 s, p99 11.7 s\n§69\n\n\nEvery call ran at temperature 1.0\nThe harness asked for low, near-deterministic sampling; the provider silently replaced it with its most random setting\nasked for 0.0-0.3; Inception resets anything outside 0.5-1.0\n§85\n\n\nTemperature 0.5, tested\nA lower setting the provider does accept, tried against the 1.0 every run had used\n32 runs a side, not distinguishable, leaned worse\n§82.2\n\n\nHidden reasoning\nMercury thinks in tokens the API never returns; only their count comes back\n~96% of output tokens (95.9% over 93,312 calls)\n§53, §82.1\n\n\nMore effort, fewer calls\nLowering the executor's reasoning effort did not save reasoning; it spread it over more calls\n12.8 calls a run at high; 14.9, 18.4, 18.3 at medium, low, none\n§53.2\n\n\nRunaway reasoning\nA rare call reasons for over a minute before a short answer; an output cap stops it\n~1% of SciCode calls, ~62,000 hidden tokens, 77 s; a 16k cap cut model time 30%\n§95, §95.1\n\n\nIntermittent prompt cache\nThe provider's cache of the repeated start of each prompt engaged on some calls and not others\n20% (SciCode night) to 67% (game project) of calls cached nothing\n§95.2\n\n\nProvider slowdown\nThe same prompts got slower over the month with no change on my side\nfirst token 28-45% later, decode ~1,640 to ~1,310 tokens/s over September\n§95, §114\n\n\n\n\n\n\nCould come from any cheap model:\n\n\n\n\n\n\n\n\n\n\n\n\nCould come from any cheap model\n\n\nFinding\nWhat it means\nNumber\nSource\n\n\n\n\nOptional tools unused\nTools offered for particular jobs, such as structural renames, were almost never called\n4 calls in ~3,100 offers over 3,915 runs\n§62\n\n\nReference notes unused\nThe tool for reading the reference notes written for the model was called once, while its catalogue rode on every call\n1 read in 59,338 executor calls, ~420 tokens a call\n§113\n\n\nRules decay over a step\nAn instruction in the system prompt is followed early in a step and ignored a few turns later\nbatching 6.0% of replies on turns 0-1, 1.5%, 0.8%, 1.2% later\n§82\n\n\nReminder after the last message\nRepeating the rule after the latest message, on every call, kept it followed\nexecute replies −21% (fixtures), −24% (django), calls −11% (django)\n§106.2, §107.3\n\n\nTool calls fail on arguments\nThe model always named a real tool; failures were arguments that did not parse\nplan call unparsable in 12% of runs; strict schemas 0 of 432 vs 9 of 524\n§63, §63.1\n\n\nWrong bug reports believed\nOn tasks whose bug report is false, the model changes the correct code instead of saying so\nmisreport-discount, misreport-documented honest 0 of 3 each\n§54.3, §96.4\n\n\nCodex CLI\nInside Codex, Mercury printed its answer in the chat and never wrote the solution file\nprinted the code and wrote no file in 11 of 15 SciCode problems\n§109.5"
+  },
+  {
+    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#settings-that-worked-with-mercury",
+    "href": "notes/2026-mercury-coding-agent-supplement/index.html#settings-that-worked-with-mercury",
+    "title": "Supplement to “A cheap model with a hard ceiling”",
+    "section": "Settings that worked with Mercury",
+    "text": "Settings that worked with Mercury\n\n\n\n\n\n\nSettings that worked with Mercury\n\n\nSetting\nWhat it controls\nWhat happened without it\nUse\n\n\n\n\nTemperature\nHow random the sampling is\nreset to 1.0 outside 0.5-1.0\nsend 0.5-1.0, or nothing\n\n\nReasoning effort\nHow much hidden reasoning the model does before answering\nlower effort added calls\nhigh for the executor\n\n\nmax_tokens\nThe most output tokens, hidden reasoning included, a call may produce\nrare calls reasoned for over a minute\n16,000\n\n\nStrict tool schemas\nWhether the provider enforces each tool's argument format exactly\n12% of plan calls unparsable\non for every tool\n\n\ntool_choice\nWhether a call must end in a tool call or may answer in plain text\n32 of 188 forced final calls came back as prose (§74)\nrequire the tool when a call must end in one\n\n\nWhere a rule sits\nWhere in the prompt an instruction is placed\nsystem-prompt rules decayed\nrepeat after the last message\n\n\nA cut on silent calls\nHow long a call may produce nothing before the harness cancels and re-sends it\nstalls ran to ~120 s\n30 s with no content"
+  },
+  {
+    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#the-release-candidates-final-sweep",
+    "href": "notes/2026-mercury-coding-agent-supplement/index.html#the-release-candidates-final-sweep",
+    "title": "Supplement to “A cheap model with a hard ceiling”",
+    "section": "The release candidate’s final sweep",
+    "text": "The release candidate’s final sweep\nEvery run had review on, which is now off by default (§124.10).\n\n\n\n\n\n\nThe release candidate's final sweep, 2 October\n\n\nEach suite beside a same-day control or the task's own history\n\n\nSuite\nRuns\nRelease\nCompared with\n\n\n\n\nSeeded fixtures, 16 tasks × 3\n48\naccuracy 0.917; 38 perfect; 41 honest\neach task's own history\n\n\nSciCode, 15 problems × 3, search off\n45\n23/45 solved (7.7 of 15 a round)\nearlier search-off rounds: 7.3 a round\n\n\ndjango, 10 tasks × 3\n30\n15/30\nmini-swe-agent, same model, same day: 18/30\n\n\nGAIA, 127 questions\n127\n59/127\nthe 30 Sep harness, same day and search: 61/127"
+  },
+  {
+    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#the-same-model-in-other-agents-and-other-models-in-this-harness",
+    "href": "notes/2026-mercury-coding-agent-supplement/index.html#the-same-model-in-other-agents-and-other-models-in-this-harness",
+    "title": "Supplement to “A cheap model with a hard ceiling”",
+    "section": "The same model in other agents, and other models in this harness",
+    "text": "The same model in other agents, and other models in this harness\n\n\n\n\n\n\nThe same model in other agents, and other models in this harness\n\n\nMean ± SE over rounds; a dash: not run on that suite\n\n\nAgent\ndjango resolved\ndjango $ a run\nSciCode solved\nSciCode $ a run\n\n\n\n\nMercury 2.5\n\n\nMy harness (30 Sep)\n7.0 ± 0.0 of 10\n$0.048\n–\n–\n\n\nGoose\n6.7 ± 0.7 of 10\n$0.013\n7.5 ± 1.5 of 15\n$0.021\n\n\nCodex CLI\n6.0 ± 0.6 of 10\n$0.008\n4.0 ± 0.0 of 15\n$0.018\n\n\nmini-swe-agent\n6.0 ± 0.4 of 10\n$0.035\n7.7 ± 0.3 of 15\n$0.034\n\n\nMy harness\n5.0 ± 0.6 of 10\n$0.033\n7.7 ± 0.9 of 15\n$0.11\n\n\nAider\n4.3 ± 0.7 of 10\n$0.004\n7.5 ± 0.5 of 15\n$0.011\n\n\nGLM 5.3 Flash\n\n\nAider\n8.7 ± 0.3 of 10\n$0.007\n5.0 ± 0.0 of 15\n$0.012\n\n\nMy harness\n6.7 ± 0.7 of 10\n$0.036\n10.0 ± 0.0 of 15\n$0.405\n\n\nmini-swe-agent\n5.7 ± 0.7 of 10\n$0.033\n–\n–\n\n\nMy harness, GLM plans\n–\n–\n8.5 ± 1.5 of 15\n$0.255\n\n\nHaiku 4.5\n\n\nmini-swe-agent\n6.0 ± 0.0 of 10\n$0.284\n–\n–\n\n\n\n\n\n\nMean ± SE over rounds; a dash means the agent was not run on that suite. Mercury costs are at its launch price, and Goose and Codex are priced with their cached input (§122). Codex’s SciCode score reflects behaviour rather than ability: it printed code and wrote no file in 11 of 15 problems."
+  },
+  {
+    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#django-every-configuration",
+    "href": "notes/2026-mercury-coding-agent-supplement/index.html#django-every-configuration",
+    "title": "Supplement to “A cheap model with a hard ceiling”",
+    "section": "django, every configuration",
+    "text": "django, every configuration\nResolved of 30 (three runs of ten tasks), after §118 voided eleven contaminated wins; the as-scored count is in brackets where it differs. Intervals are 95% bootstrap intervals on the difference in resolve rate against the release harness (15 of 30).\nCosts need two caveats (§122). Goose and Codex report their own token counts, priced here at OpenRouter’s list price with cached input at the cached price; at full list price they read $0.060 and $0.044 a django run. And Mercury’s provider cached 5-22% of the harness’s input before about 12:00 UTC on 2 October and 50-72% after, with no harness change. My harness’s rows and the §94 rows ran before that line, Goose, Codex and the GLM rows after it, so costs across the line are not like for like. Every run of my harness in these tables had review on; review is off by default since 6 October (§124.10).\n\n\n\n\n\n\ndjango, every configuration\n\n\nResolved of 30 after §118's voids (as scored in brackets)\n\n\nAgent\nResolved\n$ a run\nmin a run\nvs release harness\n\n\n\n\nGLM\n\n\nAider\n26 (27)\n0.007\n2.6\n+0.37 [+0.13, +0.57]\n\n\nMy harness\n20\n0.036\n5.9\n+0.17 [−0.07, +0.40]\n\n\nmini-swe-agent\n17 (20)\n0.033\n4.6\n+0.07 [−0.20, +0.30]\n\n\nMercury\n\n\nGoose 1.52\n20 (22)\n0.013\n1.6\n+0.17 [−0.07, +0.40]\n\n\nCodex CLI 0.160\n18 (20)\n0.008\n2.4\n+0.10 [−0.13, +0.33]\n\n\nmini-swe-agent 2.4.6\n18 and 18 (20, 19)\n0.035\n4.0\n+0.10 [−0.13, +0.33]\n\n\nMy harness, 30 Sep\n21\n0.048\n4.4\n\n\n\nMy harness, release\n15\n0.033\n4.1\n\n\n\nAider\n13\n0.004\n1.1\n\n\n\nGLM, Mercury\n\n\nMy harness, GLM plans\n23 (§94), 16 of 26 (§109)\n0.028\n4.8\n+0.12 [−0.14, +0.37]\n\n\nHaiku 4.5\n\n\nmini-swe-agent\n18\n0.284\n3.4\n\n\n\n\n\n\n\n\n\n\ndjango tasks resolved against cost a run\n\n\n\n\n\ndjango tasks resolved against wall time a run\n\n\n\n\n\nShare of runs resolved, per django task and configuration\n\n\n\nThe release against its own 30 Sep version\nThe release resolved 15 of 30 where the 30 Sep version had resolved 21, all of the gap on four tasks. Re-run the same day in isolated workspaces (§120), the two came out level, and the release used about 40 percent fewer calls:\n\n\n\n\n\n\nThe release against its own 30 Sep version, on django\n\n\n\nRelease\n30 Sep harness\n\n\n\n\nFirst rounds, ten tasks\n15/30 (2 Oct)\n21/30 (30 Sep)\n\n\nFirst rounds, the 4 tasks that differed\n6/12\n12/12\n\n\nSame 4 tasks re-run 5 Oct, isolated, same day\n21/36\n23/36\n\n\nCalls a run, re-run\n34\n57\n\n\nCost a run, re-run\n$0.0115\n$0.0179\n\n\n\n\n\n\nThe 30 Sep first rounds were one unusually good set: same provider, same cache state before 2 October, and neither set of rounds read the fix from git history."
+  },
+  {
+    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#scicode-15-development-problems",
+    "href": "notes/2026-mercury-coding-agent-supplement/index.html#scicode-15-development-problems",
+    "title": "Supplement to “A cheap model with a hard ceiling”",
+    "section": "SciCode, 15 development problems",
+    "text": "SciCode, 15 development problems\nProblems solved (every sub-step passing), search off.\n\n\n\n\n\n\nSciCode, 15 development problems\n\n\nProblems solved, every sub-step passing, search off\n\n\nAgent\nRuns\nMean\n$ a run\n\n\n\n\nGLM\n\n\nMy harness\n10, 10\n10.0\n0.405\n\n\nAider (no execution)\n5\n5.0\n0.012\n\n\nMercury\n\n\nMy harness\n6, 8, 9\n7.7\n0.110\n\n\nmini-swe-agent\n8, 7, 8\n7.7\n0.034\n\n\nAider (no execution)\n8, 7\n7.5\n0.011\n\n\nGoose\n6, 9\n7.5\n0.021\n\n\nCodex CLI\n4\n4.0\n0.018\n\n\n\n\n\n\n\n\n\nSciCode problems solved against cost a run"
+  },
+  {
+    "objectID": "notes/2026-mercury-coding-agent-supplement/index.html#how-glm-differs-as-a-planner",
+    "href": "notes/2026-mercury-coding-agent-supplement/index.html#how-glm-differs-as-a-planner",
+    "title": "Supplement to “A cheap model with a hard ceiling”",
+    "section": "How GLM differs as a planner",
+    "text": "How GLM differs as a planner\nFrom §119 and earlier sections; measurements, not pre-registered comparisons.\n\ndjango: GLM’s plans name the upstream fix in 51% of runs, Mercury’s in 0%. GLM planning with Mercury executing resolves 11964 5 of 5 (the harness with Mercury picks the wrong file in all 6 runs) and 11848 5 of 6 (no Mercury agent in 12 runs). GLM’s losses on 11999 and 11790 are recalled code colliding with the hidden tests.\nPlans: GLM’s declare ~1.8 times as many tests and are 3-4 times more consistent in step count for the same goal (§42).\nResearch: on SciCode, 20 web searches, 53 fetches and 61 skill reads against none for Mercury, which asked 18 “Should I proceed?” questions instead (§77).\nCost and time: 2-3 times Mercury’s cost on SciCode, about 3 times the time; its planning time is round trips at 5-7 s to first token (§76, §77)."
   }
 ]

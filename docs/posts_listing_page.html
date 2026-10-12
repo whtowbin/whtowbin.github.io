@@ -131,6 +131,13 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Posts – Henry Towbin">
+<meta property="og:image" content="https://www.henrytowbin.com/posts/2025 Winston Red/gg-spring-2025-cover.jpg">
+<meta property="og:site_name" content="Henry Towbin">
+<meta name="twitter:title" content="Posts – Henry Towbin">
+<meta name="twitter:image" content="https://www.henrytowbin.com/posts/2025 Winston Red/gg-spring-2025-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.henrytowbin.com/posts_listing_page.html">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -486,7 +493,7 @@ November 2017
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/www\.henrytowbin\.com");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
