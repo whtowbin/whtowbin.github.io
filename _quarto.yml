@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: docs
+  post-render: _scripts/encode_sitemap.py
 
 website:
   title: "Henry Towbin"
