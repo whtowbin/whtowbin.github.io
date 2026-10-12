@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="What Mercury 2.5, a fast and cheap diffusion language model, did inside a coding agent I built around it: where it held up, where it failed, and what it cost.">
+
+<title>A cheap model with a hard ceiling – Henry Towbin</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Henry Towbin</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../publications.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts_listing_page.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/whtowbin"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/henry-towbin"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">A cheap model with a hard ceiling</h1>
+                  <div>
+        <div class="description">
+          What Mercury 2.5, a fast and cheap diffusion language model, did inside a coding agent I built around it: where it held up, where it failed, and what it cost.
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p><em>Supporting numbers are in the footnotes; a section number (§) there refers to the project’s <a href="https://github.com/whtowbin/mercury-harness/blob/main/DESIGN-LOG.md">design log</a>. The full tables are in <a href="../../notes/2026-mercury-coding-agent-supplement/index.html">the supplement</a>.</em></p>
+<p>Most language models write one word at a time, left to right. A diffusion language model borrows its method from image generators such as Stable Diffusion, which start from random noise and sharpen the whole picture over a series of steps. In text, the model starts from a reply of placeholder tokens and refines every position at once, over a handful of passes. Inception’s Mercury 2.5 is one of these, and its appeal is speed and price: it decodes at around a thousand tokens a second and, at its launch price, costs $0.04 per million tokens in and $0.15 out, a small fraction of what the well-known models charge.</p>
+<p>Shortly after the launch, <a href="https://bsky.app/profile/timkellogg.me/post/3mv2czof6gk2h">Tim Kellogg plotted Inception’s numbers</a> against price and speed. On GPQA Diamond, a graduate-level science quiz, Mercury scored 79 percent, close to the cost-optimized models from OpenAI, Google and Anthropic it was compared with, while generating more than three times as many tokens a second as the fastest of them.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Those numbers describe the model answering questions on its own. Nobody had published what it does inside an agent, with tools, tests and a loop around it.</p>
+<p>I wanted to find out, and to learn how to build that loop. A coding agent takes a request such as “fix this bug”, edits the code and runs the tests until it believes it is done. I designed one around Mercury, directed Claude Code in writing it, and tested it against other agents and models. My agent grew to 39,000 lines; somewhat disappointingly, mini-swe-agent, a loop of about 100 lines, did as well with Mercury. Despite that I learned a lot about how agents work and the quirks of Mercury. What I found:</p>
+<ul>
+<li><strong>The model sets the ceiling.</strong> Five agents solved about the same share of tasks with Mercury; the agent changed only what a run cost.</li>
+<li><strong>Below the ceiling, Mercury is cheap,</strong> mostly thanks to a launch discount.</li>
+<li><strong>Its speed shows only when an agent makes few calls.</strong></li>
+<li><strong>It has a single provider,</strong> whose service changed speed and cost as much as the model did.</li>
+<li><strong>A stronger planner can get it past fixes it misses alone,</strong> though on the hardest tasks no planner I tried clearly beat the cheapest one.</li>
+</ul>
+<section id="where-i-started" class="level2">
+<h2 class="anchored" data-anchor-id="where-i-started">Where I started</h2>
+<p><strong>I planned a two-model agent, and the first benchmark persuaded me to let Mercury do all of the work. I then tested every change on four sets of tasks (Table 1).</strong></p>
+<p>My first design had Claude, a strong and expensive model, plan and review the work while Mercury carried out small, fully specified steps. That design lasted one day. A benchmark run showed Mercury planning its own work did as well at about a twentieth of the cost, so I decided to have Mercury take over every phase.</p>
+<p>That changed my question: how far could a weaker but faster model get if the program around it, the harness, ran the tests, checked the types and allowed as many attempts as it needed? I built the harness as a conventional plan-and-execute loop. A planner writes steps, an executor carries them out one at a time, and a final check that makes no model call runs the tests and a type checker.</p>
+<p><em>Table 1. The four test suites</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 82%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Suite</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Seeded tasks</td>
+<td>Small Python projects I seeded with bugs, scored on hidden tests and on honesty: a passing run must not delete a test, write a test that passes on the bug, or “fix” correct code</td>
+</tr>
+<tr class="even">
+<td>SciCode</td>
+<td>15 scientific programming problems; solved when every sub-step passes</td>
+</tr>
+<tr class="odd">
+<td>django</td>
+<td>10 real django issues from SWE-bench Verified</td>
+</tr>
+<tr class="even">
+<td>GAIA</td>
+<td>127 research questions that need web search</td>
+</tr>
+</tbody>
+</table>
+<p>I ran each change beside an unchanged copy of the harness on the same day, against a rule I wrote down first.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> I tested 31 changes and kept 13; the companion post, “Take the work away from a weak model”, covers which ones and why.</p>
+</section>
+<section id="the-model-sets-the-ceiling" class="level2">
+<h2 class="anchored" data-anchor-id="the-model-sets-the-ceiling">The model sets the ceiling</h2>
+<p><strong>Changing the agent around Mercury changed what a run cost and left the share of tasks solved about where it was. A stronger model in my harness scored higher (Figure 1).</strong></p>
+<p>I ran Mercury in four other open agents: mini-swe-agent, which gives the model a shell and nothing else; Aider, which asks for one patch and never runs a test; and Goose and Codex CLI, general-purpose agents from Block and OpenAI. For contrast I also ran GLM 5.3 Flash, a conventional left-to-right model.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/x3-scicode-cost-vs-solved.png" class="img-fluid figure-img" alt="SciCode problems solved against cost a run, for each agent and model"></p>
+<figcaption>Figure 1. SciCode’s 15 development problems. Every Mercury agent that worked solved 7.5 to 7.7, whatever the agent; GLM in my harness solved 10.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></figcaption>
+</figure>
+</div>
+<p>On django the Mercury agents resolved 4.3 to 7 of 10 tasks a round, too close to tell apart;<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> rerun in sealed workspaces, my harness, mini-swe-agent and Goose each resolved 17 of 30.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> I sealed them after finding that agents with a shell had read fixes from django’s later commits, and voided eleven wins.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p>My own changes showed the same pattern. The 13 I kept took a django run from 56 model calls to 36 and from about five cents to about three, with the number of tasks resolved unchanged. One failure never moved: given a false bug report, Mercury “fixed” the correct code in every run.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p>The ceiling also matches Inception’s own figure. Under the protocol behind its reported 38 percent of SciCode sub-steps, Mercury on its own scored 36.5 percent, close to the reported figure, which places it a few points below the budget models Inception compares it with.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> <a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+</section>
+<section id="below-the-ceiling-mercury-is-cheap" class="level2">
+<h2 class="anchored" data-anchor-id="below-the-ceiling-mercury-is-cheap">Below the ceiling, Mercury is cheap</h2>
+<p><strong>On the django tasks it could do, Mercury did the same work as Haiku 4.5 for about an eighth of the cost. Most of that margin is a launch discount: at the standard price the gap shrinks to 1.6 times (Figure 2).</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/p1-price.png" class="img-fluid figure-img" alt="The cost of one django run for Mercury at its launch and standard prices, and for Haiku 4.5"></p>
+<figcaption>Figure 2. The same 100-line agent on the same ten django tasks; Mercury and Haiku 4.5 each resolved 6 of 10 a round. Every agent and model, with cost against tasks resolved, is in the supplement.</figcaption>
+</figure>
+</div>
+<p>Inception advertises its launch price as 80 percent off, with no end date. At the standard price Mercury is still cheaper than Haiku, but not a different class.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<p>No cheap setup won everywhere: GLM in Aider resolved 8.7 django tasks for under a cent but only 5 of 15 SciCode problems, where running the code is what pays. On the six hardest django tasks, which Mercury mostly cannot do at any price, Sonnet 5.5 in Claude Code succeeded for about six cents a task at list price, though it may remember these public fixes: its correct fixes repeated, word for word, 60 percent of the lines specific to django’s own fix, against 9 percent for Mercury.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
+</section>
+<section id="fast-only-when-the-calls-are-few" class="level2">
+<h2 class="anchored" data-anchor-id="fast-only-when-the-calls-are-few">Fast only when the calls are few</h2>
+<p><strong>Mercury’s decoding speed barely shows in an agent’s wall time. The fastest Mercury agents made the fewest calls (Figure 3), and I sped up my harness by cutting calls.</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/x2-django-time-vs-resolved.png" class="img-fluid figure-img" alt="django tasks resolved against wall time a run"></p>
+<figcaption>Figure 3. The same django results against minutes a run. Aider, which asks for one patch, took 1.1 minutes; my harness and mini-swe-agent, which make dozens of calls, about four.</figcaption>
+</figure>
+</div>
+<p>The reason is in a single call (Figure 4). Generating the reply took about a tenth of a call’s time; the rest was waiting for the first token, and an extra round trip cost three times as much time as sending 15,000 more tokens of prompt.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> So I had the harness make fewer, larger calls: it sends the files a step needs in its first message, lets the model batch reads and edits, and plans one larger step where it might have planned three.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/p1-call-time.png" class="img-fluid figure-img" alt="Where a Mercury call's time goes, and what an extra call or extra prompt text adds"></p>
+<figcaption>Figure 4. A median Mercury call in my early traces: most of it is waiting for the first token, and generating the reply, the part diffusion speeds up, is about a tenth. The bottom two bars compare two ways of giving the model more: a longer prompt in the same call, or a second call, which means another full wait.</figcaption>
+</figure>
+</div>
+</section>
+<section id="one-provider-and-what-it-did-to-the-results" class="level2">
+<h2 class="anchored" data-anchor-id="one-provider-and-what-it-did-to-the-results">One provider, and what it did to the results</h2>
+<p><strong>Inception is the only provider of Mercury on OpenRouter, so a bad hour cannot be routed around. How it serves the model changed speed and cost as much as the model did, and none of it showed until I checked what the calls returned (Figure 5, Table 2).</strong></p>
+<p>Most open models on OpenRouter are served by several companies, so a request can go elsewhere when one is slow: GLM 5.3 Flash has 34 providers and gpt-oss-120b 23. Mercury has one, Inception itself.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/p1-provider.png" class="img-fluid figure-img" alt="How long a Mercury call waits for its first content: typical, slow, and stalled"></p>
+<figcaption>Figure 5. Time until a Mercury call’s first content arrived. A stalled call looked alive for about two minutes before the provider gave up; I had the harness cut any call silent for 30 seconds and ask again.</figcaption>
+</figure>
+</div>
+<p>About one Mercury call in two hundred stalled this way, and with a single provider there was nowhere to send it instead.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> The rest of what I found is in Table 2. None of it is about diffusion.</p>
+<p><em>Table 2. What came back, and what I did</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 41%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>What came back</th>
+<th>What I did</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Stalls</td>
+<td>About 1 call in 200 never started but looked alive; in one run, three took 476 of 620 seconds of model time</td>
+<td>Re-send any call silent after 30 seconds, which saves about ten times the time it wastes<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></td>
+</tr>
+<tr class="even">
+<td>Temperature</td>
+<td>I asked for 0.0 to 0.3; every call ran at 1.0, with no visible warning<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></td>
+<td>Tested 0.5: no measurable difference</td>
+</tr>
+<tr class="odd">
+<td>Hidden reasoning</td>
+<td>About 96 percent of output was reasoning I could not see; lower effort meant more calls</td>
+<td>High effort for the executor and a 16,000-token output cap, which cut SciCode model time by 30 percent<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a></td>
+</tr>
+<tr class="even">
+<td>Prompt cache</td>
+<td>The cached share of input jumped from 5–22 percent to 50–72 percent with no change on my side</td>
+<td>Compared costs only within the same period<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a></td>
+</tr>
+<tr class="odd">
+<td>Speed</td>
+<td>During the project the first token came 28–45 percent later and decoding slowed by a fifth</td>
+<td>Ran every comparison beside a same-day control<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="a-stronger-planner-helps-on-some-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="a-stronger-planner-helps-on-some-fixes">A stronger planner helps on some fixes</h2>
+<p><strong>With GLM writing the plan, Mercury solved an issue it never solved alone, at about three cents a run. Across the six hardest tasks the gain is not clear; a Claude planner did not clearly do better and cost eight times as much, while Claude on its own solved all six (Figure 6).</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/p1-planners.png" class="img-fluid figure-img" alt="Share of runs resolved on the six hardest django tasks, by which model wrote the plan"></p>
+<figcaption>Figure 6. The six hardest django tasks with Mercury carrying out the plan, by who wrote it, against Mercury alone (pooled over earlier rounds) and Sonnet 5 and 5.5 doing the whole task in Claude Code. Sonnet 5 as planner shows only the 5 runs that finished before my credit ran out. Sonnet 5.5 is not shown as a planner because it refused my planner’s prompt (below).</figcaption>
+</figure>
+</div>
+<p>Inception now sells Mercury as a fast utility layer under a stronger orchestrator, and my results agree. With GLM planning, Mercury solved, five times in six, an issue that no Mercury agent had solved in twelve runs.<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a> I also tried Claude as the planner. Sonnet 5.5 refused my planner’s prompt in 9 of 12 runs, even after I reworded it, apparently because the prompt asks the model to hand over its reasoning, so it gave no usable result; Sonnet 5 planned every time but cost about eight times as much as GLM, and finished too few runs to compare accuracy.<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a></p>
+</section>
+<section id="what-diffusion-might-add" class="level2">
+<h2 class="anchored" data-anchor-id="what-diffusion-might-add">What diffusion might add</h2>
+<p><strong>A diffusion model could bring an agent speed, gap-filling and refinement. Through Mercury’s API I could properly test only speed, and in an agent speed mattered less than the number of calls (Table 3).</strong></p>
+<p><em>Table 3. What diffusion could offer an agent</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>What I tested</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Speed</td>
+<td>Mercury in five agents</td>
+<td>Wall time followed the number of calls (Figures 3 and 4)</td>
+</tr>
+<tr class="even">
+<td>Gap-filling: writing the middle of a text with the end already in place</td>
+<td>Inception’s editing model, <code>mercury-edit-2</code>, on 12 small edits</td>
+<td>92 percent correct against Mercury 2.5’s 97 percent (12 edits, three runs each), at about six times the price; I did not adopt it<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a></td>
+</tr>
+<tr class="odd">
+<td>Refinement: reworking a whole reply over several passes</td>
+<td>Google’s open DiffusionGemma on my laptop, beside its left-to-right twin</td>
+<td>Seeding the model’s starting canvas with my outline never beat putting it in the prompt<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a></td>
+</tr>
+</tbody>
+</table>
+<p>Gap-filling is the test I would run next, in a writing project of mine where a diffusion model fills gaps that the writer marks.</p>
+</section>
+<section id="what-i-would-use-it-for" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-would-use-it-for">What I would use it for</h2>
+<p><strong>Mercury is a cheap executor with a hard ceiling and a single supplier. It is worth using where the task sits below that ceiling and something else checks its work (Table 4).</strong></p>
+<p>I set out to see how far a cheap, fast model could get when the program around it did all the checking a program can do. On these tasks Mercury set how much got solved and the harness set what it cost. Within that ceiling Mercury is cheap, mostly because of a launch price, and fast only when the agent makes few calls. Its single provider added stalls, ignored settings and cost shifts I had to find myself.</p>
+<p><em>Table 4. Where I would use Mercury</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 18%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Use</th>
+<th>Fit</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Executor under a stronger planner</td>
+<td>Promising</td>
+<td>GLM’s plans got Mercury through an issue it never solved alone (Figure 6)</td>
+</tr>
+<tr class="even">
+<td>Well-specified changes, sent in a few large calls and checked by tests</td>
+<td>Good</td>
+<td>Matched Haiku 4.5 at an eighth of the cost (Figure 2)</td>
+</tr>
+<tr class="odd">
+<td>Hard or open-ended fixes on its own</td>
+<td>Poor</td>
+<td>Five agents, one ceiling (Figure 1)</td>
+</tr>
+<tr class="even">
+<td>Work where the bug report may be wrong</td>
+<td>Poor</td>
+<td>Changed correct code on every false report</td>
+</tr>
+<tr class="odd">
+<td>Work that needs steady latency</td>
+<td>Plan for failures</td>
+<td>One provider, and calls that stall (Figure 5)</td>
+</tr>
+</tbody>
+</table>
+<p>These results come from one diffusion model, compared mainly with one left-to-right model, on ten django tasks and fifteen SciCode problems at three runs each, which cannot see a difference smaller than about a quarter. They say nothing about diffusion models in general, and the prices will change.<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a></p>
+<p>The project cost about $150 in API fees, more than the Claude subscription I kept. Once the question became what the model could do, the benchmarks were worth more than the savings, and working out what made the harness cheaper taught me to use far fewer tokens with Claude itself.<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a></p>
+<p><a href="https://github.com/whtowbin/mercury-harness">The repository</a> has the agent and the design log; <a href="https://github.com/whtowbin/mercury-harness/releases/tag/v0.1.0">its v0.1.0 release</a> has the per-run and per-call results behind every number here.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>His plots use the figures in Inception’s announcement: GPQA Diamond 79 percent, and 1,107 output tokens a second against 321 for Gemini 3.5 Flash-Lite, 127 for Claude Haiku 4.5 and 99 for GPT-5.6 Luna (Low). His axes are unlabelled; the speed axis matches those tokens-a-second figures.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>I scouted each change on a few runs, then wrote its rule (the metric it should move, by how much, and caps on calls, cost and accuracy loss) before a longer run beside a same-day control. Provider failures were kept out of the score. Over the project the harness made more than 90,000 model calls. On the seeded tasks every configuration passed nearly everything within a week, which is why I added honesty scoring and the three public benchmarks. DESIGN-LOG §45.4, §46, §56, §61.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Codex CLI solved 4: it printed its code instead of writing a file in 11 of 15 problems.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>With Mercury, my harness and mini-swe-agent each resolved 36 of 60 over two days. The only configuration that separates from my harness is Aider with GLM. Intervals and costs for every row are in the supplement. §94.1, §109.5, §118.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Three runs a task: django 17, 17, 18, 17 and 17 of 30 for my harness, my harness without review, my harness with GLM, mini-swe-agent and Goose; no arm separates. GLM was level on django but separated on SciCode (+2.7 problems) and on the seeded tasks (+0.086 accuracy, +0.166 honest), where it passed the false-report tasks Mercury never has. §126.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Routes: django’s full history in every workspace, other tasks’ workspaces at later commits, a readable answer key, and a shared workspace whose reset let the fix reach three arms on one task. Voided: mini-swe-agent with Mercury 3, with GLM 3, Codex 2, Goose 2, Aider with GLM 1; none for my harness, whose file tools cannot leave the workspace, which was luck as much as design. §118.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Two seeded tasks report correct, intended behaviour as a bug. Mercury was honest on 0 of 3 runs of each, under every change I made, sometimes after writing in its own plan that the code was correct. Real users rarely file false reports: of about 20 bug reports in my own use of the agent, none was false.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Artificial Analysis’s SciCode scores (sub-step pass@1, test split), read in October from artificialanalysis.ai/leaderboards/models: Mercury 2.5 38.5 (111 of 288), Mercury 2 37.7, gpt-oss-20b (high) 38.9, Mistral Small 4 (reasoning) 38.8, GPT-5 mini (high) 39.0, Gemini 3.5 Flash-Lite 41.3, Claude Haiku 4.5 (reasoning) 42.2, GPT-5.6 Luna (low) 46.1, GLM-5.3-Flash 51.6, Claude Sonnet 5.5 (max) 61.0. One run of 288 sub-steps has a standard error of about 2.9 points, so the gaps to Flash-Lite and Haiku are one to one and a half standard errors. Artificial Analysis currently marks SciCode as under review after an independent audit of the dataset. My reproduction used the 288 sub-steps of the test split, one model call a step, the background text in the prompt, and the 300-second scoring timeout Artificial Analysis uses: 112, 98 and 105 of 288, a mean of 36.5 percent over three runs. On the development problems the background text SciCode’s authors wrote for each problem helped Mercury more than anything in my harness did (next footnote). §130.2.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>SciCode’s 15 development problems, four runs an arm, sub-steps of 48: the bare model scored 25.3 without the background and 31.3 with it (+6.0, 95% interval +1.8 to +10.0); my harness 27.0 without and 29.0 with, at twice the cost of one call a step. Drawing five answers a step and keeping the one most agreed on scored 35.5 (+4.3 over the bare model with background) at 4.4 times the cost, and solved no more whole problems. Voting stays a test option, not a harness feature. §130, §130.1.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Haiku in mini-swe-agent $0.284 a run, Mercury $0.035. Mercury’s standard price is $0.20 per million tokens in and $0.75 out, at which it would cost five times as much. Costs from before and after the provider’s cache change (Table 2) are not like for like. §122.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Sonnet 5.5 in Claude Code resolved all ten django tasks, including the three that no Mercury agent resolves reliably. Resolved runs only: the share of the upstream fix’s distinctive lines each agent’s diff reproduced verbatim was 9 percent for Mercury, 26 to 71 percent for GLM depending on the agent, and 60 percent for Sonnet 5.5. Mercury’s correct fixes share almost nothing with upstream, so correctness does not force the overlap. I have not run the tests that would separate memory from skill (the issue alone with no repository, renamed identifiers, tasks newer than the models). Claude Code ran on my subscription, one run a task; its costs are list-price equivalents. §127, §127.2, §127.3.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Generation was 0.16 s of a 1.46 s call over the first 944 traced calls. An extra round trip cost about 1.3 s; 15,000 more tokens of prompt added about 0.4 s. §1, §7.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>The rule had a limit I found by accident. Files up to 16,000 characters went into the executor’s first message whole; a larger file the model paged through itself, 400 lines per read. When a test project grew from about 950 lines to 1,732, both of its main files crossed the cap, and 88 of the model’s 125 file reads asked for a later page. The files reached the model either way; the cap decided only whether they arrived in one call or several. Runs on that project went from 73 seconds to 114. The cap is now 48,000 characters. §7; <code>PRELOAD_CHAR_CAP</code> in TUNABLES.md.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>OpenRouter’s endpoint-status API on one day in October showed Mercury 2.5 at 99.5 percent uptime, ordinary next to the median endpoint of the other open models I checked (99.2 to 99.6) and the Claude models (99.9 to 100). Uptime counts failed requests, not silent ones, so it does not measure the stalls in Table 2.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>OpenRouter sent headers and a “still processing” comment at once, so a timeout on the first byte saw a healthy call. The 30-second bound was sized from 50,924 calls: median time to first content 1.15 s, 99th percentile 11.7 s. It re-asks about 3,000 s of healthy calls and saves about 29,700 s across 330 stalled ones. Since it went in it has fired on about 2.5 calls in a hundred (0.8 to 5.4 by day, and 28.6 on one day with a burst of timeouts whose runs I voided); the logs cannot say how many of those were stalls rather than slow calls. §69, §124.1, TUNABLES.md.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>The harness asked for 0.0 to 0.3. Inception accepts 0.5 to 1.0 and resets anything else to 1.0; its API says so in a warning field, which OpenRouter drops. §85, §82.2.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>Inception’s API ignores OpenRouter’s way of setting a reasoning level and runs at medium; hidden reasoning is returned only as a count. Executor calls a run: 12.8 at high, against 14.9, 18.4 and 18.3 at medium, low and none; accuracy was at its ceiling for all (§53.2). About one SciCode call in a hundred reasoned for around 62,000 tokens before a short answer; no call ever reached the 16,000-token cap, which still removed the calls that reasoned for over a minute (§95, §95.1).<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p>On one night of SciCode runs, 20 percent of Mercury’s calls cached nothing. An agent resends a growing prompt on every turn, so caching should cover most of its input. Identical prompts sent a second apart came back uncached with different token counts. §95.2, §122.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p>Wall time doubled over the same month even as the harness cut its calls per django run from 56 to 36. §95, §114.<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p>The pair cost $0.031 a run, and solved the issue no Mercury agent had solved five times in six. GLM’s plans named django’s actual fix in 51 percent of runs, Mercury’s in none. GLM planning with Mercury executing resolves 11964 and 11848, which Mercury alone mostly cannot; on SciCode the pairing solved 8.5 of 15, between Mercury alone (7.7) and GLM alone (10). §94, §119.<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p>Six hard django tasks, Mercury executing, review off, sandboxed, one rule written before the run: a planner counts as better only if at least 3 more of 12 resolve at no more than 3 times the cost. GLM planning: 5 of 12, $0.031 a run. Sonnet 5.5 planning: 2 of 12, nine runs ended in a refusal. Sonnet 5 planning: 4 of 5 finished runs, $0.256 a run, including a task Mercury alone solved once in twenty; the other seven did not run, because the credit floor stopped the sweep. Mercury alone on the same tasks: 36 of 120 over earlier rounds. §127.11.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22"><p><code>mercury-edit-2</code> is built on Mercury 2 rather than 2.5. It failed every edit that changed a function’s signature. It predicts the next edit at a cursor, with no slot for an instruction (I put the instruction in as a comment at the cursor), and cannot change lines above the cursor. It has a 32K context. I never tested its fill-in-the-middle endpoint. §85.<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn23"><p>Mercury’s API returns only finished text, so its refinement is invisible; the laptop was my only view of it. The outline never won in four rounds. On the laptop the diffusion model was 2.7 times slower than Gemma 4, the left-to-right model it was trained from, because each pass reprocesses the whole reply and a laptop has far less computation to spare than a datacentre GPU: fast decoding belongs to the model and the hardware together. Scouting only, one to three samples per setting.<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn24"><p>The left-to-right model, GLM 5.3 Flash, is also a better planner, so the comparison mixes two differences. mini-swe-agent’s prompt was tuned on SWE-bench and mine was not.<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn25"><p>About $140 on OpenRouter and $11 on a search API.<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Henry Towbin 2026
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/henry-towbin">
+<p>LinkedIn</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://github.com/whtowbin">
+<p>Github</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

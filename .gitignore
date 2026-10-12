@@ -2,9 +2,5 @@
 
 **/*.quarto_ipynb
 
-# Mercury posts held back until after the big update; remove these lines to publish
+# Old pre-release copies of the Mercury posts; the published ones are in posts/ and notes/
 /_drafts/
-/posts/2026-mercury-coding-agent/
-/notes/
-/docs/posts/2026-mercury-coding-agent/
-/docs/notes/
