@@ -4,3 +4,9 @@
 
 # Old pre-release copies of the Mercury posts; the published ones are in posts/ and notes/
 /_drafts/
+
+# Post 2 held back until it is published; remove these lines to publish
+/posts/2026-take-the-work-away/
+/notes/2026-take-the-work-away-supplement/
+/docs/posts/2026-take-the-work-away/
+/docs/notes/2026-take-the-work-away-supplement/
