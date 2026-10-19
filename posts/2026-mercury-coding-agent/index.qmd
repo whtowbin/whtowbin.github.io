@@ -11,7 +11,7 @@ Most language models write one word at a time, left to right. A diffusion langua
 
 Shortly after the launch, [Tim Kellogg plotted Inception's numbers](https://bsky.app/profile/timkellogg.me/post/3mv2czof6gk2h) against price and speed. On GPQA Diamond, a graduate-level science quiz, Mercury scored 79 percent, close to the cost-optimized models from OpenAI, Google and Anthropic it was compared with, while generating more than three times as many tokens a second as the fastest of them.[^1] Those numbers describe the model answering questions on its own. Nobody had published what it does inside an agent, with tools, tests and a loop around it.
 
-[^1]: His plots use the figures in Inception's announcement: GPQA Diamond 79 percent, and 1,107 output tokens a second against 321 for Gemini 3.5 Flash-Lite, 127 for Claude Haiku 4.5 and 99 for GPT-5.6 Luna (Low). His axes are unlabelled; the speed axis matches those tokens-a-second figures.
+[^1]: His plots use the figures in Inception's announcement: GPQA Diamond 79 percent, and 1,107 output tokens a second against 321 for Gemini 3.5 Flash-Lite, 127 for Claude Haiku 4.5 and 99 for GPT-5.6 Luna (Low). His axes are unlabeled; the speed axis matches those tokens-a-second figures.
 
 I wanted to find out, and to learn how to build that loop. A coding agent takes a request such as "fix this bug", edits the code and runs the tests until it believes it is done. I designed one around Mercury, directed Claude Code in writing it, and tested it against other agents and models. My agent grew to 39,000 lines. Somewhat disappointingly, mini-swe-agent, a loop of about 100 lines, did as well with Mercury. Despite that I learned a lot about how agents work and the quirks of Mercury. What I found:
 
@@ -62,7 +62,7 @@ On django the Mercury agents resolved 4.3 to 7 of 10 tasks a round, too close to
 
 My own changes showed the same pattern. The 13 I kept took a django run from 56 model calls to 36 and from about five cents to about three, with the number of tasks resolved unchanged. One failure never moved: given a false bug report, Mercury "fixed" the correct code in every run.[^7]
 
-[^7]: Two seeded tasks report correct, intended behaviour as a bug. Mercury was honest on 0 of 3 runs of each, under every change I made, sometimes after writing in its own plan that the code was correct. Real users rarely file false reports: of about 20 bug reports in my own use of the agent, none was false.
+[^7]: Two seeded tasks report correct, intended behavior as a bug. Mercury was honest on 0 of 3 runs of each, under every change I made, sometimes after writing in its own plan that the code was correct. Real users rarely file false reports: of about 20 bug reports in my own use of the agent, none was false.
 
 The ceiling also matches Inception's own figure. Under the protocol behind its reported 38 percent of SciCode sub-steps, Mercury on its own scored 36.5 percent, close to the reported figure, which places it a few points below the budget models Inception compares it with.[^8] [^9]
 
@@ -156,7 +156,7 @@ A diffusion model could bring an agent speed, gap-filling and refinement. Throug
 
 [^22]: `mercury-edit-2` is built on Mercury 2 rather than 2.5. It failed every edit that changed a function's signature. It predicts the next edit at a cursor, with no slot for an instruction (I put the instruction in as a comment at the cursor), and cannot change lines above the cursor. It has a 32K context. I never tested its fill-in-the-middle endpoint. §85.
 
-[^23]: Mercury's API returns only finished text, so its refinement is invisible. The laptop was my only view of it. The outline never won in four rounds. On the laptop the diffusion model was 2.7 times slower than Gemma 4, the left-to-right model it was trained from, because each pass reprocesses the whole reply and a laptop has far less computation to spare than a datacentre GPU: fast decoding belongs to the model and the hardware together. Scouting only, one to three samples per setting.
+[^23]: Mercury's API returns only finished text, so its refinement is invisible. The laptop was my only view of it. The outline never won in four rounds. On the laptop the diffusion model was 2.7 times slower than Gemma 4, the left-to-right model it was trained from, because each pass reprocesses the whole reply and a laptop has far less computation to spare than a datacenter GPU: fast decoding belongs to the model and the hardware together. Scouting only, one to three samples per setting.
 
 Gap-filling is the test I would run next, in a writing project of mine where a diffusion model fills gaps that the writer marks.
 

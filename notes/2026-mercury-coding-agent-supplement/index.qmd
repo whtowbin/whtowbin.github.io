@@ -122,7 +122,7 @@ Could come from any cheap model:
   </tr>
   <tr style="border-style: none;background-color: transparent;">
     <td class="gt_row gt_left" style="border-style: none;padding-top: 5px;padding-bottom: 5px;padding-left: 5px;padding-right: 5px;margin: 10px;border-top-style: solid;border-top-width: 1px;border-top-color: #e6e5e0;border-left-style: none;border-left-width: 1px;border-left-color: #D3D3D3;border-right-style: none;border-right-width: 1px;border-right-color: #D3D3D3;vertical-align: middle;overflow-x: hidden;text-align: left;color: #0b0b0b;font-weight: bold">Reference notes unused</td>
-    <td class="gt_row gt_left" style="border-style: none;padding-top: 5px;padding-bottom: 5px;padding-left: 5px;padding-right: 5px;margin: 10px;border-top-style: solid;border-top-width: 1px;border-top-color: #e6e5e0;border-left-style: none;border-left-width: 1px;border-left-color: #D3D3D3;border-right-style: none;border-right-width: 1px;border-right-color: #D3D3D3;vertical-align: middle;overflow-x: hidden;text-align: left;color: #52514e;font-size: 12px">The tool for reading the reference notes written for the model was called once, while its catalogue rode on every call</td>
+    <td class="gt_row gt_left" style="border-style: none;padding-top: 5px;padding-bottom: 5px;padding-left: 5px;padding-right: 5px;margin: 10px;border-top-style: solid;border-top-width: 1px;border-top-color: #e6e5e0;border-left-style: none;border-left-width: 1px;border-left-color: #D3D3D3;border-right-style: none;border-right-width: 1px;border-right-color: #D3D3D3;vertical-align: middle;overflow-x: hidden;text-align: left;color: #52514e;font-size: 12px">The tool for reading the reference notes written for the model was called once, while its catalog rode on every call</td>
     <td class="gt_row gt_left" style="border-style: none;padding-top: 5px;padding-bottom: 5px;padding-left: 5px;padding-right: 5px;margin: 10px;border-top-style: solid;border-top-width: 1px;border-top-color: #e6e5e0;border-left-style: none;border-left-width: 1px;border-left-color: #D3D3D3;border-right-style: none;border-right-width: 1px;border-right-color: #D3D3D3;vertical-align: middle;overflow-x: hidden;text-align: left;">1 read in 59,338 executor calls, ~420 tokens a call</td>
     <td class="gt_row gt_left" style="border-style: none;padding-top: 5px;padding-bottom: 5px;padding-left: 5px;padding-right: 5px;margin: 10px;border-top-style: solid;border-top-width: 1px;border-top-color: #e6e5e0;border-left-style: none;border-left-width: 1px;border-left-color: #D3D3D3;border-right-style: none;border-right-width: 1px;border-right-color: #D3D3D3;vertical-align: middle;overflow-x: hidden;text-align: left;">§113</td>
   </tr>
@@ -395,7 +395,7 @@ Every run had review on, which is now off by default (§124.10).
 ```
 <!-- /gt:agents -->
 
-Mean ± SE over rounds; a dash means the agent was not run on that suite. Mercury costs are at its launch price, and Goose and Codex are priced with their cached input (§122). Codex's SciCode score reflects behaviour rather than ability: it printed code and wrote no file in 11 of 15 problems.
+Mean ± SE over rounds; a dash means the agent was not run on that suite. Mercury costs are at its launch price, and Goose and Codex are priced with their cached input (§122). Codex's SciCode score reflects behavior rather than ability: it printed code and wrote no file in 11 of 15 problems.
 
 ## django, every configuration
 
