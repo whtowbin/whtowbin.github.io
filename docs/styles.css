@@ -1,1 +1,12 @@
 /* css styles */
+
+/* A table wider than a phone scrolls sideways inside the text column instead of widening the page. */
+@media (max-width: 600px) {
+  main table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* A tall figure marked .float-fig sits beside the text on a wide screen instead of breaking the page. */
+@media (min-width: 992px) {
+  .float-fig { float: right; width: 46%; margin: 0.25rem 0 1rem 1.5rem; }
+  .float-fig figure, .float-fig .quarto-figure { margin: 0; }
+}

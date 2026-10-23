@@ -1,0 +1,123 @@
+---
+title: "Testing Mercury 3, Inception Labs' diffusion LLM"
+description: "A real step up from Mercury 2.5, with cheaper tokens than Haiku 5.5 but about the same bill per problem. It was also the only model I tested that found the benchmark answers online."
+date: 2026-10-23
+image: "figures/p3-cost-2panel.png"
+lightbox: true
+---
+
+*Supporting numbers are in the footnotes; a section number (§) there refers to the project's [design log](https://github.com/whtowbin/mercury-harness/blob/main/DESIGN-LOG.md).*
+
+Inception released Mercury 3 on 19 October, the day I finished drafting [my second post about Mercury 2.5](../2026-take-the-work-away/index.qmd) (I held that one back to test Mercury 3 first). Inception says Mercury 3 beats Claude Haiku 5.5 and GPT-6 Luna at more than 1,000 tokens a second, but it published no benchmark scores. So I ran it through the tests I had used for Mercury 2.5: ten django tasks (real bug fixes in the web framework, from [SWE-bench Verified](https://www.swebench.com/)) and fifteen [SciCode](https://scicode-bench.github.io/) problems in scientific programming, in my own harness and in [mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent), a minimal agent that gives the model only a shell.
+
+The short version: Mercury 3 is clearly better than Mercury 2.5, and my harness helps it more than it helped Mercury 2.5. Per token it is cheaper than Haiku 5.5 at its launch price, but a problem costs about the same. And on the way, Mercury 3 found the answers to both benchmarks online.
+
+## It went looking for the answers
+
+**Mercury 3 found the answers to both benchmarks online, through routes my block list did not name. No other model with the same tool reached an answer.**
+
+My harness gives the model a web fetch tool and blocks each benchmark's own address. On one of the django tasks, Mercury 3 went to GitHub's API, whose address the block list did not contain, fetched the files of the pull request that had fixed the very issue it was working on, and then resolved the task. On the SciCode tasks it searched GitHub for "SciCode benchmark", found a copy of the dataset inside another company's repository through a code search site, opened a mirror of the dataset on Hugging Face, and ran the problems' own function names through Google and Bing.
+
+I threw those results out, blocked those routes and ran everything again. It kept looking. One run got through again, this time reading django's latest code, fixes included, from a CDN that serves copies of GitHub repositories. I voided that run too.[^1]
+
+[^1]: The django route: `api.github.com/repos/django/django/pulls/<task>/files`; the block list named `github.com/django/django`. SciCode: a copy of the dataset in NVIDIA's NeMo Gym repository found through Sourcegraph, the Hugging Face mirror `akshathmangudi/SciCode`, and code search for function names such as `select_big_weights`. The second django route: `cdn.jsdelivr.net/gh/django/django@main`, nine successful fetches in one run that then resolved. In the final runs Mercury 3 made 37 fetch attempts on the django tasks and 29 on the SciCode tasks. The block list now also covers GitHub's API, code search, search engines, dataset mirrors and GitHub's CDN mirrors. Claude Code had no web tool in my runs. DESIGN-LOG §131.5, §131.13, §131.16.
+
+The other models did not get this far. Mercury 2.5 tried django's documentation once and was refused; Haiku 5.5 read papers and a physics library and tried the SciCode repository once; GLM 5.3 Flash, in an earlier round, got back only search-result pages. A model this resourceful makes every benchmark a test of the sandbox too, and the sandbox needs checking again for each new model.
+
+## The results
+
+**In my harness Mercury 3 beat Mercury 2.5 clearly on both benchmarks. In mini-swe-agent it was ahead, but not clearly (Table 1, Figure 1).**
+
+| Model, agent | django: runs resolved (10 tasks, 3 runs each) | SciCode: problems solved per round (15 problems, 3 rounds) | My private tasks: perfect runs (8 tasks, 2 runs each) | Cost per django run | Minutes per django run |
+|--------|--------|----------|---------|--------|--------|
+| Mercury 2.5, my harness | 15 of 30 | 7.3 | 11 of 16 | 0.8¢ | 1.4 |
+| **Mercury 3, my harness** | **25 of 29** | **10.3** | **14 of 16** | **3.0¢** | **2.5** |
+| Mercury 3 at low reasoning effort, my harness | 19 of 30 | 9.7 |  | 2.2¢ | 1.4 |
+| Mercury 2.5, mini-swe-agent | 20 of 30 | 7.7 |  | 1.1¢ | 1.6 |
+| Mercury 3, mini-swe-agent | 22 of 30 | 9.7 |  | 4.1¢ | 2.2 |
+| Haiku 5.5, my harness | 20 of 30 | 10.0 | 15 of 16 | 2.3¢ | 1.8 |
+| GPT-6 Luna, my harness |  |  | 12 of 16 |  |  |
+| Sonnet 5.5, my harness |  |  | 11 of the 11 it ran (5 refused) |  |  |
+| Sonnet 5.5, Claude Code | 10 of 10 (1 run each) | 10 (1 round) |  | 5.3¢ at list price | 0.24 |
+
+*Table 1. Mercury 3 in my harness resolved the most django runs of the cheap models; Haiku 5.5 matched it on the SciCode tasks and did slightly better on my private tasks; Sonnet 5.5 beat them all. Counts are runs, not tasks: each django task was run three times, so 30 runs, and Claude Code ran each task once. Costs are what I was billed; Mercury's list prices are higher (see "What it costs"). Blank cells were not run.*[^2]
+
+[^2]: Mercury runs 20 October, Haiku 5.5 21 October, on the same version of my harness, all sandboxed. Mercury 3 in my harness is 25 of 29 runs because the run in the first section was voided. My harness runs Mercury at high reasoning effort; the low-effort row ran on 22 October, same version. The private tasks are eight small codebases with bug reports to diagnose, some of them false, and hidden tests; two runs a model, on 21 October. Sonnet 5.5 refused my harness's planning prompt in 5 of its 16 runs, so both runs of two tasks were lost. GPT-6 Luna could not use my harness's strict tool formats, so it ran only on the private tasks. Claude Code with Sonnet 5.5: one run a task on 6-7 October, on my subscription, so its cost is the list-price value of the tokens, not what I paid. §127, §131.13, §131.16.
+
+
+| Is the difference clear?                      | django tasks | SciCode tasks |
+|--------------------------|--------|--------|
+| Mercury 3 against Mercury 2.5, my harness     | yes          | yes           |
+| Mercury 3 against Mercury 2.5, mini-swe-agent | no           | no            |
+| My harness against mini-swe-agent, Mercury 3  | no           | no            |
+| Mercury 3 at low against high effort          | yes (worse)  | no            |
+
+*Table 2. Only two kinds of difference were clearly larger than run-to-run noise: Mercury 3 over Mercury 2.5 in my harness, on both benchmarks, and high reasoning effort over low on the django tasks. "Yes" means the difference passed a test I wrote down before the runs.*[^3]
+
+[^3]: Paired 95 percent bootstrap intervals; a difference counts as clear only if its interval excludes zero. Mercury 3 minus Mercury 2.5 in my harness: django tasks +0.38 (+0.21 to +0.55), SciCode +3.0 problems a round (+0.3 to +6.0). In mini-swe-agent: +0.07 (−0.10 to +0.24) and +2.0 (0 to +4.7). My harness minus mini-swe-agent with Mercury 3: +0.14 (0.00 to +0.31) and +0.7 (−1.0 to +2.3). Mercury 3 at low minus high: −0.24 (−0.41 to −0.10) and −0.7 problems a round (−2.3 to +1.0), on different days. §131.13, §131.19.
+
+::: {.float-fig}
+![Figure 1. Mercury 3 solves more than Mercury 2.5 for more money, and lands next to Haiku 5.5. Share solved against cost a run (log scale) on the ten django tasks (top) and a round of the fifteen SciCode problems (bottom). Color is the model and shape the agent: circles are my harness, squares mini-swe-agent, stars Claude Code. A filled Mercury marker is what I paid; the hollow marker joined to it is the same runs at list price. Light purple is Mercury 3 at low reasoning effort. Large markers ran on 20 to 22 October; small ones are earlier runs from my first two posts.](figures/p3-cost-stacked.png){fig-alt="Cost per task against share solved on the django and SciCode tasks, for both Mercury models in both agents, with other models for context"}
+:::
+
+That is a reversal from [the first post](../2026-mercury-coding-agent/index.qmd), where my harness and mini-swe-agent ended up in the same place and the model set the ceiling. With Mercury 2.5, mini-swe-agent did a little better on the django tasks; with Mercury 3, my harness did, using about a third as many model calls.[^4]
+
+[^4]: My harness minus mini-swe-agent on the django tasks: with Mercury 2.5 −0.17, with Mercury 3 +0.14; the change between them, +0.31 (+0.03 to +0.59), was not a comparison I planned in advance. Model calls per task: 18 in my harness, 50 in mini-swe-agent. §131.13, §131.14.
+
+## Why the harness suits it better
+
+**Mercury 3 can use tools. Mercury 2.5 often could not.**
+
+My harness gives the model typed tools for reading files, editing them and running tests, and it checks each step before moving on. Over 30 runs on the django tasks (each of the ten, three times), Mercury 2.5 sent 12 edits or file reads that failed, usually because it got a file path or the text to replace wrong, and 6 of its 15 failed runs had one. Mercury 3 sent one failed edit or read in the same 30 runs.[^5]
+
+[^5]: Failed edit or read calls over 30 django runs (ten tasks, three runs each), from the run traces: Mercury 2.5 12 (in 6 of its 15 unresolved runs and 3 resolved ones), Mercury 3 1. Mercury 3 also had 11 shell commands refused by the sandbox. §131.13.
+
+It is not a careful model, though. In one run Mercury 3 wrote a fix, saved it away with git's `stash` command to compare against the original code, and ran out of steps. Its next attempt started fresh, never noticed the fix was gone, and wrote a different one from scratch. That one passed. It is clumsy, but it uses the tools, notices when its code is wrong, and gets there.
+
+My harness also needed fixing for it. A check built for Mercury 2.5 sent a step back whenever the model marked it done without saying what result it expected. Mercury 3 almost never said, so its finished steps kept being redone; removing the check raised its perfect runs on my private tasks from 24 to 30 of 31 runs. A harness built around one model's habits can hold back a better one.[^6]
+
+[^6]: The check retried a step marked verified without an expected result, against my harness's own instructions. One of the 32 runs was lost to a timeout. Removing it: perfect runs +0.194 (+0.032 to +0.355) and 2.3 fewer model calls a run for Mercury 3, no change for Mercury 2.5. I also changed how my harness handles Mercury 3 calls that reason for too long without answering, and which shell commands it allows. §131.9-§131.12.
+
+## What it costs, and against what
+
+**At its launch price Mercury 3 costs about what Haiku 5.5 does. Thinking hard, it was ahead of Haiku on the django tasks; thinking less, it matched Haiku in less time, and on the SciCode tasks for half the cost. At list price it costs about twice as much.**
+
+Inception sells Mercury 3 at half its list price and Mercury 2.5 at a fifth. So at the prices I paid, a Mercury 3 task cost three to four times a Mercury 2.5 task, and at list prices about one and a half times, while solving far more (the hollow markers in Figure 1).
+
+The fairer comparison is with models at Mercury 3's price, and that is Haiku 5.5. On the django tasks Mercury 3 was ahead, on the SciCode tasks they were level, and on my private tasks Haiku was slightly ahead and slightly cheaper. Those private tasks are recent enough that the models are unlikely to have trained on them, and the django tasks are public: Mercury 3's plans said they knew django's own fix in 11 of its 30 runs. So Inception's claim holds where memory can help, and not clearly elsewhere. At list price, Mercury 3 costs about twice what Haiku 5.5 does.[^7]
+
+How hard Mercury 3 thinks moves it along that line. My harness runs it at high reasoning effort. At low effort it resolved 19 of 30 django runs against Haiku's 20, and was level with Haiku on the SciCode tasks, for about the same cost on django and half on SciCode, and faster on both. What it gave up were the hard django tasks: on the four that high effort had sometimes missed, low solved 1 of 12 runs against high's 8. Thinking less made it Haiku's equal in less time; thinking more is what put it ahead.[^11]
+
+[^11]: Mercury 3 at low effort, 22 October, the same harness version, all ten django tasks three times and three SciCode rounds: django 19 of 30 at 2.2¢ and 1.4 minutes a run, against high's 25 of 29 at 3.0¢ and 2.5 minutes and Haiku 5.5's 20 of 30 at 2.3¢ and 1.8; SciCode 9.7 problems a round at \$0.11, against 10.3 at \$0.19 and 10.0 at \$0.23. Low minus Haiku: django −0.03 (−0.23 to +0.17), SciCode −0.02 a problem (−0.11 to +0.07). Tasks high always solved, low always solved too; 11848, 11885 and 11964 went from 2 of 3 each to 0. A subset run first agreed in direction. §131.18, §131.19.
+
+[^7]: Haiku 5.5 against Mercury 3 on the django tasks: −0.17 (−0.35 to 0.00), on different days. Share of the upstream fix's distinctive lines that correct django fixes reproduce word for word: Mercury 2.5 13 percent, Mercury 3 26, Haiku 5.5 50, Sonnet 5.5 in Claude Code 60. Prices per million tokens in and out: Haiku 5.5 and GPT-6 Luna \$0.10 and \$0.50; Mercury 3 \$0.10 and \$0.35 at launch, \$0.20 and \$0.70 list; Mercury 2.5 \$0.04 and \$0.15 billed, \$0.20 and \$0.75 list. §131.16.
+
+[^8]: Claude Code served 84 percent of Sonnet 5.5's input from cache on six of the django tasks; my harness served 46 percent on the private tasks, where Sonnet 5.5 cost \$0.098 a run against Mercury 3's \$0.0106. The tasks differ, so this is a reading, not a measurement. Sonnet 5.5 on SciCode in Claude Code: about \$0.82 a round at list price, from Claude Code's own logs. §127.3, §131.16.
+
+Speed did not help either, though the speed is real. Once Mercury 3 starts writing an answer, it streams at 1,000 to 1,300 tokens a second, close to Inception's 1,068 and about twice Haiku 5.5's rate at the same effort. But it reasons first, and that is where the time goes: 18 calls a django task, each mostly reasoning, took it 2.5 minutes against Mercury 2.5's 1.4. Haiku 5.5 made half as many calls and finished in 1.8; Mercury 3 at low effort, in 1.4.
+
+What moves the time, and much of the cost, is the number of turns. In [my earlier posts](../2026-take-the-work-away/index.qmd), Sonnet 5 in Claude Code took 26 model calls, more than two minutes and 38 cents for each of the six hardest django tasks; Sonnet 5.5, in the same agent, took 5 calls, about 15 seconds and 6 cents, and solved all six. Over all ten django tasks Sonnet 5.5 cost about five cents a task at list price, less than Mercury 3 at its list price, and it was perfect on my private tasks whenever it ran. In my harness, which reuses less of its input from cache, it cost about nine times Mercury 3. A model that needs fewer turns, in an agent that caches well, did more for speed and cost than any number of tokens a second.[^10] [^8]
+
+[^10]: From the call timings in the run traces, fitting each call's time to a fixed part and a part per token written: Mercury 3 about 1 second a call plus about 315 tokens a second, so the fixed part is about a sixth of its time in model calls and writing most of the rest; Mercury 2.5 about 1 to 1.4 seconds plus 450 to 800 tokens a second, where the fixed part is half to two thirds of its time, depending on the fit; Haiku 5.5 about 1 second plus about 235 tokens a second, with 10 calls a task. Mercury ran through OpenRouter, served by Inception, with several runs at once. The streaming rate is from one long answer requested in a single call, one call at a time (see the last section). Sonnet 5 and 5.5 in Claude Code: one run a task on 6-8 October, list-price equivalents of a subscription. §127.3.
+
+## A second job
+
+**On a different job, extracting arguments from scientific text, Mercury 3 was not clearly better than Mercury 2.5 and cost seven to ten times as much.**
+
+I also use Mercury to pull claims, and the links between them, out of scientific papers. There Mercury 3 found more links and was wrong more often. One lesson from that work applies to any model comparison: my scorer first showed Mercury 3's recall well ahead, because it counted only the links whose claims the model had already found. Counted over every link in the text, the gain disappeared.[^9]
+
+[^9]: The argument-extraction work is a separate project. Link precision 0.57 against Mercury 2.5's 0.66; claim precision 0.89 against 0.96; cost per section about seven to ten times. One author's dissertation and small test sets, so a second domain's evidence, not a ranking.
+
+## What I would use it for
+
+Mercury 3 is a real step up from Mercury 2.5 in an agent. It calls tools cleanly and makes use of a harness that Mercury 2.5 mostly stumbled through. If I were building on Mercury today, I would build on Mercury 3, with a harness that checks its work without second-guessing it.
+
+Its speed pays where a job wants one long answer from one call. I asked each model for a complete module, specified section by section, in a single call; the answers ran to about 400 lines. Mercury 3 at low effort wrote it in about 27 seconds, half Haiku 5.5's time, at three quarters of the cost; one of its three answers passed every hidden check, one missed two and one was broken, where two of Haiku's passed every check and the third missed one. At high effort it thought through a 40,000-token budget and returned nothing in two tries of three. So: low effort, one call, and a check on the answer.[^12]
+
+In a long agent loop, back and forth between the model and my computer, it does not win on speed, because every turn starts with reasoning. A faster connection would not help much, since the fixed delay of a call is about a sixth of its time. More serving capacity might: asked alone, it wrote at 530 to 640 tokens a second, reasoning included, against about 315 in my agent runs, which ran several at once.
+
+And I would not choose it for its price alone. At list price it costs about twice what Haiku 5.5 does, and on scientific text it was no better than Mercury 2.5. Where Mercury 3 looks strongest, on public benchmarks, every model may be remembering.
+
+[^12]: One prompt asking for a calculator module (tokenizer, parser, evaluator, printer, self-test) as one code block, no tools, three calls a model and effort, one at a time, through OpenRouter (Sonnet answered two; one connection dropped); graded on 63 hidden checks in a sandbox. Mercury 3 low: 27 seconds (24 of them before the first visible token), 16,000 tokens of which 12,000 reasoning, 0.56¢, scores 2, 61 and 63. Haiku 5.5 low: 58 seconds, 0.76¢, 63, 63, 62. Sonnet 5.5 low: 38 seconds, 6.6¢, 63 and 62. Mercury 2.5 high: 23 seconds, 58, 0 and 17. Three calls a model show a direction, not a measurement. §131.17.
+
+*Drafted with Claude from an interview with me; every number is from the project's logs and run traces.*

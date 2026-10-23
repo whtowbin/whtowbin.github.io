@@ -5,7 +5,7 @@ date: 2026-10-10
 image: "figures/x3-scicode-cost-vs-solved.png"
 ---
 
-*Supporting numbers are in the footnotes; a section number (§) there refers to the project's [design log](https://github.com/whtowbin/mercury-harness/blob/main/DESIGN-LOG.md). The full tables are in [the supplement](../../notes/2026-mercury-coding-agent-supplement/index.qmd).*
+*The companion to [What my harness could and couldn't do for Mercury 2.5](../2026-take-the-work-away/index.qmd). Supporting numbers are in the footnotes; a section number (§) there refers to the project's [design log](https://github.com/whtowbin/mercury-harness/blob/main/DESIGN-LOG.md). The full tables are in [the supplement](../../notes/2026-mercury-coding-agent-supplement/index.qmd).*
 
 Most language models write one word at a time, left to right. A diffusion language model borrows its method from image generators such as Stable Diffusion, which start from random noise and sharpen the whole picture over a series of steps. In text, the model starts from a reply of placeholder tokens and refines every position at once, over a handful of passes. Inception's Mercury 2.5 is one of these, and its appeal is speed and price: it decodes at around a thousand tokens a second and, at its launch price, costs \$0.04 per million tokens in and \$0.15 out, a small fraction of what the well-known models charge.
 
@@ -58,7 +58,11 @@ On django the Mercury agents resolved 4.3 to 7 of 10 tasks a round, too close to
 
 [^5]: Three runs a task: django 17, 17, 18, 17 and 17 of 30 for my harness, my harness without review, my harness with GLM, mini-swe-agent and Goose. No arm separates. GLM was level on django but separated on SciCode (+2.7 problems) and on the seeded tasks (+0.086 accuracy, +0.166 honest), where it passed the false-report tasks Mercury never has. §126.
 
-[^6]: Routes: django's full history in every workspace, other tasks' workspaces at later commits, a readable answer key, and a shared workspace whose reset let the fix reach three arms on one task. Voided: mini-swe-agent with Mercury 3, with GLM 3, Codex 2, Goose 2, Aider with GLM 1; none for my harness, whose file tools cannot leave the workspace, which was luck as much as design. §118.
+[^6]: Routes: django's full history in every workspace, other tasks' workspaces at later commits, a readable answer key, and a shared workspace whose reset let the fix reach three arms on one task. Voided: mini-swe-agent with Mercury, 3; with GLM, 3; Codex 2, Goose 2, Aider with GLM 1; none for my harness, whose file tools cannot leave the workspace, which was luck as much as design. §118.
+
+**Postscript, added after benchmarking Mercury 3.** The wins voided above came from files the agents could read on disk. These runs could also reach the web, and the addresses I blocked named only each benchmark's own site. Checked again against a wider list, GLM had searched for the answers. In the two SciCode rounds behind Figure 1, it sent problems' own function names to Bing, DuckDuckGo and Google in twelve runs. What came back was search-results pages, never a file from the benchmark, and the traces record how much text came back, not the text itself. Three of its twenty solved problems came after such a search. My harness with Mercury solved two of them in every sealed round. The third, problem 7, it never solved. So GLM's lead on SciCode, here and in note 5, may be slightly overstated, and I cannot tell by how much. Mercury 2.5 never fetched a page. Mercury 3 did reach copies of the answers, by routes the list did not cover. That is the next post. The list now also blocks code search, search engines, dataset mirrors and GitHub's CDN mirrors.[^ps]
+
+[^ps]: GLM in my harness, SciCode, round 1: problems 10, 4 and 7 searched with text returned, 4 and 7 solved; round 2: 10 and 6, 6 solved. Every page that returned text was a Bing, DuckDuckGo or Google results page (up to about 5,000 characters). The sealed rounds of note 5 show the same searches (302 fetches, 13 runs with text, all results pages). §109.5, §126, §131.5.
 
 My own changes showed the same pattern. The 13 I kept took a django run from 56 model calls to 36 and from about five cents to about three, with the number of tasks resolved unchanged. One failure never moved: given a false bug report, Mercury "fixed" the correct code in every run.[^7]
 
