@@ -24,18 +24,8 @@
   --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   --measure: 70ch;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --paper: #141714; --ink: #e2e7df; --muted: #9ba699; --rule: #2c332d;
-    --accent: #a9c45e; --accent-soft: #263018; --plate: #f2f4ee; --callout: #1c2219;
-  }
-}
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --paper: #141714; --ink: #e2e7df; --muted: #9ba699; --rule: #2c332d;
-  --accent: #a9c45e; --accent-soft: #263018; --plate: #f2f4ee; --callout: #1c2219;
-}
+/* Light only, by choice (Henry, 2026-11-01): the figures are drawn on white. */
+:root { color-scheme: light; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
