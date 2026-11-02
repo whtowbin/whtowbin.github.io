@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Appendix A — Diffusion model and fits – Sullivan Ranch: xenolith H2O, magma ascent and degassing</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../appendices26/b-melt-inclusions.html" rel="next">
+<link href="../chapters26/10-open.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendices26/a-diffusion.html">Appendices</a></li><li class="breadcrumb-item"><a href="../appendices26/a-diffusion.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Diffusion model and fits</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Sullivan Ranch: xenolith H2O, magma ascent and degassing</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Summary for co-authors</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/01-changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What changed since the thesis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/02-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/03-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Samples and methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Results</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/04-results-nams.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Results: water in olivine, cpx and opx</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/05-results-mi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Results: melt inclusions and the starting melt</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Discussion: the stages of ascent</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/06-stage3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Stage III: after eruption</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/07-stage2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Stage II: final ascent in degassing magma</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/08-stage1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Stage I: ascent in water-undersaturated magma</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/09-stage0-implications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Stage 0 and implications</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/10-open.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Open questions for co-authors</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/a-diffusion.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Diffusion model and fits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/b-melt-inclusions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Melt-inclusion methods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/c-degassing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Degassing models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/d-data-quality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data quality</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/e-decisions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Decisions, crosswalk and reproducibility</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/f-thesis-figures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Chapter 3 figures, deposited and recompiled</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-app-diffusion-model" id="toc-sec-app-diffusion-model" class="nav-link active" data-scroll-target="#sec-app-diffusion-model"><span class="header-section-number">A.1</span> The decompression model</a></li>
+  <li><a href="#sec-app-diffusion-posterior" id="toc-sec-app-diffusion-posterior" class="nav-link" data-scroll-target="#sec-app-diffusion-posterior"><span class="header-section-number">A.2</span> Grid posterior, data and priors</a></li>
+  <li><a href="#sec-app-diffusion-sigma" id="toc-sec-app-diffusion-sigma" class="nav-link" data-scroll-target="#sec-app-diffusion-sigma"><span class="header-section-number">A.3</span> Fixed uncertainty per profile</a></li>
+  <li><a href="#sec-app-diffusion-warp" id="toc-sec-app-diffusion-warp" class="nav-link" data-scroll-target="#sec-app-diffusion-warp"><span class="header-section-number">A.4</span> Variable temperature: the warped pressure</a></li>
+  <li><a href="#sec-app-diffusion-olivine" id="toc-sec-app-diffusion-olivine" class="nav-link" data-scroll-target="#sec-app-diffusion-olivine"><span class="header-section-number">A.5</span> Olivine diffusivity</a></li>
+  <li><a href="#sec-app-diffusion-olivine-k" id="toc-sec-app-diffusion-olivine-k" class="nav-link" data-scroll-target="#sec-app-diffusion-olivine-k"><span class="header-section-number">A.6</span> Olivine/melt partitioning</a></li>
+  <li><a href="#sec-app-diffusion-pyroxene" id="toc-sec-app-diffusion-pyroxene" class="nav-link" data-scroll-target="#sec-app-diffusion-pyroxene"><span class="header-section-number">A.7</span> Pyroxene diffusivities and partitioning</a></li>
+  <li><a href="#sec-app-diffusion-edges" id="toc-sec-app-diffusion-edges" class="nav-link" data-scroll-target="#sec-app-diffusion-edges"><span class="header-section-number">A.8</span> Olivine edge tests</a></li>
+  <li><a href="#sec-app-diffusion-stalls" id="toc-sec-app-diffusion-stalls" class="nav-link" data-scroll-target="#sec-app-diffusion-stalls"><span class="header-section-number">A.9</span> Stall and post-eruptive tests</a></li>
+  <li><a href="#sec-app-diffusion-femg" id="toc-sec-app-diffusion-femg" class="nav-link" data-scroll-target="#sec-app-diffusion-femg"><span class="header-section-number">A.10</span> Fe–Mg residence of Ol-2</a></li>
+  <li><a href="#sec-app-diffusion-exchange" id="toc-sec-app-diffusion-exchange" class="nav-link" data-scroll-target="#sec-app-diffusion-exchange"><span class="header-section-number">A.11</span> Xenolith exchange: supporting tables</a></li>
+  <li><a href="#sec-app-diffusion-code" id="toc-sec-app-diffusion-code" class="nav-link" data-scroll-target="#sec-app-diffusion-code"><span class="header-section-number">A.12</span> Code and checks</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendices26/a-diffusion.html">Appendices</a></li><li class="breadcrumb-item"><a href="../appendices26/a-diffusion.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Diffusion model and fits</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-app-diffusion" class="quarto-section-identifier">Appendix A — Diffusion model and fits</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This appendix holds the method detail behind the decompression rates: the diffusion model and its Bayesian fit, the data and priors, the choice of a fixed uncertainty per profile, the warped-pressure treatment of a falling temperature, the diffusivity laws and partition coefficients, the edge and stall tests, and the supporting tables for the Fe–Mg residence of Ol-2 and for the xenolith exchange fits. The rates themselves are in <a href="../chapters26/07-stage2.html" class="quarto-xref"><span>Chapter 8</span></a>. The primary start for every fit is the published MiMiC melt (3.549 wt% H2O, 8,529 ppm CO2; saturation 682 MPa); the CO2/Nb start (SR-1, 3.59 wt% H2O, 14,100 ppm CO2) is the second scenario. Tables below that were computed before the change of primary start are marked as CO2/Nb-start tables.</p>
+<section id="sec-app-diffusion-model" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="sec-app-diffusion-model"><span class="header-section-number">A.1</span> The decompression model</h2>
+<p>The model is the one used in the 2023 MATLAB fits, ported to Python (<code>~/Projects/H2O_Diffusion_NAM/decompression/</code>) and reproduced to ≤ 1e-14 relative. Pressure falls linearly, <span class="math inline">\(P(t) = P_0 - v t\)</span>, over a total time <span class="math inline">\(t_\mathrm{tot} = (P_0 - P_f)/v\)</span>. The crystal is a one-dimensional slab of half-width L with a no-flux center and a rim held in equilibrium with the degassing melt:</p>
+<p><span id="eq-app-pde"><span class="math display">\[
+\frac{\partial C}{\partial t} = D\,\frac{\partial^2 C}{\partial x^2},\qquad
+\left.\frac{\partial C}{\partial x}\right|_{x=0} = 0,\qquad
+C(L,t) = K\,H\big(P(t)\big),\qquad
+C(x,0) = K\,H(P_0)
+\tag{A.1}\]</span></span></p>
+<p>C is H2O in the crystal (ppm), H(P) the melt H2O along the degassing path (wt%, <a href="c-degassing.html" class="quarto-xref"><span>Appendix C</span></a>) and K the mineral/melt partition coefficient in ppm per wt% (10⁴ times the dimensionless D of <a href="c-degassing.html" class="quarto-xref"><span>Appendix C</span></a>). The crystal starts in equilibrium with the melt at P0. That start is justified by the P–T history: from xenolith pickup (about 1.15 GPa) to saturation (923 MPa) the melt H2O is constant, and between saturation and P0 (about 585 MPa) the SR-1 melt loses only 4 % of its H2O, so H in the xenolith minerals and in the phenocryst is free to equilibrate and nothing is lost before P0. The model is a one-dimensional slab; Mutch et al.&nbsp;(2024) show that 1-D fits can underestimate H loss by about 30 % for 3-D crystals.</p>
+<p><strong>Exact property 1: one dimensionless time.</strong> Rescaling <span class="math inline">\(\xi = x/L\)</span> and <span class="math inline">\(s = t/t_\mathrm{tot}\)</span> turns <a href="#eq-app-pde" class="quarto-xref">Equation&nbsp;<span>A.1</span></a> into <span class="math inline">\(\partial C/\partial s = \tau\,\partial^2 C/\partial \xi^2\)</span> with the rim value <span class="math inline">\(K\,H(P_0 - (P_0 - P_f)s)\)</span>, where</p>
+<p><span id="eq-app-tau"><span class="math display">\[
+\tau = \frac{D\,t_\mathrm{tot}}{L^2} = \frac{D\,(P_0 - P_f)}{L^2\,v}.
+\tag{A.2}\]</span></span></p>
+<p>The data constrain τ, not D and v separately, so <span class="math inline">\(v = D(T)(P_0 - P_f)/(\tau L^2)\)</span>, and a change of diffusion law rescales the fitted rate exactly (<span class="math inline">\(v_\mathrm{new} = v_\mathrm{old}\,D_\mathrm{new}/D_\mathrm{old}\)</span>). The discrete scheme is invariant too (≤ 3e-16 relative on all ten 2023 cases). L is not a pure rescaling, because the measured distances are fixed in µm.</p>
+<p><strong>Exact property 2: K only scales the profile.</strong> The problem is linear and homogeneous, and the initial and rim values are proportional to K, so <span class="math inline">\(C(\cdot\,; K) = K\,C(\cdot\,; 1)\)</span>. With data <span class="math inline">\(h_i \pm s_i\)</span> and model <span class="math inline">\(K g_i(\tau, P_0, P_f)\)</span>, a Gaussian prior <span class="math inline">\(K \sim N(\mu_K, s_K^2)\)</span> integrates out in closed form. With <span class="math inline">\(a = \sum g_i^2/s_i^2 + 1/s_K^2\)</span> and <span class="math inline">\(b = \sum h_i g_i/s_i^2 + \mu_K/s_K^2\)</span>,</p>
+<p><span id="eq-app-kmarginal"><span class="math display">\[
+\log p(h \mid \tau, P_0, P_f) = -\tfrac12\Big[\sum_i \frac{h_i^2}{s_i^2} + \frac{\mu_K^2}{s_K^2} - \frac{b^2}{a}\Big]
+- \tfrac12\log\!\big(a\,s_K^2\big) - \sum_i \log\!\big(\sqrt{2\pi}\,s_i\big).
+\tag{A.3}\]</span></span></p>
+<p>The closed form matches numerical integration over K to 1e-8. It needs negligible prior mass at K &lt; 0, so K priors wider than about 16 % (1σ) are run as several fits instead.</p>
+</section>
+<section id="sec-app-diffusion-posterior" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="sec-app-diffusion-posterior"><span class="header-section-number">A.2</span> Grid posterior, data and priors</h2>
+<p>Because the dimensionless profile <span class="math inline">\(G(\xi; \tau, P_0, P_f)\)</span> does not depend on the data, it is tabulated once per case and degassing path: 400 values of log τ (from the explicit solver’s floor to 2.5), nodes at the ends of the P0 and Pf prior ranges interpolated onto 15 × 6 cells, and a spatial grid twice as fine as the 2023 one. The priors sit on the physical parameters, and the posterior</p>
+<p><span id="eq-app-posterior"><span class="math display">\[
+p(\log v, \log D, P_0, P_f \mid h) \propto
+\exp \ell\big(\log D + \log(P_0 - P_f) - 2\log L - \log v,\ P_0,\ P_f\big)\; p(\log v)\,p(\log D)\,p(P_0)\,p(P_f)
+\tag{A.4}\]</span></span></p>
+<p>is evaluated on a grid of 350 log v cells (0.02 dex) × 21 log D nodes × the P0 × Pf cells, with the K-marginal log-likelihood ℓ (<a href="#eq-app-kmarginal" class="quarto-xref">Equation&nbsp;<span>A.3</span></a>) interpolated in log τ. It is exact to grid resolution, with no MCMC noise, and replaces the 2023 Monte Carlo of optimizer solutions, whose spread mixed the D prior, the data noise and optimizer stopping error. Validation: table entries equal direct forward runs; log v quantiles move by less than 0.01 dex when the τ and v grids are doubled; and on synthetic profiles drawn from the priors the 68 % and 95 % intervals contain the truth at their nominal rates. Ascent speed is <span class="math inline">\(u = v/(\rho g)\)</span> with ρ = 2800 kg/m³.</p>
+<div id="tbl-app-diffusion-priors" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-diffusion-priors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;A.1: The three profiles that carry the ascent rate and the priors they are fitted with. The olivine rests on four low-concentration analyses, so its rate is set as much by how far the core sits below K times the starting melt H2O as by the profile shape. The rate prior is flat in log v over 10⁻³–10⁴ MPa/s (the code’s range; it has no effect on the results).
+</figcaption>
+<div aria-describedby="tbl-app-diffusion-priors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Olivine Ol-2</th>
+<th>WHT1 exterior opx</th>
+<th>WHT1 exterior cpx</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Profile points, fixed 1σ</td>
+<td>4 points (4.4–7.9 ppm), 0.25 ppm</td>
+<td>6 points, 20 ppm</td>
+<td>10 points, 20 ppm</td>
+</tr>
+<tr class="even">
+<td>Half-width L (µm), distance reference</td>
+<td>145, center</td>
+<td>180, center</td>
+<td>115, rim</td>
+</tr>
+<tr class="odd">
+<td>log10 v prior</td>
+<td>Flat over 10⁻³–10⁴ MPa/s</td>
+<td>same</td>
+<td>same</td>
+</tr>
+<tr class="even">
+<td>log10 D prior</td>
+<td>Ferriss [100] at 1200 ± 20 °C</td>
+<td>Carpenter [001] at T + 20 K to Carpenter [100] at T − 20 K</td>
+<td>10<sup>−6.71</sup> with Ea 100 kJ at T + 20 K to 130 kJ at T − 20 K</td>
+</tr>
+<tr class="odd">
+<td>K (ppm per wt%)</td>
+<td>N(9, 1.35) (6 and 12 as alternatives)</td>
+<td>Three strategies (<a href="#tbl-app-diffusion-k" class="quarto-xref">Table&nbsp;<span>A.5</span></a>)</td>
+<td>Three strategies (<a href="#tbl-app-diffusion-k" class="quarto-xref">Table&nbsp;<span>A.5</span></a>)</td>
+</tr>
+<tr class="even">
+<td>P0</td>
+<td>U(500, 670) MPa</td>
+<td>U(600, 670) MPa</td>
+<td>U(600, 670) MPa</td>
+</tr>
+<tr class="odd">
+<td>Pf</td>
+<td>U(0, 0.5) MPa</td>
+<td>U(0, 0.5) MPa</td>
+<td>U(0, 0.5) MPa</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The olivine case needs a caveat. Its core holds 7.9 ppm against about 32 ppm for K times the starting melt, so Ol-2 has lost about 75 % of its H, and the fitted rate is set largely by how much core loss K = 9 implies. Scaling the olivine data by a factor s is the same as using K/s, so K and the data must be on the same SIMS calibration. They are: the Towbin et al.&nbsp;(2023) K was built by recalibrating the experiments onto the same revised opx scale as the SIMS dataset (<a href="d-data-quality.html" class="quarto-xref"><span>Appendix D</span></a>).</p>
+</section>
+<section id="sec-app-diffusion-sigma" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="sec-app-diffusion-sigma"><span class="header-section-number">A.3</span> Fixed uncertainty per profile</h2>
+<p>The fits use one fixed 1σ per profile (olivine 0.25 ppm, pyroxene 20 ppm), as in 2023. The alternative is a per-point 1σ. Three variants were fitted on the CO2/Nb-start (SR-1) P–T path with only the likelihood σ changed: the fixed σ; the total 1σ of the SIMS dataset per point (calibration, counting and blank scatter; olivine 0.31–0.43, opx 6–16, cpx 19–32 ppm); and the spot-to-spot σ (counting and blank scatter only, about 4 ppm for pyroxene). The calibration term is shared by all points of a profile, so it acts like a K error rather than scatter. The fixed rows reproduce the primary fits exactly (106 of 106 posterior rows). <a href="#tbl-app-diffusion-sigma" class="quarto-xref">Table&nbsp;<span>A.2</span></a> gives the rates and <a href="#tbl-app-diffusion-misfit" class="quarto-xref">Table&nbsp;<span>A.3</span></a> the misfit check.</p>
+<div id="tbl-app-diffusion-sigma" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-diffusion-sigma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;A.2: Replacing the fixed σ by a data-estimated σ with the calibration error moved into K changes every rate by 8 % or less, far inside the 68 % ranges, which do not change. Decompression rate in MPa/s, SR-wide slope family U(46, 120) °C/GPa, CO2/Nb start (SR-1; not rerun from the MiMiC start [CHECK: rerun the sigma variants on the MiMiC path]), median (68 % range).
+</figcaption>
+<div aria-describedby="tbl-app-diffusion-sigma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Profile and K</th>
+<th>Fixed σ (2023, used)</th>
+<th>Total 1σ per point</th>
+<th>Spot-to-spot σ per point</th>
+<th>Data-estimated σ, calibration in K</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ol-2, K = 9</td>
+<td>0.101 (0.059–0.168)</td>
+<td>0.102 (0.060–0.171)</td>
+<td>0.102 (0.059–0.170)</td>
+<td>0.105 (0.061–0.176)</td>
+</tr>
+<tr class="even">
+<td>Opx, core/start 411 ppm</td>
+<td>0.181 (0.084–0.401)</td>
+<td>0.146 (0.069–0.314)</td>
+<td>0.165 (0.078–0.352)</td>
+<td>0.170 (0.081–0.368)</td>
+</tr>
+<tr class="odd">
+<td>Opx, opx-anchored</td>
+<td>0.180 (0.080–0.406)</td>
+<td>0.135 (0.063–0.290)</td>
+<td>0.164 (0.077–0.346)</td>
+<td>0.165 (0.076–0.356)</td>
+</tr>
+<tr class="even">
+<td>Cpx, core/start 390 ppm</td>
+<td>0.611 (0.225–1.643)</td>
+<td>0.679 (0.247–1.846)</td>
+<td>0.500 (0.187–1.330)</td>
+<td>0.583 (0.216–1.562)</td>
+</tr>
+<tr class="odd">
+<td>Cpx, opx-anchored</td>
+<td>0.569 (0.207–1.548)</td>
+<td>0.671 (0.240–1.863)</td>
+<td>0.487 (0.183–1.289)</td>
+<td>0.526 (0.193–1.421)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The total 1σ moves the pyroxene rates by −25 % to +18 % because it scales with concentration (5–9 % of the value) and so reweights the low-H rim points against the cores; that reweighting, not a wider or narrower σ, shifts the rates. A misfit check asks which σ the data support.</p>
+<div id="tbl-app-diffusion-misfit" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-diffusion-misfit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;A.3: The spot-to-spot σ is rejected for both pyroxenes, which scatter 2–4 times more than the analytical error, so the fixed 2023 σ, which is close to the implied scatter for cpx and twice too large for opx, is kept. Minimum χ² over every model shape on the isothermal grid with K free, probability of a χ² at least that large, and the white σ the data imply. The cpx residuals are structured (points 4–6 low by 12–20 ppm, points 8 and 10 high by 17–24 ppm), which suggests real heterogeneity along the profile.
+</figcaption>
+<div aria-describedby="tbl-app-diffusion-misfit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Profile (points, degrees of freedom)</th>
+<th>Fixed σ</th>
+<th>Total 1σ</th>
+<th>Spot-to-spot σ</th>
+<th>σ the data imply</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ol-2 (4, 2)</td>
+<td>χ² 6.0, p = 0.05</td>
+<td>3.2, p = 0.20</td>
+<td>4.0, p = 0.13</td>
+<td>0.43 ppm (fixed 0.25)</td>
+</tr>
+<tr class="even">
+<td>WHT1 opx (6, 4)</td>
+<td>0.9, p = 0.92</td>
+<td>2.6, p = 0.63</td>
+<td>19.4, p = 0.0007</td>
+<td>9.5 ppm (fixed 20)</td>
+</tr>
+<tr class="odd">
+<td>WHT1 cpx (10, 8)</td>
+<td>5.1, p = 0.74</td>
+<td>2.8, p = 0.95</td>
+<td>107.6, p = 1e-19</td>
+<td>16.0 ppm (fixed 20)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Decision: keep the 2023 fixed σ.</strong> It is a user-chosen σ that covers natural data scatter (the precedent is Girona &amp; Costa 2013), and with ten points or fewer a reduced χ² is itself poorly determined (Andrae et al.&nbsp;2010). The total 1σ passes the misfit test only because its shared calibration term inflates the independent noise, and its rate shifts are not supported.</p>
+</section>
+<section id="sec-app-diffusion-warp" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="sec-app-diffusion-warp"><span class="header-section-number">A.4</span> Variable temperature: the warped pressure</h2>
+<p>On the P–T path (<a href="../chapters26/02-introduction.html" class="quarto-xref"><span>Chapter 3</span></a>) the temperature falls, <span class="math inline">\(T(P) = 1330\ \mathrm{°C} - s\,(2.26\ \mathrm{GPa} - P)\)</span>, so D falls with pressure: <span class="math inline">\(D(t) = D_\mathrm{ref}\,r(T(P(t)))\)</span> with <span class="math inline">\(r = \exp[-(E_a/R)(1/T - 1/T_\mathrm{ref})]\)</span> and <span class="math inline">\(T_\mathrm{ref}\)</span> = 1200 °C.</p>
+<p><strong>Why it is exact.</strong> With reduced time <span class="math inline">\(\theta = \int_0^t D\,dt'/L^2\)</span> the diffusion equation becomes <span class="math inline">\(\partial C/\partial\theta = \partial^2 C/\partial\xi^2\)</span> again, and only the rim value as a function of θ changes. For continuous ascent, <span class="math inline">\(dP = -v\,dt\)</span>, so</p>
+<p><span id="eq-app-warp"><span class="math display">\[
+\int D\,dt = \frac{D_\mathrm{ref}}{v}\int r\big(T(P)\big)\,dP,
+\qquad
+P_w(P) = \int_0^{P} r\big(T(P')\big)\,dP'.
+\tag{A.5}\]</span></span></p>
+<p>Reduced time is linear in the warped pressure <span class="math inline">\(P_w\)</span> with the constant rate <span class="math inline">\(D_\mathrm{ref}/v\)</span>. The constant-D problem with rim value <span class="math inline">\(K\,H(P(P_w))\)</span>, run on the warped pressure (with the path and the P0 and Pf priors mapped through <span class="math inline">\(P_w\)</span>), is the variable-temperature problem, and its fitted v is the true ascent rate. No new solver or approximation is involved (<code>scripts/decompression/fit_pt_path.py</code>).</p>
+<p><strong>Activation energies.</strong> Each phase uses the mean Ea of its two bracket laws: olivine 130 kJ/mol (Ferriss, one law); opx 144 kJ/mol (Carpenter 127 and 161); cpx 115 kJ/mol (the 100 and 130 kJ ends of the 2023 cpx bracket).</p>
+<p><strong>Slopes and families.</strong> Fits are run at slopes of 30–150 °C/GPa in 15 °C/GPa steps. The scatter of the start (N(1330, 15) °C, N(2.26, 0.10) GPa) is carried as an effective slope with the same temperature at 30 MPa. Each family’s rate is a mixture of the per-slope posteriors (lognormal from the median and 68 % range) over that family’s slope distribution.</p>
+<p><strong>Controls.</strong></p>
+<ul>
+<li>With r = 1 the warped fits reproduce the isothermal fits of the MiMiC start exactly: 0.143 (olivine), 0.256 (opx) and 0.728 (cpx) MPa/s (opx-anchored K) [CHECK: the exact-reproduction control was run on the CO2/Nb start, 0.155, 0.290 and 0.874].</li>
+<li>A direct implicit solver with D(T(P(t))) agrees with the warped model to 0.0215 wt% at slopes of 30, 90 and 150 °C/GPa. The two solvers differ by the same amount at 1200 °C, so the warp itself adds no error.</li>
+<li>Running the pyroxenes with the ends of their Ea brackets moves their rates by ±10 % (opx 0.109–0.134, cpx 0.397–0.477 MPa/s at 105 °C/GPa).</li>
+<li>The degassing path stays the 1200 °C MagmaSat path; evaluating solubility along the P–T path changes the rates by ≤ 3 % (<a href="c-degassing.html" class="quarto-xref"><span>Appendix C</span></a>).</li>
+</ul>
+<p>All three phases slow by nearly the same factor on the path (0.63–0.69 across the SR-wide envelope), because their Ea (115–144 kJ/mol) are similar. The path changes the rates but not the disagreement between phases.</p>
+<p><strong>Accelerating ascent.</strong> For a rate <span class="math inline">\(v(P) = v_0\,a(P)\)</span>, <span class="math inline">\(dt = -dP/(v_0 a)\)</span>, so <span class="math inline">\(\int D\,dt = (D_\mathrm{ref}/v_0)\int r/a\,dP\)</span>. The same fit on <span class="math inline">\(P_w = \int_0^P r/a\,dP'\)</span> is exact, and its fitted rate is <span class="math inline">\(v_0\)</span>, the rate above the ramp. - <strong>Shapes:</strong> <span class="math inline">\(a = 1\)</span> above <span class="math inline">\(P_a\)</span> and <span class="math inline">\(a = F - (F-1)P/P_a\)</span> below it, with F = 2, 5, 10 and <span class="math inline">\(P_a\)</span> = 60, 200 MPa. - <strong>Prior:</strong> the lower edge of the rate prior is moved down by <span class="math inline">\(\log_{10}F\)</span>. - <strong>Derived rates:</strong> the mean rate over an interval (<span class="math inline">\(\Delta P / \int dP/(v_0 a)\)</span>) and the surface rate (<span class="math inline">\(F v_0\)</span>) are fixed multiples of <span class="math inline">\(v_0\)</span>, so the slope-family mixture is taken on <span class="math inline">\(v_0\)</span> and scaled. - <strong>Control:</strong> the constant shape reproduces the path fits to 6 × 10⁻¹⁷ MPa/s. - <strong>Scope:</strong> Ol-2 only, K = 9.</p>
+<p><strong>Higher starting CO2.</strong> Closed-system MagmaSat paths from the CO2/Nb start, SR-1 (same melt, H2O, Fe3+/FeT and 1200 °C) at 29,800 and 36,000 ppm CO2. They are fitted for Ol-2 (K = 9) and the WHT1 exterior opx and cpx (all K strategies) over the same slope grid. The 14,100 ppm path reproduces the path fits to 2 × 10⁻¹⁶ MPa/s, and the primary path’s hash is unchanged by the rebuild.</p>
+<p><strong>Code.</strong> <code>scripts/decompression/fit_path_variants.py {accel|co2}</code> and <code>plot_path_variants.py</code>; outputs in <code>results/decompression/path_variants/</code>.</p>
+</section>
+<section id="sec-app-diffusion-olivine" class="level2" data-number="A.5">
+<h2 data-number="A.5" class="anchored" data-anchor-id="sec-app-diffusion-olivine"><span class="header-section-number">A.5</span> Olivine diffusivity</h2>
+<p><strong>Why [100].</strong> Ol-2 is a host-scoria phenocryst (Fo 87.8 core to 84.3 rim, TiO2 140–210 ppm), inside the Ferriss calibration range (Fo 85–95) at the core and at its boundary toward the Barth et al.&nbsp;(2019) range (Fo 75–85) at the rim. Its SIMS traverse runs along [100]. Orientation matters: along [010] or [001] the Ferriss laws are 0.03–0.06 times the [100] value, and a profile perpendicular to a random face would average about 0.36 times [100]. Because the profile is along [100], orientation does not explain the fast rate.</p>
+<p><strong>Laws</strong> (<a href="#tbl-app-diffusion-laws" class="quarto-xref">Table&nbsp;<span>A.4</span></a>). 55 olivine H diffusivity laws from 18 sources are transcribed in <code>data/olivine_h_diffusivity/laws.csv</code>, and the pyroxene laws in <code>data/pyroxene_h_diffusivity/laws.csv</code> and <code>at_1200C.csv</code>. Each olivine law is passed through the unchanged Ol-2 posterior (<code>scripts/decompression/olivine_d_laws.py</code>; wet-start rates in <code>results/decompression/olivine_d_laws_wet/</code>). The rate scales linearly with D (property 1), and the current law reproduces the main fit, which checks the run.</p>
+<div id="tbl-app-diffusion-laws" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-diffusion-laws-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;A.4: Along [100] every natural-olivine law is as fast as Ferriss et al.&nbsp;(2018) or faster, so only a different axis or the proton-vacancy mechanism would make SR slow. H diffusivity laws used for the SR profiles, evaluated at 1200 °C, with the Ol-2 decompression rate each olivine law gives on the CO2/Nb-start (SR-1) MagmaSat path at 1200 °C (K = 9); the MiMiC start gives 0.92 times these rates for the primary law.
+</figcaption>
+<div aria-describedby="tbl-app-diffusion-laws-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Law</th>
+<th>Phase, axis</th>
+<th>log10 D0 (m²/s)</th>
+<th>Ea (kJ/mol)</th>
+<th>log10 D at 1200 °C</th>
+<th>Role; isothermal rate, CO2/Nb start (MPa/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Ferriss et al.&nbsp;2018</strong></td>
+<td>Olivine [100]</td>
+<td>−5.4</td>
+<td>130</td>
+<td>−10.01</td>
+<td><strong>Primary;</strong> 0.155 (MiMiC start: 0.143)</td>
+</tr>
+<tr class="even">
+<td>Ferriss et al.&nbsp;2018</td>
+<td>Olivine [001] / [010]</td>
+<td>−6.6 / −6.9</td>
+<td>130</td>
+<td>−11.21 / −11.51</td>
+<td>Orientation bound; 0.0098 / 0.0049</td>
+</tr>
+<tr class="odd">
+<td>Barth et al.&nbsp;2023, end of run (Etna Fo 90)</td>
+<td>Olivine [100]</td>
+<td>−4.63</td>
+<td>154</td>
+<td>−10.09</td>
+<td>Closest natural analog; 0.129</td>
+</tr>
+<tr class="even">
+<td>Barth et al.&nbsp;2023, start of run</td>
+<td>Olivine [100]</td>
+<td>−2.94</td>
+<td>182</td>
+<td>−9.39</td>
+<td>Mobile-H law of the edge model; 0.64</td>
+</tr>
+<tr class="odd">
+<td>Barth et al.&nbsp;2019 / Barth &amp; Plank 2021 (Fo ~80)</td>
+<td>Olivine [100]</td>
+<td>−5.0</td>
+<td>125</td>
+<td>−9.43</td>
+<td>For Fo 75–85; 0.59</td>
+</tr>
+<tr class="even">
+<td>Jollands et al.&nbsp;2019, Si-vacancy</td>
+<td>Olivine [100]</td>
+<td>−4.1</td>
+<td>145.5</td>
+<td>−9.26</td>
+<td>0.87</td>
+</tr>
+<tr class="odd">
+<td>Proton-polaron (Li et al.&nbsp;2022)</td>
+<td>Olivine [100]</td>
+<td>−3.5</td>
+<td>145</td>
+<td>−8.64</td>
+<td>Mechanism bound; 3.6</td>
+</tr>
+<tr class="even">
+<td>Proton-vacancy (Li et al.&nbsp;2022)</td>
+<td>Olivine [100]</td>
+<td>−1.2</td>
+<td>279</td>
+<td>−11.09</td>
+<td>Mechanism bound; 0.013</td>
+</tr>
+<tr class="odd">
+<td>Proton-vacancy (Demouchy &amp; Mackwell 2006)</td>
+<td>Olivine [100]/[010]</td>
+<td>−4.5</td>
+<td>204</td>
+<td>−11.73</td>
+<td>Mechanism bound; 0.0029</td>
+</tr>
+<tr class="even">
+<td>Carpenter 2003 (San Carlos enstatite)</td>
+<td>Opx [100]</td>
+<td>−6.6</td>
+<td>127</td>
+<td>−11.10</td>
+<td>Low end of the 2023 opx bracket; matches the implied opx D</td>
+</tr>
+<tr class="odd">
+<td>Carpenter 2003</td>
+<td>Opx [001]</td>
+<td>−4.788</td>
+<td>161</td>
+<td>−10.49</td>
+<td>High end of the 2023 opx bracket</td>
+</tr>
+<tr class="even">
+<td>Demers-Roberge et al.&nbsp;2021 (Al-poor enstatite)</td>
+<td>Opx [100] / [010] / [001]</td>
+<td>−5.11 / −4.93 / −5.52</td>
+<td>139 / 149 / 125</td>
+<td>−10.03 / −10.21 / −9.95</td>
+<td>Comparison; 7–20× too fast for one ascent</td>
+</tr>
+<tr class="odd">
+<td>2023 cpx bracket (“after Ferriss 2016 for 0.07 Al(IV)”)</td>
+<td>Cpx</td>
+<td>−6.71</td>
+<td>100–130</td>
+<td>−10.26 (100 kJ)</td>
+<td>2023 prior; extrapolated from Ferriss 2016 (no published Al equation)</td>
+</tr>
+<tr class="even">
+<td>Ferriss et al.&nbsp;2016, bulk H (Kunlun diopside)</td>
+<td>Cpx</td>
+<td>−8.8</td>
+<td>100.4</td>
+<td>−12.36</td>
+<td>Comparison</td>
+</tr>
+<tr class="odd">
+<td>Ferriss et al.&nbsp;2016, 3540 cm⁻¹ band</td>
+<td>Cpx</td>
+<td>−6.7</td>
+<td>130</td>
+<td>−11.30</td>
+<td>Near the implied cpx D</td>
+</tr>
+<tr class="even">
+<td>Ingrin et al.&nbsp;1995 (Cr-diopside)</td>
+<td>Cpx</td>
+<td>−6.30</td>
+<td>136</td>
+<td>−11.11</td>
+<td>Near the implied cpx D</td>
+</tr>
+<tr class="odd">
+<td>Hercule &amp; Ingrin 1999, uptake</td>
+<td>Cpx</td>
+<td>−6.7</td>
+<td>126</td>
+<td>−11.16</td>
+<td>Near the implied cpx D</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<ul>
+<li><strong>Along [100] the Barth and Jollands laws are as fast as Ferriss or faster:</strong> Barth 2023 0.83 times (end of run) to 4.1 times (start of run), Barth 2019 3.8 times (restricted to Fo 75–85 by Barth &amp; Plank 2021), Jollands 2019 5.6 times. Barth 2023 also notes that fixing the edge at zero, as Ferriss did, underestimates the diffusivity, which points the same way.</li>
+<li><strong>Only orientation or mechanism can make SR slow.</strong> Cinder-cone-like rates (0.005–0.04 MPa/s) would need a profile along [010] or [001] (0.03–0.23 times) or the proton-vacancy mechanism along [100] (0.02–0.08 times). For a magmatic phenocryst like Ol-2, Barth 2023 applies directly, and its [100] laws are the fast ones. Ol-2 is Fo 84–88, where Barth 2023 finds Fo the main control (fastest at Fo 79), so its true [100] D lies, if anything, between Ferriss and Barth 2019, which would make the rate faster.</li>
+<li><strong>Fe-free forsterite laws</strong> (Jollands 2016, Padrón-Navarta 2014, Demouchy &amp; Mackwell 2003) are kept for context only.</li>
+</ul>
+</section>
+<section id="sec-app-diffusion-olivine-k" class="level2" data-number="A.6">
+<h2 data-number="A.6" class="anchored" data-anchor-id="sec-app-diffusion-olivine-k"><span class="header-section-number">A.6</span> Olivine/melt partitioning</h2>
+<div id="fig-app-diffusion-olivine-k" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-app-diffusion-olivine-k-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../assets/data/model_choices_2026/figures/fig1_olivine_D_vs_melt_H2O.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-app-diffusion-olivine-k-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.1: Olivine/melt partitioning of total H2O falls as melt H2O rises if olivine H follows melt OH (Peterson et al.), while the Towbin et al.&nbsp;(2023) value is constant; the two agree near 1 wt% melt H2O. Points: Peterson et al.&nbsp;experiments (10–200 MPa, 1000–1220 °C; filled, the six H2O-saturated runs with olivine grown in the run). Blue curve and band: D_OH = 0.0011 ± 0.0002 times the OH fraction from VolatileCalc-basalt speciation. Dashed: Peterson’s power law. Grey band: Towbin et al.&nbsp;(2023), 0.0009 ± 0.0003. Orange: the 2023 model prior. Light-blue column: melt H2O in equilibrium with the GCB1 olivine rims. Coefficients are dimensionless (times 10⁴ for ppm per wt%).
+</figcaption>
+</figure>
+</div>
+<p>Two published treatments are compared (<a href="#fig-app-diffusion-olivine-k" class="quarto-xref">Figure&nbsp;<span>A.1</span></a>, <a href="#tbl-app-diffusion-k" class="quarto-xref">Table&nbsp;<span>A.5</span></a>):</p>
+<ul>
+<li><strong>Towbin et al.&nbsp;(2023): constant K = 9 ppm per wt% (0.0009 ± 0.0003).</strong> It combines earlier experiments recalculated onto the revised opx-standard SIMS calibration (KBH-1 = 202 ppm) with inclusion–olivine pairs, and it resolves no dependence on melt H2O or pressure below 2 GPa. Its ±33 % range is run as three fits (K = 6, 9, 12), each with a 15 % prior. The 2023 MATLAB prior, N(9, 0.5), was six times narrower than the paper; the deposited Fig. 11 caption value of 0.009 is a typo for 0.0009.</li>
+<li><strong>Peterson et al.&nbsp;(Am Min 111): olivine H follows melt OH,</strong> with D_OH = 0.0011 ± 0.0002 and the OH fraction from VolatileCalc-basalt speciation (<code>scripts/model_choices/speciation.py</code>, which reproduces their 25 glasses to ≤ 0.005 wt%). The effective K is then 6.5 at 2.72 wt% melt H2O, 9.5 at 0.9 wt% and about 11 below 0.3 wt%. It enters the fit as an effective path, K0 × OH(H), with K0 = D_OH ~ N(11, 1.8) integrated out as before.</li>
+</ul>
+<p><strong>The Peterson power law is only a sensitivity bound.</strong> Peterson et al.&nbsp;print <span class="math inline">\(C_\mathrm{ol} = 10.52\,C_\mathrm{melt}^{0.52}\)</span> once, “for ease of adaptation of existing code”, fitted to six H2O-saturated grown-olivine runs spanning 2.0–4.8 wt% melt H2O; an unweighted refit of those six gives a coefficient of 10.2 ± 2.3 and an exponent of 0.54 ± 0.17. D_OH and the power law agree above about 1.5 wt% (17.6 against 17.7 ppm at 2.72 wt%) but diverge below it: the power law’s effective K rises without limit as melt H2O approaches zero (19 at 0.3 wt%, 32 at 0.1 wt%), while D_OH levels off near 11. On the wet path the power law gives 0.083 MPa/s extrapolated and 0.104 when K is held constant (12.1) below the lowest experiment (0.75 wt%). About a third of the halving comes from that extrapolation; the rest comes from 0.75–2 wt%, constrained only by two undersaturated runs about 200 °C hotter. The olivine rate is most sensitive to K in the last 1–2 wt% of degassing, where the rim forms and partitioning is least constrained. D_OH is therefore the Peterson case, and the power law is a bound on low-H2O partitioning, not a preferred model.</p>
+<div id="tbl-app-diffusion-k" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-diffusion-k-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;A.5: The two pyroxene anchorings agree once the intact interior cores are used. Mineral/melt partition coefficients used in the fits, with the rate each gives on the MiMiC MagmaSat path at 1200 °C (olivine Ol-2; WHT1 exterior opx and cpx; CO2/Nb start: 0.155, 0.287, 0.82; the K = 6 value is for the CO2/Nb start).
+</figcaption>
+<div aria-describedby="tbl-app-diffusion-k-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Phase</th>
+<th>Strategy</th>
+<th>K (ppm per wt%)</th>
+<th>Prior 1σ</th>
+<th>Basis</th>
+<th>Wet-start isothermal rate (MPa/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Olivine</td>
+<td><strong>Towbin et al.&nbsp;2023</strong></td>
+<td><strong>9</strong> (6, 12 as alternatives)</td>
+<td>15 %</td>
+<td>Recalibrated experiments and inclusion pairs</td>
+<td><strong>0.143</strong> (K = 6: 0.355 on the CO2/Nb start)</td>
+</tr>
+<tr class="even">
+<td>Olivine</td>
+<td>Peterson D_OH</td>
+<td>11 × OH/H2O (6.5 at 2.72 wt%, about 11 below 0.3 wt%)</td>
+<td>D_OH ~ N(11, 1.8)</td>
+<td>Melt OH speciation</td>
+<td>0.146 (0.94×)</td>
+</tr>
+<tr class="odd">
+<td>Olivine</td>
+<td>Peterson power law</td>
+<td>10.52 × H<sup>0.52</sup> / H</td>
+<td>none</td>
+<td>Six-run convenience fit</td>
+<td>0.104 held to calibration; 0.083 extrapolated</td>
+</tr>
+<tr class="even">
+<td>Opx</td>
+<td>Core/start</td>
+<td>Intact interior core ÷ H(P0): 411 ppm ÷ 3.48 wt% ≈ 118</td>
+<td>10 %</td>
+<td>Cores equilibrated with the start</td>
+<td>0.29</td>
+</tr>
+<tr class="odd">
+<td>Opx</td>
+<td>Opx-anchored (= experiment)</td>
+<td>Novella et al.&nbsp;2014 × 0.93 at the WHT1 opx Al2O3 = 117.7</td>
+<td>15 %</td>
+<td>Growth experiments on the revised opx scale</td>
+<td>0.256</td>
+</tr>
+<tr class="even">
+<td>Cpx</td>
+<td>Core/start</td>
+<td>Intact interior core (390 ppm) ÷ H(P0)</td>
+<td>10 %</td>
+<td>As opx</td>
+<td>0.87</td>
+</tr>
+<tr class="odd">
+<td>Cpx</td>
+<td>Opx-anchored</td>
+<td>Opx K × the intact cpx/opx core ratio (390/411)</td>
+<td>15 %</td>
+<td>Mineral-pair equilibrium</td>
+<td>0.728</td>
+</tr>
+<tr class="even">
+<td>Cpx</td>
+<td>Experiment</td>
+<td>Recalibrated O’Leary eq. 10 refit (WHT1 0.0073–0.0074, × 10⁴) × {0.61, 1, 1.65}</td>
+<td>15 % each</td>
+<td>Growth experiments</td>
+<td>Sensitivity only</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-app-diffusion-pyroxene" class="level2" data-number="A.7">
+<h2 data-number="A.7" class="anchored" data-anchor-id="sec-app-diffusion-pyroxene"><span class="header-section-number">A.7</span> Pyroxene diffusivities and partitioning</h2>
+<p><strong>K strategies.</strong> The xenolith pyroxenes did not grow from the host melt: H that diffuses into them decorates inherited defects, so experimental K are a prior, not a law. The evidence that they re-equilibrated with the host is that all three phases scale with the magma between volcanoes and that cpx/opx in the same xenolith (0.96–1.38) matches the experimental mineral/mineral ratio (Aubaud et al.&nbsp;2004: 1.4 ± 0.3). Each pyroxene profile is therefore fitted three ways (<a href="#tbl-app-diffusion-k" class="quarto-xref">Table&nbsp;<span>A.5</span></a>): core/start (the boundary starts at the measured core, the 2023 approach), opx-anchored (Novella × 0.93 for opx, the opx value times the cpx/opx core ratio for cpx), and experiment-based. The 0.93 factor puts Novella’s opx on the revised opx SIMS scale of the xenolith data (Towbin et al.&nbsp;2023). The 2023 priors (opx N(90, 5), cpx N(120, 5)) have no literature source and are not used.</p>
+<p><strong>The intact cores fix the start.</strong> The deepest core points of the interior WHT1 grains (opx 413.5 and 408.5 ppm, mean 411; cpx 375.6 and 404.4, mean 390) are taken as the cores that kept the host-melt value (<code>scripts/decompression/fit_wet_primary.py</code>). With them, core/start K for opx is about 118, equal to the opx-anchored 117.7, and the opx core implies 3.48 wt% melt H2O, within 2 % of the MiMiC start (3.549) and 3 % of the CO2/Nb start (3.59). Only the two deepest points reach these levels (409–413 ppm), while two grains flatten near 300–320 ppm; the main text treats that as an uncertainty in K or in the starting H2O (<a href="../chapters26/08-stage1.html" class="quarto-xref"><span>Chapter 9</span></a>). The exterior opx (0.5 mm from the xenolith exterior) is effectively unbuffered, and the exterior cpx (7.5 mm in) is moderately buffered, which changes its implied D by less than 0.1 log units.</p>
+<p><strong>Pyroxene D from the olivine rate.</strong> The 2023 approach fits olivine first and then asks what pyroxene D its rate implies. Property 1 makes this exact: a pyroxene profile fixes <span class="math inline">\(\tau_\mathrm{px}\)</span>, so a known v gives <span class="math inline">\(\log D = \log\tau + 2\log L + \log v - \log(P_0 - P_f)\)</span>. Two versions were run (<code>pyroxene_d_from_olivine.py</code>, <code>pyroxene_d_on_path.py</code>, <code>joint_d_fit.py</code>):</p>
+<ul>
+<li><strong>Method A</strong> combines each pyroxene’s τ posterior (flat log D prior, 10⁻¹⁵ to 10⁻⁸ m²/s) with independent draws of the olivine v posterior. Check: the implied opx-exterior D equals the bracket midpoint × v_ol/v_opx (10<sup>−11.08</sup> against 10<sup>−11.09</sup>).</li>
+<li><strong>Method B</strong> fits one history to Ol-2, the WHT1 exterior opx and cpx together, with free log D for opx and cpx and olivine fixed at Ferriss [100]. Run on the P–T path with <code>joint_d_fit.py --slope S</code>, each phase diffuses on its own warped clock (same Ea as above). The warped-time solver agrees with the warped-pressure model within 0.21–0.55 % of the initial value, the same as at 1200 °C (0.24–0.57 %).</li>
+</ul>
+<div id="tbl-app-diffusion-pxpath" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-diffusion-pxpath-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;A.6: The pyroxene diffusivities implied by the olivine rate are the same on the P–T path as at 1200 °C (within 0.03 log units at every slope), so opx stays on Carpenter 2003 [100] and cpx sits about 2.5 times below Ingrin 1995. Implied log10 D (m²/s), median (68 %), CO2/Nb start (SR-1; the MiMiC start is being written [CHECK: replace with results/decompression/pyroxene_d_on_path_mimic/implied_D.csv]), olivine K = 9; the first two rows are method A and the last row is the joint fit (method B).
+</figcaption>
+<div aria-describedby="tbl-app-diffusion-pxpath-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>WHT1 exterior</th>
+<th>Isothermal 1200 °C</th>
+<th>On the path: D at 1200 °C (SR-wide)</th>
+<th>On the path: D at the water-loss temperature (55 MPa)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Opx, core/start; opx-anchored</td>
+<td>−11.06; −11.05</td>
+<td>−11.05 (−11.26 to −10.85); −11.04</td>
+<td>−11.25 (−11.54 to −10.96); −11.24</td>
+</tr>
+<tr class="even">
+<td>Cpx, core/start; opx-anchored</td>
+<td>−11.54; −11.51</td>
+<td>−11.57 (−11.77 to −11.37); −11.54</td>
+<td>−11.73 (−12.02 to −11.45); −11.70</td>
+</tr>
+<tr class="odd">
+<td>Joint fit, opx; cpx (82.8 °C/GPa)</td>
+<td>−10.98; −11.47 (isothermal joint)</td>
+<td>−11.00; −11.53</td>
+<td>not reported</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>With the MiMiC start one continuous ascent fits all three phases, and on the P–T path the joint fit gives 0.100 MPa/s at 82.8 °C/GPa (χ² 20.6 for 20 points; CO2/Nb start 0.112 MPa/s, χ² 19.5). The opx sits on Carpenter 2003 [100] (San Carlos enstatite, the slow axis), and the cpx on the slow natural Cr-diopside laws (Ingrin 1995; Hercule &amp; Ingrin 1999 uptake) and the Ferriss 2016 3540 cm⁻¹ band, about 2.5 times below Ingrin 1995. The faster opx laws (Demers-Roberge 2021, on Al-poor enstatite with 0.11 wt% Al2O3) would need olivine rates about 7–20 times faster. The SR opx carries 3.3–3.9 wt% Al2O3 and the cpx is Cr-diopside, so the slow Al- and Cr-bearing laws are the plausible ones. <a href="#fig-app-diffusion-pyroxene-d" class="quarto-xref">Figure&nbsp;<span>A.2</span></a> compares the implied diffusivities with published laws. The cpx upper bound of the 2023 bracket (<span class="math inline">\(10^{-6.71}\exp(-100\ \mathrm{kJ}/RT)\)</span>) was the thesis estimate for a cpx with 0.07 tetrahedral Al, extrapolated from Ferriss et al.&nbsp;(2016), who publish laws for Kunlun diopside but no equation for the Al dependence; its prefactor matches their 3540 cm⁻¹ band law and its activation energy their bulk-H law. The implied cpx D lies just below the bracket’s lower end.</p>
+<div id="fig-app-diffusion-pyroxene-d" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-app-diffusion-pyroxene-d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../assets/results/decompression/pyroxene_d/fig_pyroxene_d.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-app-diffusion-pyroxene-d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.2: Few published pyroxene laws match the H diffusivity that the SR exterior profiles need to agree with the olivine rate: 1 of 9 opx laws (Carpenter 2003 [100]) and 3 of 16 cpx laws fall in the 95 % interval. Implied log10 D at 1200 °C for WHT1 opx (a) and cpx (b) from the olivine posterior (circle, median; thick bar, 68 %; thin bar, 95 %; one row per olivine K option, opx-anchored pyroxene K), and the range of the joint fit across stall durations (diamond), against published laws (open circles). Shaded: the 2023 model bracket. These fits use the mixture start (2.72 wt%) at 1200 °C; the wet start and the P–T path shift the implied D by 0.15 log units or less (<a href="#tbl-app-diffusion-pxpath" class="quarto-xref">Table&nbsp;<span>A.6</span></a>).
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-app-diffusion-edges" class="level2" data-number="A.8">
+<h2 data-number="A.8" class="anchored" data-anchor-id="sec-app-diffusion-edges"><span class="header-section-number">A.8</span> Olivine edge tests</h2>
+<p>Measured olivine edges often stay above zero, in natural phenocrysts and in dehydration experiments (Newcombe, Ferriss, Barth), which suggests a diffusion–reaction process near the rim. Two treatments were tested on Ol-2.</p>
+<p><strong>The final-pressure prior</strong> (<code>scripts/decompression/olivine_pf_sensitivity.py</code>). In the NAM model the edge value at the end of ascent is K × H(Pf), the treatment of Barth et al.&nbsp;(2024). The 2023 prior capped Pf at 5 bar and the posterior pressed against it (3.3 bar). Widening it to 0–20, 0–50 and 0–200 bar moves the fitted Pf to 10–17 bar (edge boundary 1.8–2.4 ppm) and the rate within 0.155–0.164 MPa/s with K = 9 (0.146–0.160 with Peterson D_OH). Given room, the data prefer a quench pressure of about 1–2 MPa, comparable to the about 2 MPa used by Newcombe’s group. Ol-2 is insensitive because its outermost analysis is 23 µm in (4.4 ppm), so the profile does not sample the true edge.</p>
+<p><strong>A two-population model after Barth et al.&nbsp;(2023)</strong> (<code>scripts/decompression/olivine_barth_effects.py</code>). Mobile H diffuses with the Barth start-of-run [100] law (4 × 10⁻¹⁰ m²/s at 1200 °C) and is in equilibrium with the melt at the edge; trapped H is immobile and relaxes toward r × mobile at a rate k; the total equilibrium partitioning is K = 9. In the fast-exchange limit this is one species with <span class="math inline">\(D_m/(1 + r)\)</span>; with slow exchange the mobile H drains while the trapped H stays, giving a high edge and an apparent D that falls with time, Barth’s “apparent locking of H+ at the crystal edge”. v is fitted for trapped fractions 0.2–0.67 and k = 10⁻⁵–1 s⁻¹ on the wet path (P0 585 MPa, Pf 1 MPa, σ 0.25 ppm), with Crank–Nicolson for mobile H and an exact exponential exchange step. Controls: with no trapping the model reproduces the single-D fit, and with r = 1 and fast exchange it equals a single species with D/2 to &lt; 0.01 ppm.</p>
+<div id="fig-app-diffusion-barth" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-app-diffusion-barth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../assets/results/decompression/fig_olivine_barth_effects.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-app-diffusion-barth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.3: Barth-type edge locking cannot fit Ol-2: only fast exchange of trapped H (k ≳ 0.1 s⁻¹) reproduces the profile, and then the model reduces to an effective diffusivity. (a) Best-fit Ol-2 decompression rate and (b) misfit (χ², 4 points) against the exchange rate of trapped H, for trapped fractions 0.2–0.67, in a two-population model whose mobile H diffuses with the Barth et al.&nbsp;(2023) start-of-run [100] law (wet SR-1 MagmaSat path, 1200 °C, K = 9). Dashed: single D, Ferriss [100] (0.150 MPa/s, χ² 5.7). Dotted: single D, Barth start-of-run (0.62 MPa/s). Rates of 0.003 MPa/s at k ≤ 10⁻⁴ s⁻¹ are the bottom of the search grid and belong to rejected fits.
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-app-diffusion-barth" class="quarto-xref">Figure&nbsp;<span>A.3</span></a> shows the result. Fast exchange (k = 1 s⁻¹) fits as well as a single D (χ² 5.7–5.8) at 0.21–0.50 MPa/s; slow exchange (k ≤ 0.01 s⁻¹, which gives Barth-like edges at 11–53 % of the initial) fits badly (χ² 21–7000). Slow edge locking is inconsistent with Ol-2, which kept only about 25 % of its equilibrium start, because an immobile pool of ≥ 20 % cannot leave. Barth’s effects therefore collapse to an effective D, and the bulk laws for natural olivine (Ferriss, Barth end of run) give 0.13–0.15 MPa/s, inside the diffusivity-law range. The test assumes Ol-2 started in equilibrium with the deep melt; its early-grown Fo 88 core supports that. The pyroxenes were not tested, since Barth’s effects are documented for olivine only.</p>
+</section>
+<section id="sec-app-diffusion-stalls" class="level2" data-number="A.9">
+<h2 data-number="A.9" class="anchored" data-anchor-id="sec-app-diffusion-stalls"><span class="header-section-number">A.9</span> Stall and post-eruptive tests</h2>
+<p>Could a stall, rather than the pyroxene diffusivities, explain why the three minerals give different single-ascent rates? Two tests were run with the 2023 pyroxene diffusivities fixed and the mixture start (2.72 wt%) at 1200 °C (<code>scripts/decompression/scenarios.py</code>, <code>stall_fit.py</code>). They are summarized here because the joint fit with free pyroxene D supersedes them: with the 2023 diffusivities a short stall halved the misfit, but the joint fit with free pyroxene D needs no stall.</p>
+<ul>
+<li><strong>Forward scenarios.</strong> Each phase was modeled with its own radius, D (bracket midpoint) and K under continuous ascent, a stall (ascent to Ps, a closed hold at H(Ps), final ascent) or a post-eruptive hold at the surface value, then refitted with the continuous model with only v free. The Crank–Nicolson solver matches the NAM forward model to 0.5 %. Stalls at 15–30 MPa push the wrong way (the olivine resets during the stall, while the pyroxenes carry it, so the pyroxenes look slower than olivine). Only a hold at the very end (a stall shallower than about 5 MPa, or time at the surface before quench) makes olivine slower than the pyroxenes. History cannot separate opx from cpx, because their bracket-midpoint D are nearly equal. Core reset times (<span class="math inline">\(L^2/D\)</span>) are 3.6 min (olivine), 14 min (cpx) and 34 min (opx), so the survival of the Ol-2 profile limits any post-eruptive hold to well under the olivine reset time.</li>
+<li><strong>Joint stall fit with the 2023 D.</strong> One history was fit to all three phases with the stall pressure set by the flat GCB1 xenolith-olivine plateau (Ol-6, 7.2–7.8 ppm, giving 16.6 MPa). A pause under 2 min after a fast deep ascent halved the misfit on every olivine calibration, stalls of 10 min or more fit worse than none, and even the best fits were poor (χ² 153–317 for 20 points, mostly cpx); the best final ascent stayed at 0.07–0.3 MPa/s.</li>
+</ul>
+<p>With the MiMiC start and free pyroxene D a stall is not needed at the central slope (<a href="#tbl-app-diffusion-stall" class="quarto-xref">Table&nbsp;<span>A.7</span></a> shows the CO2/Nb-start stall scan). Continuous ascent gives χ² 20.0 isothermally against 20.2 for the best 5-minute stall, and 1–3 min stalls fit worse than continuous ascent. On the P–T path continuous ascent is best at 82.8 °C/GPa (χ² 20.6 against 20.7) and at 120 °C/GPa (20.4 against 24.0); at 46 °C/GPa a 5-minute stall fits better (20.3 against 22.0). The stall-free final ascent is 0.100 MPa/s at 82.8 °C/GPa. With the CO2/Nb start continuous ascent was best at every slope (χ² 19.5–19.9) and gave 0.112 MPa/s. The mild stall preference found with the mixture start (Δχ² 10–14 for 2–3 min) was partly an artifact of that start. A post-eruptive hold would make every apparent rate slower than the true one, so it cannot explain a fast rate.</p>
+<div id="tbl-app-diffusion-stall" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-diffusion-stall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;A.7: With the pyroxene diffusivities free, continuous ascent fits all three minerals as well as any stall. Joint fit of one ascent history to Ol-2 and the WHT1 exterior opx and cpx, CO2/Nb start (SR-1; MiMiC start isothermal: continuous 0.158 MPa/s, χ² 20.0), MagmaSat, isothermal 1200 °C, SIMS-dataset olivine calibration; the stall pressure is set by the xenolith-olivine plateau. Diffusivities (m²/s) are at 1200 °C.
+</figcaption>
+<div aria-describedby="tbl-app-diffusion-stall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stall at 15.4 MPa</th>
+<th>Final ascent v₂ (MPa/s)</th>
+<th>χ² olivine / opx / cpx</th>
+<th>χ² total (20 points)</th>
+<th>log10 D opx</th>
+<th>log10 D cpx</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>none (continuous)</td>
+<td>0.18</td>
+<td>14.0 / 0.9 / 6.3</td>
+<td>21.2</td>
+<td>−10.98</td>
+<td>−11.47</td>
+</tr>
+<tr class="even">
+<td>1 min</td>
+<td>0.10</td>
+<td>15.1 / 7.3 / 14.0</td>
+<td>36.4</td>
+<td>−10.58</td>
+<td>−11.05</td>
+</tr>
+<tr class="odd">
+<td>3 min</td>
+<td>0.18</td>
+<td>9.7 / 4.5 / 10.3</td>
+<td>24.5</td>
+<td>−10.64</td>
+<td>−11.11</td>
+</tr>
+<tr class="even">
+<td>5 min</td>
+<td>0.28</td>
+<td>8.6 / 3.1 / 7.9</td>
+<td>19.6</td>
+<td>−10.75</td>
+<td>−11.22</td>
+</tr>
+<tr class="odd">
+<td>10 min</td>
+<td>0.35</td>
+<td>12.4 / 3.1 / 6.6</td>
+<td>22.1</td>
+<td>−10.99</td>
+<td>−11.47</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-app-diffusion-femg" class="level2" data-number="A.10">
+<h2 data-number="A.10" class="anchored" data-anchor-id="sec-app-diffusion-femg"><span class="header-section-number">A.10</span> Fe–Mg residence of Ol-2</h2>
+<p>Ol-2’s Fe–Mg profile gives the time it sat in the final carrier melt, which is much longer than the H ascent (about 1.6 h from 585 MPa at 0.1 MPa/s), so its H re-equilibrated before ascent, the equilibrium start assumed at P0. The EMPA traverse runs along the same line as the SIMS H traverse, which is along [100], so the [100] fits are the result and the [001] fits (the fastest Fe–Mg axis) are a lower bound on time (<a href="#fig-app-diffusion-femg" class="quarto-xref">Figure&nbsp;<span>A.5</span></a>, <a href="#tbl-app-diffusion-femg" class="quarto-xref">Table&nbsp;<span>A.8</span></a>).</p>
+<p>The headline fit holds the crystal edge at Fo 79.7. A backscattered-electron (BSE) gray profile of Ol-2, taken near the EMPA line, scales linearly to the EMPA Fo (Fo = 98.2 − 0.183 × gray, RMS 0.17 Fo, 24 points) and reaches Fo 79.7 at the outermost clean pixel, 1.6 µm from the edge, 1 Fo below the outermost EMPA point. With the edge held, the two-step start gives 18.4 d (15.7–21.3) and fits the outer 10 µm; the time barely changes from the edge-free fit (18.3 d). The BSE profile also shows the 40–90 µm shoulder that every model misses, so the misfit there is in the grain, not the analyses (<a href="#fig-app-diffusion-femg-multi" class="quarto-xref">Figure&nbsp;<span>A.4</span></a>).</p>
+<div id="fig-app-diffusion-femg-multi" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-app-diffusion-femg-multi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../assets/figures/report2026/ol2_profiles.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-app-diffusion-femg-multi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.4: Ni and Mn zone with Fo over the outer 80–90 µm of Ol-2; Ca only over the outer 20 µm. EMPA Fo and minor oxides, BSE gray value and Fo scaled from it, against distance from the crystal edge, with three Fe–Mg starting profiles (edge held at Fo 79.7) and their fits; dotted lines mark the starting steps.
+</figcaption>
+</figure>
+</div>
+<div id="fig-app-diffusion-femg" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-app-diffusion-femg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../assets/results/olivine_femg_ol2/shapes/Ol-2_two-step__100__1250_C_fit.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-app-diffusion-femg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.5: Ol-2’s Fo profile is fitted by about 18 days of Fe–Mg diffusion along [100] at 1250 °C from a two-step starting profile. Points: EMPA Fo of Ol-2 (GCB1 roadside scoria) against distance from the crystal edge; grey points lie outside the model domain. Dashed: the fitted two-step starting profile (rim and inner shoulder). Line and bands: best fit (18.3 d) with 1σ (15.0–22.2 d) and 2σ (12.0–27.0 d) ranges. The points at 60–90 µm sit about 0.5 Fo below the model, so the inner shoulder may be partly growth zoning.
+</figcaption>
+</figure>
+</div>
+<div id="tbl-app-diffusion-femg" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-diffusion-femg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;A.8: Ol-2 sat in the evolved carrier for weeks, the roadside xenocrysts for hours and the pit xenocrysts for days; the stall-free shape matters little (16 against 18 days). Fe–Mg diffusion times of SR olivines from FORSTER at 1250 °C, 500 MPa, QFM + 0.3 (Dohmen &amp; Chakraborty 2007); at 1200 °C every time is 2.1 times longer.
+</figcaption>
+<div aria-describedby="tbl-app-diffusion-femg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Grain (locality)</th>
+<th>Starting profile</th>
+<th>Fe–Mg time, 1σ</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ol-2 (roadside), [100]</td>
+<td>Two steps (rim, shoulder), edge held at Fo 79.7</td>
+<td><strong>18 d (16–21)</strong></td>
+<td>Fits the outer 10 µm; misfit 0.23 Fo</td>
+</tr>
+<tr class="even">
+<td>Ol-2, [100]</td>
+<td>Two steps, edge free</td>
+<td>18 d (15–22); 12–29 d with the starting profile free</td>
+<td>Correlated misfit 0.0021 Fo, against 0.0016 point scatter</td>
+</tr>
+<tr class="odd">
+<td>Ol-2, [100]</td>
+<td>Rim stage only / one step, edge held</td>
+<td>17 d (14–20) / 23 d (16–33)</td>
+<td>One step misses the shape</td>
+</tr>
+<tr class="even">
+<td>Ol-2, [100]</td>
+<td>Rim stage only (5–50 µm)</td>
+<td>16 d (13–20); 11–30 d free</td>
+<td>Same time as two steps</td>
+</tr>
+<tr class="odd">
+<td>Ol-2, [100]</td>
+<td>One step</td>
+<td>18 d (13–27); 50 d with the step free</td>
+<td>Misses the shape; the free step runs to the rim</td>
+</tr>
+<tr class="even">
+<td>Ol-2, [001]</td>
+<td>Two steps / rim only</td>
+<td>3.1 d (2.5–3.7) / 2.7 d (2.2–3.3); 2–5 d free</td>
+<td>Fastest-axis bound</td>
+</tr>
+<tr class="odd">
+<td>ol6, profiles 1 and 2 (roadside xenocryst)</td>
+<td>Database setup</td>
+<td>0.15 d (0.10–0.21), 0.21 d (0.18–0.23)</td>
+<td>Thesis: 0.24, 0.23 d</td>
+</tr>
+<tr class="even">
+<td>ol23 (roadside xenocryst)</td>
+<td>Database setup</td>
+<td>0.37 d (0.32–0.42)</td>
+<td>Thesis: 0.79 d</td>
+</tr>
+<tr class="odd">
+<td>ol43, ol48 (pit xenocrysts)</td>
+<td>Database setup</td>
+<td>1.9 d (1.5–2.4), 3.0 d (2.8–3.3)</td>
+<td>Thesis: 2.5, 3.8 d</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-app-diffusion-exchange" class="level2" data-number="A.11">
+<h2 data-number="A.11" class="anchored" data-anchor-id="sec-app-diffusion-exchange"><span class="header-section-number">A.11</span> Xenolith exchange: supporting tables</h2>
+<p>The exchange model and its headline fits are in <a href="../chapters26/07-stage2.html" class="quarto-xref"><span>Chapter 8</span></a>. Two supporting tables come from the earlier grain-boundary runs, which used the mixture start at 1200 °C and <span class="math inline">\(D_{opx} = 10^{-11.2}\)</span> m²/s. On the MiMiC P–T path at the joint rate (0.100 MPa/s) the nested fit gives opx D 10<sup>−11.6</sup> and a network D of 10<sup>−5.6</sup> m²/s, so the predicted values below are approximate and are not recomputed <a href="#tbl-app-diffusion-cores" class="quarto-xref">CHECK: recompute&nbsp;<span>A.9</span></a>.</p>
+<div id="tbl-app-diffusion-cores" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-diffusion-cores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;A.9: Only the large interior grains keep intact cores (about 410 ppm), so they, not the core/rim ratios of depleted grains, anchor the starting H. Core loss predicted for each WHT1 opx traverse with grain-boundary-type transport, and the initial value it implies from the measured core; distances are from the xenolith exterior. Mixture-start run.
+</figcaption>
+<div aria-describedby="tbl-app-diffusion-cores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>WHT1 opx traverse</th>
+<th>Half-width (µm)</th>
+<th>Predicted core / initial</th>
+<th>Implied initial (ppm)</th>
+<th>Measured core (ppm)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Exterior-1 opx-2 (0.5 mm)</td>
+<td>173</td>
+<td>0.91</td>
+<td>347</td>
+<td>315</td>
+</tr>
+<tr class="even">
+<td>Exterior-2 opx-1 (7.5 mm)</td>
+<td>106</td>
+<td>0.77–0.79</td>
+<td>335–343</td>
+<td>264</td>
+</tr>
+<tr class="odd">
+<td>Interior opx-1 (40.5 mm)</td>
+<td>266</td>
+<td>0.98–0.99</td>
+<td>419–421</td>
+<td>413</td>
+</tr>
+<tr class="even">
+<td>Interior opx-2, long traverse (40.8 mm)</td>
+<td>298</td>
+<td>0.99</td>
+<td>412–413</td>
+<td>409</td>
+</tr>
+<tr class="odd">
+<td>Interior opx-2, short traverse (40.8 mm)</td>
+<td>106</td>
+<td>0.82–0.87</td>
+<td>347–370</td>
+<td>303</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-app-diffusion-traverses" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-diffusion-traverses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;A.10: Grain-boundary transport predicts the rim depletion of three of five WHT1 opx traverses; the melt network and a water-keeping melt reservoir predict none beyond the exterior grain. Measured rim/core against the rim/core each mechanism predicts for that grain (uniform start, mixture-start run), and the fractional drop of the grain’s boundary by the end of ascent in the nested fit. The 0.79 value for the 7.5 mm grain is not in the wet-path results [CHECK].
+</figcaption>
+<div aria-describedby="tbl-app-diffusion-traverses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>WHT1 opx traverse (distance from exterior)</th>
+<th>Measured rim/core</th>
+<th>Predicted, grain boundaries (Demouchy / fitted D)</th>
+<th>Predicted, melt network</th>
+<th>Predicted, hybrid with water-keeping melt</th>
+<th>Boundary drop at end of ascent (nested fit)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Exterior-1 opx-2 (0.5 mm)</td>
+<td>0.31</td>
+<td>0.45 / 0.46</td>
+<td>0.82</td>
+<td>0.78</td>
+<td>0.98</td>
+</tr>
+<tr class="even">
+<td>Exterior-2 opx-1 (7.5 mm)</td>
+<td>0.60</td>
+<td>0.58 / 0.63</td>
+<td>1.00</td>
+<td>1.00</td>
+<td>0.79</td>
+</tr>
+<tr class="odd">
+<td>Interior opx-1 (40.5 mm)</td>
+<td>0.83</td>
+<td>0.77 / 0.85</td>
+<td>1.00</td>
+<td>1.00</td>
+<td>0.49</td>
+</tr>
+<tr class="even">
+<td>Interior opx-2, long traverse (40.8 mm)</td>
+<td>0.51</td>
+<td>0.69 / 0.80</td>
+<td>1.00</td>
+<td>1.00</td>
+<td>0.49</td>
+</tr>
+<tr class="odd">
+<td>Interior opx-2, short traverse (40.8 mm)</td>
+<td>0.80</td>
+<td>0.77 / 0.87</td>
+<td>1.00</td>
+<td>1.00</td>
+<td>0.49</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-app-diffusion-code" class="level2" data-number="A.12">
+<h2 data-number="A.12" class="anchored" data-anchor-id="sec-app-diffusion-code"><span class="header-section-number">A.12</span> Code and checks</h2>
+<p>The model, the G table and the posterior are <code>~/Projects/H2O_Diffusion_NAM/decompression/</code> (<code>newcombe.py</code>, <code>cases.py</code>, <code>bayes.py</code>; derivations and validation in <code>METHODS.md</code>). The SR fits are in <code>scripts/decompression/</code>: <code>fit_2026.py</code> (K strategies and paths), <code>fit_wet_primary.py</code> (wet start with the intact cores), <code>fit_pt_path.py</code> (warped pressure), <code>fit_pt_path_pointsigma.py</code> with <code>point_sigma.py</code> (per-point σ), <code>olivine_d_laws.py</code>, <code>pyroxene_d_from_olivine.py</code>, <code>pyroxene_d_on_path.py</code>, <code>joint_d_fit.py</code> (with <code>--slope</code>), <code>olivine_pf_sensitivity.py</code>, <code>olivine_barth_effects.py</code>, <code>scenarios.py</code>, <code>stall_fit.py</code> and <code>solubility_t.py</code>. Commands are in <a href="e-decisions.html" class="quarto-xref"><span>Appendix E</span></a>. Profiles, σ, L, the D brackets and the P0 and Pf priors are the 2023 case definitions (<a href="#tbl-app-diffusion-priors" class="quarto-xref">Table&nbsp;<span>A.1</span></a>). The degassing paths are the closed-system MagmaSat and Iacono-Marziano paths of <code>data/degassing_paths_2026</code> at 1200 °C, with a final (0 bar, 0 wt%) point appended as in 2023.</p>
+<p>Checks: port fidelity to the MATLAB (≤ 1e-14 relative; 1,000 saved fits replayed); the two exact properties and the closed-form K marginal; grid convergence and coverage on synthetic data; the r = 1 control and the direct-solver comparison for the warped pressure; the Ferriss-law control of the law sweep; the no-trap and fast-exchange controls of the edge model; the solver and continuous-history controls of the stall model; and the reproduction of the fixed-σ posteriors by the per-point-σ script (106 of 106 rows).</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters26/10-open.html" class="pagination-link" aria-label="Open questions for co-authors">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Open questions for co-authors</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../appendices26/b-melt-inclusions.html" class="pagination-link" aria-label="Melt-inclusion methods">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Melt-inclusion methods</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

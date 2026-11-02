@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Appendix C — Degassing models – Sullivan Ranch: xenolith H2O, magma ascent and degassing</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../appendices26/d-data-quality.html" rel="next">
+<link href="../appendices26/b-melt-inclusions.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendices26/a-diffusion.html">Appendices</a></li><li class="breadcrumb-item"><a href="../appendices26/c-degassing.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Degassing models</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Sullivan Ranch: xenolith H2O, magma ascent and degassing</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Summary for co-authors</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/01-changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What changed since the thesis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/02-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/03-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Samples and methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Results</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/04-results-nams.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Results: water in olivine, cpx and opx</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/05-results-mi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Results: melt inclusions and the starting melt</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Discussion: the stages of ascent</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/06-stage3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Stage III: after eruption</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/07-stage2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Stage II: final ascent in degassing magma</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/08-stage1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Stage I: ascent in water-undersaturated magma</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/09-stage0-implications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Stage 0 and implications</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/10-open.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Open questions for co-authors</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/a-diffusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Diffusion model and fits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/b-melt-inclusions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Melt-inclusion methods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/c-degassing.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Degassing models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/d-data-quality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data quality</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/e-decisions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Decisions, crosswalk and reproducibility</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/f-thesis-figures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Chapter 3 figures, deposited and recompiled</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-app-degassing-accuracy" id="toc-sec-app-degassing-accuracy" class="nav-link active" data-scroll-target="#sec-app-degassing-accuracy"><span class="header-section-number">C.1</span> Accuracy on melts like ours</a></li>
+  <li><a href="#sec-app-degassing-models" id="toc-sec-app-degassing-models" class="nav-link" data-scroll-target="#sec-app-degassing-models"><span class="header-section-number">C.2</span> Choice of model and comparison</a></li>
+  <li><a href="#sec-app-degassing-starts" id="toc-sec-app-degassing-starts" class="nav-link" data-scroll-target="#sec-app-degassing-starts"><span class="header-section-number">C.3</span> Starting melts and saturation pressures</a></li>
+  <li><a href="#sec-app-degassing-temperature" id="toc-sec-app-degassing-temperature" class="nav-link" data-scroll-target="#sec-app-degassing-temperature"><span class="header-section-number">C.4</span> Temperature dependence of the solubility</a></li>
+  <li><a href="#sec-app-degassing-boundary" id="toc-sec-app-degassing-boundary" class="nav-link" data-scroll-target="#sec-app-degassing-boundary"><span class="header-section-number">C.5</span> The equilibrium boundary at the measured rims</a></li>
+  <li><a href="#sec-app-degassing-literature" id="toc-sec-app-degassing-literature" class="nav-link" data-scroll-target="#sec-app-degassing-literature"><span class="header-section-number">C.6</span> CO2 and published rates</a></li>
+  <li><a href="#sec-app-degassing-methods" id="toc-sec-app-degassing-methods" class="nav-link" data-scroll-target="#sec-app-degassing-methods"><span class="header-section-number">C.7</span> Methods and code</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendices26/a-diffusion.html">Appendices</a></li><li class="breadcrumb-item"><a href="../appendices26/c-degassing.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Degassing models</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-app-degassing" class="quarto-section-identifier">Appendix C — Degassing models</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This appendix holds the evidence for the choice of solubility model, the comparison of the four models, the starting-melt paths with their refreshed saturation pressures, the temperature test of the solubility models, and the way the equilibrium boundary meets the measured xenolith rims. The main text uses the result: one closed-system MagmaSat path from the published MiMiC start, with the CO2/Nb start (SR-1) as the second scenario (<a href="../chapters26/07-stage2.html" class="quarto-xref"><span>Chapter 8</span></a>).</p>
+<section id="sec-app-degassing-accuracy" class="level2" data-number="C.1">
+<h2 data-number="C.1" class="anchored" data-anchor-id="sec-app-degassing-accuracy"><span class="header-section-number">C.1</span> Accuracy on melts like ours</h2>
+<p>Every degassing path is computed from one starting melt (H2O, CO2, composition, temperature) at its saturation pressure down to 1 bar. Four mixed H2O–CO2 solubility models were compared (<a href="#fig-app-degassing-accuracy" class="quarto-xref">Figure&nbsp;<span>C.1</span></a>, <a href="#tbl-app-degassing-accuracy" class="quarto-xref">Table&nbsp;<span>C.1</span></a>): MagmaSat, Iacono-Marziano and Dixon (all through VESIcal) and MafiCH (Allison et al.&nbsp;2022). Shishkina was assessed but not run on the path grid.</p>
+<p>Hughes &amp; Saper (2026 preprint) evaluate the VESIcal models on 770 vapor-saturated experimental glasses. Their per-experiment outputs were recomputed for an analog window around the SR melts (volatile-free SiO2 43–49 wt%, Na2O + K2O 3.5–6.8 wt%, T &lt; 1350 °C): 111 experiments on 8 compositions, reaching 620 MPa at most. Recomputing their own Table 2 from these files reproduces the paper (for example MagmaSat −1.6 / 54.7 against their −2 / 55), which checks the scorer.</p>
+<div id="fig-app-degassing-accuracy" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-app-degassing-accuracy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../assets/data/model_choices_2026/figures/fig4_solubility_model_accuracy.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-app-degassing-accuracy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.1: On experiments resembling the SR melts, MagmaSat has the smallest saturation-pressure bias at 200–620 MPa and Iacono-Marziano below 200 MPa; Dixon and Shishkina read 15–37 % high in most bins. Points: mean error; bars: ±1 SD of (calculated − experimental)/experimental saturation pressure, independent experiments only. Top three rows: Hughes &amp; Saper (2026 preprint) Tables 2–3 (all compositions; basalt–basaltic andesite; alkali-rich). Lower four rows: this study’s recomputation for the analog window, by pressure bin; bins with fewer than 5 experiments are omitted. Grey band: ±20 %.
+</figcaption>
+</figure>
+</div>
+<div id="tbl-app-degassing-accuracy" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-degassing-accuracy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.1: MagmaSat is the most accurate model at depth and Iacono-Marziano below 200 MPa, where the xenolith rims form. Saturation-pressure accuracy / precision (%, with the number of experiments) of four solubility models on independent experiments resembling the SR melts.
+</figcaption>
+<div aria-describedby="tbl-app-degassing-accuracy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Analog window, pressure bin</th>
+<th>MagmaSat</th>
+<th>Iacono-Marziano</th>
+<th>Dixon</th>
+<th>Shishkina</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>All pressures</td>
+<td>+11 / 21 (62)</td>
+<td>−12 / 21 (82)</td>
+<td>+27 / 29 (81)</td>
+<td>+25 / 56 (39)</td>
+</tr>
+<tr class="even">
+<td>P &lt; 200 MPa</td>
+<td>+27 / 20 (14)</td>
+<td><strong>−6 / 26 (33)</strong></td>
+<td>+22 / 26 (37)</td>
+<td>+9 / 38 (10)</td>
+</tr>
+<tr class="odd">
+<td>200–500 MPa</td>
+<td><strong>+10 / 17 (34)</strong></td>
+<td>−12 / 15 (27)</td>
+<td>+37 / 27 (32)</td>
+<td>+34 / 58 (28)</td>
+</tr>
+<tr class="even">
+<td>≥ 500 MPa (500–620)</td>
+<td><strong>−1 / 21 (14)</strong></td>
+<td>−20 / 17 (22)</td>
+<td>+15 / 35 (12)</td>
+<td>n = 1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>A model that overpredicts saturation pressure for a given melt H2O underpredicts H2O solubility at a given pressure. For nearly pure H2O vapor, dissolved H2O goes roughly as the square root of pressure, so MagmaSat’s +27 % bias below 200 MPa corresponds to about −11 % in dissolved H2O. That is the direction and roughly the size of MagmaSat’s low late-stage H2O (0.67 against 0.92 wt% for Iacono-Marziano at 10 MPa on SR-1). Below 200 MPa the analog test therefore favors Iacono-Marziano, but on 14 MagmaSat and 33 Iacono-Marziano experiments only. The saturation-pressure uncertainty to carry is about ±20 % (1σ) for both on analogs, and above about 0.6 GPa no model has been tested on compositions like ours.</p>
+</section>
+<section id="sec-app-degassing-models" class="level2" data-number="C.2">
+<h2 data-number="C.2" class="anchored" data-anchor-id="sec-app-degassing-models"><span class="header-section-number">C.2</span> Choice of model and comparison</h2>
+<ul>
+<li><strong>MagmaSat is primary.</strong> It is the most accurate model at 200–620 MPa on analogs, Hughes &amp; Saper’s best model for alkali-rich melts (−9 / 22 %), the only model with no pressure ceiling in its calibration (our starts saturate at 0.43–1.7 GPa), it uses Fe3+/FeT, and it reproduces the 2023 path exactly.</li>
+<li><strong>Iacono-Marziano is a sensitivity case, mainly below about 200 MPa.</strong> It is the most accurate model there on analogs. The two are never blended, because a switch or weighted blend at about 200 MPa would put a kink into dH2O/dP that the diffusion boundary would fit as a change in degassing rate. Only the isothermal olivine rate exists on this path (0.086 MPa/s against 0.155 on MagmaSat, a factor of 0.55); no P–T path or pyroxene fits were run on it [CHECK: run the Iacono-Marziano path through the P–T and joint fits if it is to be called co-primary].</li>
+<li><strong>Dixon (VolatileCalc) is a sensitivity case.</strong> It reads +27 % high on analogs, it is outside its pressure calibration for every start, and its CO2 solubility depends directly on the SiO2 passed to it.</li>
+<li><strong>MafiCH is a check.</strong> It is not in VESIcal and was not evaluated by Hughes &amp; Saper. It is calibrated at 1200–1250 °C only, with a composition-independent H2O law (Lesne et al.&nbsp;2011). Its CO2 calibration includes a basanite and a leucitite, and the SR inclusions sit inside its cation-fraction ranges (Ol23 at the edge in Si). On the 3.55 wt% / 9079 ppm reference start it saturates at 736 MPa and holds 2.07 wt% H2O at 50 MPa and 0.84 at 10 MPa, between MagmaSat and Iacono-Marziano.</li>
+<li><strong>Shishkina is not recommended</strong> (precision 56 % on analogs, calibrated to 500 MPa only).</li>
+</ul>
+<div id="fig-app-degassing-models" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-app-degassing-models-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../assets/data/degassing_paths_2026/figures/fig4_model_comparison.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-app-degassing-models-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.2: The models disagree on saturation pressure and on melt H2O at 50 MPa, but all lose most of the H2O below about 100 MPa. Closed-system paths at 1200 °C from one reference start per volcano. Left column: SR lava AZ09-UK01, 3.55 wt% H2O and 9079 ppm CO2 (saturation 524–736 MPa across the four models; grey: the 2023 MagmaSat path, 3.36 wt% and 8529 ppm). Middle: Cima whole rock MO10-16, 1.33 wt% and 4196 ppm. Right: Vulcan’s Throne whole rocks AZ09-UK02 (solid) and AZ94 (dashed), 2.29 wt% and 5898 ppm. Bottom row: below 200 MPa. MafiCH (SR only) stops where about 10 ppm CO2 remains (about 4 MPa, closed). Each volcano uses only its own composition.
+</figcaption>
+</figure>
+</div>
+<p>The four models are compared on one reference start per volcano in <a href="#fig-app-degassing-models" class="quarto-xref">Figure&nbsp;<span>C.2</span></a>. Every SR path loses most of its H2O late. Half of the starting H2O is still dissolved down to 15–88 MPa, and the last 100 MPa removes 51–96 % of it. At 10 MPa every SR path holds 0.67–1.08 wt% H2O whatever its start: MagmaSat 0.67–0.74, Dixon 0.76–0.94, Iacono-Marziano 0.84–1.08. One factor at a time around the 3.55 wt% / 9079 ppm reference (Iacono-Marziano, closed), melt H2O at 10 MPa moves by 0.25 wt% with the model, 0.08 with CO2, 0.07 between closed and open, 0.05 with starting H2O (2.6–4.5 wt%), 0.02 with composition and less than 0.001 between 1166 and 1200 °C.</p>
+<p><strong>Open against closed.</strong> Open-system degassing keeps the melt 0.18–0.35 wt% wetter at 50 MPa but only 0.05–0.07 wt% wetter at 10 MPa, so the fits use closed-system paths, which also make the temperature correction simple.</p>
+</section>
+<section id="sec-app-degassing-starts" class="level2" data-number="C.3">
+<h2 data-number="C.3" class="anchored" data-anchor-id="sec-app-degassing-starts"><span class="header-section-number">C.3</span> Starting melts and saturation pressures</h2>
+<p>All SR paths use the AZ09-UK01 lava as analyzed (Plank &amp; Forsyth 2016 Table S5; Fe3+/FeT 0.167). It is in equilibrium with Fo 85.3 against a host median of Fo 85.6 and carries no accumulated olivine, cpx or mantle debris. The inclusion mean (corrected for post-entrapment crystallization and Fe loss) is the composition bracket; it lowers the MagmaSat saturation pressure by about 10 % and changes melt H2O at 10 MPa by 0.02 wt% or less. The primary start is the published MiMiC melt (3.549 wt% H2O, 8,529 ppm CO2). The other starts carry 14,100 ppm CO2, the depleted-mantle CO2/Nb (239) times the melt Nb (59 ppm), the smallest undegassed CO2 that still lies above every reconstructed SR inclusion (<a href="b-melt-inclusions.html#sec-app-mi-co2" class="quarto-xref"><span>Section B.7</span></a>). <a href="#tbl-app-degassing-psat" class="quarto-xref">Table&nbsp;<span>C.2</span></a> gives their saturation pressures and <a href="#tbl-app-degassing-starts" class="quarto-xref">Table&nbsp;<span>C.3</span></a> the shape of each path. The starts span the H2O batches of <a href="../chapters26/05-results-mi.html" class="quarto-xref"><span>Chapter 6</span></a>: the published MiMiC melt (primary), SR-1 (wet end, CO2/Nb second scenario), SR-7 (wet end with Fe-loss correction), SR-6 (mixture of batches, the sensitivity case), SR-4 (dry batch) and Ol23 as trapped. The wet start was adopted because the intact interior WHT1 opx cores (about 411 ppm) with the opx-anchored partition coefficient are in equilibrium with 3.48 wt% melt H2O, within 2 % of the MiMiC start and 3 % of SR-1 (<a href="a-diffusion.html#sec-app-diffusion-pyroxene" class="quarto-xref"><span>Section A.7</span></a>).</p>
+<div id="tbl-app-degassing-psat" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-degassing-psat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.2: MagmaSat saturation of the MiMiC start is 682 MPa and that of the SR-1 start 922 MPa (922.7), and the four starts that differ only in H2O saturate within 6 MPa of each other because saturation is CO2-controlled. Saturation pressures of the SR starting melts at 1200 °C (AZ09-UK01 composition unless the start says otherwise), from <code>data/original_volatiles_2026/starting_conditions_psat.csv</code>. The two Iacono-Marziano values for SR-1 come from two scripts: 685 MPa is the start-pressure calculation and 670 MPa the saturation of the path used in the fits; they differ by 2 %.
+</figcaption>
+<div aria-describedby="tbl-app-degassing-psat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Start</th>
+<th>H2O (wt%)</th>
+<th>CO2 (ppm)</th>
+<th>MagmaSat saturation (MPa)</th>
+<th>Iacono-Marziano saturation (MPa)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Published MiMiC (primary)</strong></td>
+<td>3.549</td>
+<td>8,529</td>
+<td><strong>682</strong></td>
+<td>not computed</td>
+</tr>
+<tr class="even">
+<td>SR-1, wet, CO2/Nb (second scenario)</td>
+<td>3.59</td>
+<td>14,100</td>
+<td>922</td>
+<td>685 (670 on the fitted path)</td>
+</tr>
+<tr class="odd">
+<td>SR-2, undegassed at the ocean-island CO2/Nb</td>
+<td>3.59</td>
+<td>29,800</td>
+<td>1438</td>
+<td>990</td>
+</tr>
+<tr class="even">
+<td>SR-3, as trapped (Ol23)</td>
+<td>3.55</td>
+<td>9,080</td>
+<td>708</td>
+<td>535</td>
+</tr>
+<tr class="odd">
+<td>SR-4, dry batch</td>
+<td>2.20</td>
+<td>14,100</td>
+<td>927</td>
+<td>735</td>
+</tr>
+<tr class="even">
+<td>SR-5, inclusion-based melt</td>
+<td>3.59</td>
+<td>14,100</td>
+<td>833</td>
+<td>625</td>
+</tr>
+<tr class="odd">
+<td>SR-6, mixture</td>
+<td>2.72</td>
+<td>14,100</td>
+<td>922</td>
+<td>715</td>
+</tr>
+<tr class="even">
+<td>SR-7, wet, Fe-loss corrected</td>
+<td>3.39</td>
+<td>14,100</td>
+<td>921</td>
+<td>691</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-app-degassing-starts" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-degassing-starts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.3: The start moves where degassing begins (10 % lost at 210–341 MPa) but barely moves the shallow path (0.63–0.67 wt% at 10 MPa). SR degassing paths by starting melt (MagmaSat, closed system, AZ09-UK01 lava, 1200 °C, unless noted), with the olivine Ol-2 decompression rate (Ferriss [100], K = 9) where it was fitted.
+</figcaption>
+<div aria-describedby="tbl-app-degassing-starts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Start</th>
+<th>H2O at 50 MPa (wt%)</th>
+<th>H2O at 10 MPa (wt%)</th>
+<th>10 % lost (MPa)</th>
+<th>50 % lost (MPa)</th>
+<th>90 % lost (MPa)</th>
+<th>Olivine rate, isothermal / P–T path (MPa/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Published MiMiC (primary)</strong></td>
+<td>1.69</td>
+<td>0.70</td>
+<td>248</td>
+<td>54.9</td>
+<td>2.8</td>
+<td>0.143 / 0.093</td>
+</tr>
+<tr class="even">
+<td>SR-1, wet, CO2/Nb (second scenario)</td>
+<td>1.60</td>
+<td>0.67</td>
+<td>341</td>
+<td>62.6</td>
+<td>3.1</td>
+<td>0.155 / 0.101</td>
+</tr>
+<tr class="odd">
+<td>SR-1, Iacono-Marziano</td>
+<td>2.17</td>
+<td>0.92</td>
+<td>152</td>
+<td>34.7</td>
+<td>1.8</td>
+<td>0.086 / not run</td>
+</tr>
+<tr class="even">
+<td>SR-7, wet, Fe-loss corrected</td>
+<td>1.58</td>
+<td>0.67</td>
+<td>322</td>
+<td>57.6</td>
+<td>2.8</td>
+<td>not run</td>
+</tr>
+<tr class="odd">
+<td>Ol23 as trapped</td>
+<td>1.68</td>
+<td>0.70</td>
+<td>257</td>
+<td>55.6</td>
+<td>2.8</td>
+<td>0.144 / not run</td>
+</tr>
+<tr class="even">
+<td>SR-6, mixture</td>
+<td>1.48</td>
+<td>0.65</td>
+<td>260</td>
+<td>42.1</td>
+<td>1.9</td>
+<td>0.174 / 0.113</td>
+</tr>
+<tr class="odd">
+<td>SR-4, dry batch</td>
+<td>1.36</td>
+<td>0.63</td>
+<td>210</td>
+<td>31.1</td>
+<td>1.3</td>
+<td>not run</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>At 200 MPa the dry and wet batches differ by 0.9–1.2 wt%; at 10 MPa by 0.04 wt% (MagmaSat) to 0.08 wt% (Iacono-Marziano), less than the 0.2–0.3 wt% between the two models. The batch moves where degassing begins, which is the deep part of the boundary curve that the opx and cpx rims see.</p>
+</section>
+<section id="sec-app-degassing-temperature" class="level2" data-number="C.4">
+<h2 data-number="C.4" class="anchored" data-anchor-id="sec-app-degassing-temperature"><span class="header-section-number">C.4</span> Temperature dependence of the solubility</h2>
+<p>The decompression fits put the diffusivity on the falling P–T path (<a href="a-diffusion.html#sec-app-diffusion-warp" class="quarto-xref"><span>Section A.4</span></a>). The solubility side was tested separately: the SR-1 (CO2/Nb) and SR-6 starts were run at six isotherms from 1050 to 1300 °C, closed system, with MagmaSat, Iacono-Marziano and Dixon. The isotherms nearly coincide below about 300 MPa (<a href="#tbl-app-degassing-isotherms" class="quarto-xref">Table&nbsp;<span>C.4</span></a>).</p>
+<div id="fig-app-degassing-isotherms" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-app-degassing-isotherms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../assets/results/decompression/solubility_t/fig_isotherms.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-app-degassing-isotherms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;C.3: Temperature barely moves the shallow H2O loss: the SR-1 isotherms from 1050 to 1300 °C nearly coincide, and the paths that follow the P–T line lie on them. Melt H2O against pressure for the SR-1 start (3.59 wt% H2O, 14,100 ppm CO2) under MagmaSat (left), Iacono-Marziano (middle) and Dixon (right), closed system, at 1050–1300 °C (colors), with the T-consistent paths along straight P–T lines of 68 and 105 °C/GPa (black dashed and dotted). Temperature moves the CO2-controlled saturation pressure, not the shallow H2O loss.
+</figcaption>
+</figure>
+</div>
+<div id="tbl-app-degassing-isotherms" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-degassing-isotherms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.4: Saturation moves by up to 155 MPa across the isotherms, while the half-loss pressure and the shallow H2O move by a few percent at most (<a href="#fig-app-degassing-isotherms" class="quarto-xref">Figure&nbsp;<span>C.3</span></a>). Temperature dependence of the SR-1 (CO2/Nb start) degassing path under three solubility models, 1050–1300 °C.
+</figcaption>
+<div aria-describedby="tbl-app-degassing-isotherms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>SR-1 (CO2/Nb) start, closed</th>
+<th>Saturation P, 1050 to 1300 °C (MPa)</th>
+<th>P where half the H2O is lost (MPa)</th>
+<th>H2O at 50 MPa (wt%)</th>
+<th>H2O at 10 MPa (wt%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MagmaSat</td>
+<td>847 to 1002</td>
+<td>60.3 to 63.8</td>
+<td>1.63 to 1.58</td>
+<td>0.683 to 0.669</td>
+</tr>
+<tr class="even">
+<td>Iacono-Marziano</td>
+<td>648 to 683</td>
+<td>34.7 (flat)</td>
+<td>2.16 to 2.17</td>
+<td>0.918 to 0.919</td>
+</tr>
+<tr class="odd">
+<td>Dixon</td>
+<td>735 to 854</td>
+<td>55.8 to 53.8</td>
+<td>1.71 to 1.74</td>
+<td>0.830 to 0.833</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Refit on the T-consistent MagmaSat path.</strong> Olivine Ol-2 and the WHT1 exterior opx and cpx were refitted with the solubility evaluated along the P–T path (slopes 46–120 °C/GPa) and compared with the same slopes on the 1200 °C path. Every rate changes by 3 % or less, and always slower (ratio 0.97–1.005): olivine 0.088 against 0.089 MPa/s at 90 °C/GPa and 0.050 against 0.051 at 120 °C/GPa; opx and cpx ratios 0.977–0.994. Solubility temperature is therefore a sensitivity, not a significant uncertainty; the choice of solubility model (0.55 times) and the diffusivity temperature (0.65 times) matter more.</p>
+</section>
+<section id="sec-app-degassing-boundary" class="level2" data-number="C.5">
+<h2 data-number="C.5" class="anchored" data-anchor-id="sec-app-degassing-boundary"><span class="header-section-number">C.5</span> The equilibrium boundary at the measured rims</h2>
+<p>The boundary condition of the diffusion model is the mineral H2O in equilibrium with the melt, K times melt H2O. Comparing it with the measured xenolith rims shows where along the path each rim could have formed (<a href="#tbl-app-degassing-boundary" class="quarto-xref">Table&nbsp;<span>C.5</span></a>; descriptive only: no diffusion is run).</p>
+<div id="tbl-app-degassing-boundary" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-degassing-boundary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.5: Olivine rims form in the last few MPa, opx rims in the last few tens of MPa, and cpx rims deeper. Where along the SR paths the equilibrium boundary falls to the measured xenolith exterior values (all-model ranges over the 286 SR paths at 1150–1200 °C; rows marked “wet SR-1” are for that start only; rows with the 2023 priors are the original comparison, the current-coefficient rows are recomputed). The WHT1 opx rim (158 ppm) is the median of the exterior rims; the outermost spot of the modeled grain is 96 ppm.
+</figcaption>
+<div aria-describedby="tbl-app-degassing-boundary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measured exterior value (ppm)</th>
+<th>Partition coefficient</th>
+<th>Melt H2O in equilibrium (wt%)</th>
+<th>Pressure where the boundary reaches it, all models (MPa)</th>
+<th>MagmaSat only (MPa)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GCB1 olivine rim, 3.6</td>
+<td>0.0009 (Towbin 2023)</td>
+<td>0.40</td>
+<td>1.6–3.7</td>
+<td>3.1–3.7</td>
+</tr>
+<tr class="even">
+<td>GCB1 olivine core, 5.9</td>
+<td>0.0009</td>
+<td>0.65</td>
+<td>4.0–9.5</td>
+<td>7.9–9.5</td>
+</tr>
+<tr class="odd">
+<td>WHT1 opx rim, 158</td>
+<td>0.009 (2023 prior)</td>
+<td>1.75</td>
+<td>23–67</td>
+<td>44–60</td>
+</tr>
+<tr class="even">
+<td>WHT1 opx rim, 158</td>
+<td>0.0118 (Novella × 0.93, current)</td>
+<td>1.34</td>
+<td>wet SR-1: 20 (Iacono-Marziano)</td>
+<td>wet SR-1: 36</td>
+</tr>
+<tr class="odd">
+<td>GCB1 opx rim, 264</td>
+<td>0.009</td>
+<td>2.93</td>
+<td>54–359</td>
+<td>103–219</td>
+</tr>
+<tr class="even">
+<td>WHT1 cpx rim, 261</td>
+<td>0.012 (2023 prior)</td>
+<td>2.18</td>
+<td>34–138</td>
+<td>63–103</td>
+</tr>
+<tr class="odd">
+<td>WHT1 cpx rim, 261</td>
+<td>opx-anchored (opx × cpx/opx cores)</td>
+<td>not tabulated</td>
+<td>wet SR-1: 57 (Iacono-Marziano)</td>
+<td>wet SR-1: 106</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<ul>
+<li><strong>Olivine.</strong> Every GCB1 olivine value sits far below equilibrium with undegassed melt (0.0009 × 3.55 wt% = 32 ppm). The rims (3.6–4.5 ppm) are reached only in the last 1.6–5.8 MPa and even the cores need melt with ≤ 0.75 wt% H2O. With the Peterson D_OH partitioning the rims are reached at 1.2–4.5 MPa, so the conclusion does not hinge on K.</li>
+<li><strong>Opx.</strong> The WHT1 exterior rim is the strongest observed rim loss and forms only in the last few tens of MPa. It is robust to how the opx coefficient is set: 27–55 MPa (MagmaSat) or 15–31 MPa (Iacono-Marziano) across all strategies and batches.</li>
+<li><strong>Cpx.</strong> The crossing depends on the coefficient strategy. With the experiment-based cpx coefficient the boundary starts below the measured rims, so the cpx would lose water from near saturation; opx-anchored or core-anchored, cpx rim loss starts at about 106–370 MPa (MagmaSat).</li>
+<li><strong>The deep interior cores</strong> (WHT1 opx about 411 ppm, intact) are above the boundary at the start for the drier batches but match the wet start (the MiMiC and CO2/Nb starts both), which is the basis of the start choice.</li>
+</ul>
+<p>The equivalent figure for the current coefficients is in <a href="../chapters26/07-stage2.html" class="quarto-xref"><span>Chapter 8</span></a>. The “2023 prior” rows use the 2023 coefficients (opx 0.009, cpx 0.012) on mixed paths [CHECK: regenerate the 2023-prior rows and tabulate the cpx opx-anchored melt H2O with the opx-anchored K 117.7 on SR-1 if the table is kept in the paper].</p>
+</section>
+<section id="sec-app-degassing-literature" class="level2" data-number="C.6">
+<h2 data-number="C.6" class="anchored" data-anchor-id="sec-app-degassing-literature"><span class="header-section-number">C.6</span> CO2 and published rates</h2>
+<p>A side question is whether CO2 content orders the published rates, since most cinder cones carry much less CO2 than SR (<a href="#tbl-app-degassing-co2" class="quarto-xref">Table&nbsp;<span>C.6</span></a>).</p>
+<div id="tbl-app-degassing-co2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-degassing-co2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;C.6: CO2 content does not order the published rates: the CO2-rich Etna 3930 BP is fast like SR, other CO2-rich eruptions are slow, and the CO2-poor Fuego is fast. Rates from H diffusion are final-ascent rates; whole-path averages (Fe–Mg, fluid inclusions) are not directly comparable. Velocities converted at 2800 kg/m³. Sources in <code>data/literature_ascent_rates/high_co2.csv</code>.
+</figcaption>
+<div aria-describedby="tbl-app-degassing-co2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Eruption</th>
+<th>Maximum melt-inclusion CO2 (ppm)</th>
+<th>Rate (MPa/s)</th>
+<th>Method</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sullivan Ranch (this study)</td>
+<td>9,079 (Ol23, bubble-corrected); primary start 8,529 (published MiMiC); second scenario 14,100</td>
+<td>0.093 (0.055–0.154)</td>
+<td>H in olivine (P–T path)</td>
+<td>cinder cone with mantle xenoliths</td>
+</tr>
+<tr class="even">
+<td>Etna 3930 BP Fall Stratified (Barth 2024)</td>
+<td>9,600 (rehomogenized)</td>
+<td>0.47 (0.16–1.28)</td>
+<td>H in olivine (Fo 90–91)</td>
+<td>subplinian picrite</td>
+</tr>
+<tr class="odd">
+<td>Fuego 1974</td>
+<td>300–450 measured (a few above 500)</td>
+<td>0.38–0.45</td>
+<td>olivine H, embayments</td>
+<td>subplinian arc basalt</td>
+</tr>
+<tr class="even">
+<td>Seguam 1977</td>
+<td>~900 (model input)</td>
+<td>0.04–0.36</td>
+<td>olivine H, embayments</td>
+<td>violent Strombolian</td>
+</tr>
+<tr class="odd">
+<td>Kilauea Iki 1959</td>
+<td>≤ 590 (rehomogenized; secondary)</td>
+<td>0.05</td>
+<td>olivine H, embayments</td>
+<td>Hawaiian fountain</td>
+</tr>
+<tr class="even">
+<td>Cerro Negro 1992 / 1995</td>
+<td>600–1,260 (model input / abstract)</td>
+<td>0.001–0.03</td>
+<td>olivine H, melt inclusions</td>
+<td>arc cinder cone</td>
+</tr>
+<tr class="odd">
+<td>Fogo (DeVitre 2023)</td>
+<td>~20,000 (secondary; bubble status unknown)</td>
+<td>0.0005–0.05</td>
+<td>melt inclusions</td>
+<td>ocean-island basanite</td>
+</tr>
+<tr class="even">
+<td>Ross Island, Hut Point (Rasmussen 2017)</td>
+<td>2,000–18,000 (bubble-corrected)</td>
+<td>≥ 1 × 10⁻⁵ (authors’ minimum)</td>
+<td>melt-inclusion H2O loss</td>
+<td>basanite cones</td>
+</tr>
+<tr class="odd">
+<td>La Palma Tajogaite 2021 (Zanon 2024)</td>
+<td>~14,000 (abstract)</td>
+<td>≈ 3 × 10⁻⁴ to 3 × 10⁻³</td>
+<td>fluid-inclusion barometry with seismicity</td>
+<td>85-day Strombolian/effusive eruption</td>
+</tr>
+<tr class="even">
+<td>Paricutin 1943 (Albert 2020)</td>
+<td>not given</td>
+<td>≈ 0.002–0.03</td>
+<td>olivine Fe–Mg, Ni, P</td>
+<td>whole-path average</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-app-degassing-methods" class="level2" data-number="C.7">
+<h2 data-number="C.7" class="anchored" data-anchor-id="sec-app-degassing-methods"><span class="header-section-number">C.7</span> Methods and code</h2>
+<p><strong>Code and outputs.</strong> <code>scripts/degassing_paths/</code> writes <code>data/degassing_paths_2026/</code> (<code>cases.csv</code>, <code>paths.parquet</code>, <code>metrics.csv</code>, <code>xenolith_boundary.csv</code>, <code>figures/</code>). The isotherms and the T-consistent refit are <code>scripts/decompression/solubility_t.py</code>. The starting-melt saturation pressures come from <code>scripts/original_volatiles/start_psat.py</code> and the MagmaSat runs from <code>queue_magmasat.py</code>, <code>run_magmasat.sh</code> and <code>scripts/original_volatiles/collect_magmasat.py</code> (control: 6814.82 bar reproduced). Tests: <code>tests/test_degassing_paths.py</code>.</p>
+<p><strong>Compositions.</strong> Anhydrous Plank &amp; Forsyth (2016) analyses with FeO and Fe2O3 split at each vent’s Fe3+/FeT, normalized to 100 − H2O − CO2 (VESIcal “fixedvolatiles”). The original-volatiles starts use the oxides, Fe3+/FeT (0.167) and temperature in <code>data/original_volatiles_2026/starting_conditions.csv</code>. No composition is used for another volcano.</p>
+<p><strong>Grid.</strong> SR: three compositions (lava AZ09-UK01, scoria AZ09-GCB, inclusion mean) × H2O 2.6, 3.1, 3.55, 4.0, 4.5 wt% × CO2 3141, 5755, 9079 and 14,100 ppm at 1200 °C, plus three runs at 1166 °C and the original-volatiles starts. Cima and Vulcan’s Throne were run on their own compositions only (not used for rates). Pressure steps from the saturation pressure: 10 MPa above 200 MPa, 5 MPa to 20 MPa, 1 MPa to 1 MPa, then 0.5 and 0.1 MPa.</p>
+<p><strong>Iacono-Marziano and Dixon</strong> (<code>run_fast.py</code>). VESIcal 1.2.12 on the host. Closed system: <code>calculate_degassing_path(fractionate_vapor=0)</code>. Open system: one step at a time with CO2 below 1e-6 wt% set to zero, because VESIcal-Dixon can stall in its Redlich–Kwong volume loop once dissolved CO2 reaches about zero (a change of at most 2e-6 wt% H2O). Each path has a 300 s limit, and paths with missing steps are rejected (none occurred).</p>
+<p><strong>MagmaSat</strong> (<code>queue_magmasat.py</code>, <code>magmasat_path.py</code>, <code>run_magmasat.sh</code>). The ENKI ThermoEngine container (VESIcal 1.2.10), one subprocess per path with a 2 h limit and a per-path cache. Check: run on the exact 2023 pressure list (3.36 wt% H2O, 8528.8 ppm CO2, Fe3+/FeT 0.17, 1200 °C), MagmaSat reproduces the 2023 path file at all 202 rows to 1.1e-4 wt% H2O.</p>
+<p><strong>MafiCH</strong> (<code>run_mafich.py</code>). The authors’ supplement script, run through a driver copy, with temperature fixed at 1200 °C, 25 ppm CO2 steps and total Fe as FeO. Its paths stop at about 10 ppm CO2 (4–5 MPa closed, 80 MPa open), so they do not reach the final stage.</p>
+<p><strong>Dixon normalization.</strong> VESIcal’s Dixon model reads SiO2 as given. Scaling the oxides to 100 − H2O − CO2 lowers SiO2 by 1.4–3.0 wt%, which Dixon reads as a more alkaline melt, so the Dixon paths here (hydrous normalization) understate Dixon’s saturation pressures by 11–25 %. Dixon is a sensitivity case only, so this changes no result.</p>
+<p><strong>Isotherms and the T-consistent path.</strong> In a closed system melt H2O at (P, T) depends only on P, T and the bulk volatiles, so the path along <span class="math inline">\(T(P) = 1330\ \mathrm{°C} - s\,(2.26\ \mathrm{GPa} - P)\)</span> is the isotherms interpolated linearly in T at T(P) for each P. All 432 fast paths and all 10 new MagmaSat isotherms ran without failures. Control: the 1200 °C-path control reproduces the path fits (olivine 0.089 at 90.4 °C/GPa against 0.090 at 90 °C/GPa).</p>
+<p><strong>Xenolith boundary.</strong> Unflagged xenolith rows of <code>data/compiled/csv/T1_SIMS_NAMS.csv</code>, medians by xenolith, mineral, position and core or rim. For each path, the pressure at which K × melt H2O falls to the measured value is interpolated; the current-coefficient crossings are from <code>scripts/model_choices/anchoring.py</code>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../appendices26/b-melt-inclusions.html" class="pagination-link" aria-label="Melt-inclusion methods">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Melt-inclusion methods</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../appendices26/d-data-quality.html" class="pagination-link" aria-label="Data quality">
+        <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data quality</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

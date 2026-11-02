@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Appendix D — Data quality – Sullivan Ranch: xenolith H2O, magma ascent and degassing</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../appendices26/e-decisions.html" rel="next">
+<link href="../appendices26/c-degassing.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendices26/a-diffusion.html">Appendices</a></li><li class="breadcrumb-item"><a href="../appendices26/d-data-quality.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data quality</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Sullivan Ranch: xenolith H2O, magma ascent and degassing</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Summary for co-authors</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/01-changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What changed since the thesis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/02-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/03-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Samples and methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Results</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/04-results-nams.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Results: water in olivine, cpx and opx</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/05-results-mi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Results: melt inclusions and the starting melt</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Discussion: the stages of ascent</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/06-stage3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Stage III: after eruption</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/07-stage2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Stage II: final ascent in degassing magma</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/08-stage1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Stage I: ascent in water-undersaturated magma</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/09-stage0-implications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Stage 0 and implications</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters26/10-open.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Open questions for co-authors</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/a-diffusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Diffusion model and fits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/b-melt-inclusions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Melt-inclusion methods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/c-degassing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Degassing models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/d-data-quality.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data quality</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/e-decisions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Decisions, crosswalk and reproducibility</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices26/f-thesis-figures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Chapter 3 figures, deposited and recompiled</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-app-data-calibration" id="toc-sec-app-data-calibration" class="nav-link active" data-scroll-target="#sec-app-data-calibration"><span class="header-section-number">D.1</span> Calibration</a></li>
+  <li><a href="#sec-app-data-sigma" id="toc-sec-app-data-sigma" class="nav-link" data-scroll-target="#sec-app-data-sigma"><span class="header-section-number">D.2</span> Total 1σ against the deposited combined uncertainty</a></li>
+  <li><a href="#sec-app-data-limits" id="toc-sec-app-data-limits" class="nav-link" data-scroll-target="#sec-app-data-limits"><span class="header-section-number">D.3</span> Detection limits</a></li>
+  <li><a href="#sec-app-data-t1216" id="toc-sec-app-data-t1216" class="nav-link" data-scroll-target="#sec-app-data-t1216"><span class="header-section-number">D.4</span> T1-216 on the opx line</a></li>
+  <li><a href="#sec-app-data-empa" id="toc-sec-app-data-empa" class="nav-link" data-scroll-target="#sec-app-data-empa"><span class="header-section-number">D.5</span> Electron microprobe coverage</a></li>
+  <li><a href="#sec-app-data-issues" id="toc-sec-app-data-issues" class="nav-link" data-scroll-target="#sec-app-data-issues"><span class="header-section-number">D.6</span> Disagreements between the deposited text and the data</a></li>
+  <li><a href="#sec-app-data-compiled" id="toc-sec-app-data-compiled" class="nav-link" data-scroll-target="#sec-app-data-compiled"><span class="header-section-number">D.7</span> Compiled-workbook checks</a></li>
+  <li><a href="#sec-app-data-fo" id="toc-sec-app-data-fo" class="nav-link" data-scroll-target="#sec-app-data-fo"><span class="header-section-number">D.8</span> Olivine Fo populations</a></li>
+  <li><a href="#sec-app-data-methods" id="toc-sec-app-data-methods" class="nav-link" data-scroll-target="#sec-app-data-methods"><span class="header-section-number">D.9</span> Measurement methods</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendices26/a-diffusion.html">Appendices</a></li><li class="breadcrumb-item"><a href="../appendices26/d-data-quality.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data quality</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-app-data" class="quarto-section-identifier">Appendix D — Data quality</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This appendix documents how far the SIMS dataset can be trusted: the calibration lines, what uncertainty is reported and why, the detection limits, the one re-reduced analysis, the electron-microprobe coverage, the disagreements between the deposited text and the data, the checks on the compiled workbook, and the olivine Fo populations. The measurements and their use are in <a href="../chapters26/03-methods.html" class="quarto-xref"><span>Chapter 4</span></a> and <a href="../chapters26/04-results-nams.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
+<section id="sec-app-data-calibration" class="level2" data-number="D.1">
+<h2 data-number="D.1" class="anchored" data-anchor-id="sec-app-data-calibration"><span class="header-section-number">D.1</span> Calibration</h2>
+<p>The calibration question is whether the olivine data and the olivine/melt K that converts them to melt H2O are on the same scale. Scaling the olivine data by a factor s has the same effect on a fitted rate as using K/s, so a mismatch between them would bias the rate directly.</p>
+<p>Each analysis is reduced as x = 16O1H/30Si × SiO2 (wt%) of the analysis, with no further division, and H2O (ppm) = slope × x + intercept. Each line is an orthogonal-distance regression of the session’s standards plus its blank rows, with the x error from the ratio scatter and the y error the accepted standard error, followed by a 5000-draw bootstrap.</p>
+<ul>
+<li><strong>The SIMS dataset uses the revised opx standards.</strong> Towbin et al.&nbsp;(2023) revised KBH-1 from 217 ± 11 to 202 ± 15 ppm, based on the Bell et al.&nbsp;(1995) manometry (186 ppm measured, plus a 14 % upward correction that the paper treats as a maximum). ROM-273-OG2 (263 to 245) and India enstatite (141 to 131) were revised with it, so earlier opx concentrations scale by 0.93.</li>
+<li><strong>Olivine is reduced on the opx line in all sessions.</strong> With the revision, the opx SIMS line is 12 % above the Withers (2012) olivine line, against 19 % before. The 2023 paper treats this as within uncertainty.</li>
+<li><strong>The olivine/melt K is on the same scale.</strong> Towbin et al.&nbsp;(2023) built K by recalibrating the published experiments (Koga 2003, Aubaud 2004, Hauri 2006; Newcombe 2020 inclusion pairs) onto this calibration. The revised mean partition coefficient is 0.0009, the K = 9 ppm per wt% used for the olivine rate.</li>
+<li><strong>The remaining calibration uncertainty is the 12 %.</strong> Placing the olivine exactly on the Withers (2012) line is equivalent to K ≈ 10.1, which gives about 0.125 MPa/s against 0.155 MPa/s for the isothermal wet-start fit.</li>
+<li><strong>Two older scales are superseded, not alternatives.</strong> The old Bell calibration (× 1.352 of the SIMS dataset) and the “Withers” column of the 2018 raw workbook (× 0.789) are not used. The workbook column does not match the Withers (2012) line, which would be about 0.89 times the revised opx values; it is probably an older implementation without the blank correction the paper applies. Sensitivity runs on the × 0.789 column (an earlier stall fit) are on a superseded scale.</li>
+<li><strong>The pyroxene diffusivities carry their own scale factors</strong> (opx × 0.93; a separate cpx factor), treated in <a href="a-diffusion.html" class="quarto-xref"><span>Appendix A</span></a>.</li>
+</ul>
+<div id="tbl-app-data-calibration" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-data-calibration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;D.1: Six calibration lines carry every analysis; the detection limit is below 1 ppm only for the 2018 opx/olivine line. Calibration lines (30Si normalization) and H2O detection limits per session. Glass, olivine and 18O-normalized lines exist but are not applied to the SIMS dataset.
+</figcaption>
+<div aria-describedby="tbl-app-data-calibration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Session and line</th>
+<th>Applied to (analyses)</th>
+<th>Slope (ppm per unit x)</th>
+<th>Intercept (ppm)</th>
+<th>R²</th>
+<th>L_C / L_D / LoQ (ppm)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>6f 2013, opx</td>
+<td>opx (2) and olivine (4)</td>
+<td>57 ± 2</td>
+<td>−6 ± 1</td>
+<td>0.966</td>
+<td>4.88 / 9.78 / 15.0</td>
+</tr>
+<tr class="even">
+<td>6f 2013, cpx</td>
+<td>cpx (58)</td>
+<td>78 ± 6</td>
+<td>−7 ± 3</td>
+<td>0.868</td>
+<td>6.70 / 13.3 / 20.4</td>
+</tr>
+<tr class="odd">
+<td>6f 2018, opx</td>
+<td>opx (29) and olivine (54)</td>
+<td>53 ± 1</td>
+<td>0</td>
+<td>0.994</td>
+<td>0.492 / 0.987 / 1.44</td>
+</tr>
+<tr class="even">
+<td>6f 2018, cpx</td>
+<td>cpx (20)</td>
+<td>74 ± 2</td>
+<td>0</td>
+<td>0.962</td>
+<td>0.683 / 1.38 / 2.54</td>
+</tr>
+<tr class="odd">
+<td>NanoSIMS 2020, opx</td>
+<td>opx (38, including T1-216)</td>
+<td>126 ± 7</td>
+<td>−18 ± 5</td>
+<td>0.921</td>
+<td>7.62 / 17.1 / 21.8</td>
+</tr>
+<tr class="even">
+<td>NanoSIMS 2020, cpx</td>
+<td>cpx (79)</td>
+<td>128 ± 11</td>
+<td>−18 ± 3</td>
+<td>0.945</td>
+<td>7.53 / 17.4 / 37.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The per-session standards (glass, olivine, opx and cpx reference materials, plus Suprasil and synthetic forsterite as blanks) are listed in the calibration table of the supplement; the text of the deposited chapter lists 2013-only standards among the 2018 ones [CHECK: per-session standard lists, supplement Table S6 block D]. The NanoSIMS glass line is printed as 143 on the calibration figure against 147.6 recomputed (an old label); the glass line is not used for minerals, so no action was taken.</p>
+</section>
+<section id="sec-app-data-sigma" class="level2" data-number="D.2">
+<h2 data-number="D.2" class="anchored" data-anchor-id="sec-app-data-sigma"><span class="header-section-number">D.2</span> Total 1σ against the deposited combined uncertainty</h2>
+<p>The deposited “combined uncertainty” is <span class="math inline">\(\sqrt{((P_{95} - \mathrm{best})^2 + (\mathrm{best} - P_5)^2)/16 + s_{SIMS}^2}\)</span>. It reproduces every deposited value but it understates the calibration term: it carries about 0.58 of the calibration 1σ. The SIMS dataset therefore reports the total 1σ</p>
+<p><span id="eq-app-data-sigma"><span class="math display">\[
+\sigma_{tot} = \sqrt{\sigma_{cal}^2 + \sigma_{count}^2 + \sigma_0^2},
+\tag{D.1}\]</span></span></p>
+<p>where <span class="math inline">\(\sigma_{cal}\)</span> is the larger side of the 5–95 % calibration interval divided by 1.645, <span class="math inline">\(\sigma_{count}\)</span> the counting standard error and <span class="math inline">\(\sigma_0\)</span> the Suprasil blank scatter beyond counting statistics, times the slope. Examples: T1-181 (2.20 ppm) goes from 0.095 to 0.30 ppm, and T1-056 (206 ppm) from 10.5 to 18.8 ppm. The Ol-2 spots carry 0.31–0.43 ppm, and 2013 analyses, which had no uncertainty, now have one. The compiled data also keep the deposited column, renamed “as deposited”. The ascent fits do not read these uncertainties: each fit uses a fixed σ per profile (<a href="a-diffusion.html#sec-app-diffusion-sigma" class="quarto-xref"><span>Section A.3</span></a>), so the change affects only the reported values. The 2023 edition of the supplement keeps the deposited values.</p>
+<p>The calibration term is shared by all points of a session and line, so it acts like a scale (K) error rather than scatter; moving it into the K prior changes nothing visible in the rates (<a href="a-diffusion.html#sec-app-diffusion-sigma" class="quarto-xref"><span>Section A.3</span></a>).</p>
+</section>
+<section id="sec-app-data-limits" class="level2" data-number="D.3">
+<h2 data-number="D.3" class="anchored" data-anchor-id="sec-app-data-limits"><span class="header-section-number">D.3</span> Detection limits</h2>
+<p>Three limits (<a href="#tbl-app-data-limits" class="quarto-xref">Table&nbsp;<span>D.2</span></a>) are quoted per session and line, computed from the Suprasil blank scatter in the same unit as the samples (x above), with blanks entering at their own SiO2. Suprasil is the near-blank (nominally 1 ± 1 ppm, likely 1–2 ppm); the NanoSIMS synthetic forsterite blank is probably SynFo70, which carries real H, and is not used.</p>
+<div id="tbl-app-data-limits" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-data-limits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;D.2: The detection limit is the lowest H2O that is distinguished from the blank 95 % of the time; the quantification limit is the lowest at which the total 1σ is a fifth of the value. Definitions used for the limits of the SIMS H2O data.
+</figcaption>
+<div aria-describedby="tbl-app-data-limits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Quantity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Background</td>
+<td>Minus the intercept of the session line: the H2O equivalent of the x-intercept. The line removes it; it is a level, not a limit</td>
+</tr>
+<tr class="even">
+<td>L_C, decision limit</td>
+<td>Hubaux &amp; Vos (1970) with a prediction band: the 95th percentile of bootstrap x-intercepts plus one spot’s Suprasil scatter, read on the best line (one-sided α = 0.05)</td>
+</tr>
+<tr class="odd">
+<td>L_D, detection limit</td>
+<td>The lowest true H2O whose 5th-percentile reading reaches the L_C threshold (α = β = 0.05); equals Currie’s 3.29σ0 for a normal spread</td>
+</tr>
+<tr class="even">
+<td>LoQ, quantification limit</td>
+<td>The lowest H2O with total 1σ / H2O ≤ 20 %</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Each analysis is tagged against L_D and LoQ and every measured value is kept (no substitution). The limits are in <a href="#tbl-app-data-calibration" class="quarto-xref">Table&nbsp;<span>D.1</span></a>. Of the 284 analyses, six are below L_D: T1-039 and T1-040 (NanoSIMS cpx, CA18-05) and T1-158 to T1-161 (2013 Cima olivine); T1-135 and T1-136 (NanoSIMS pit cpx) lie between L_D and LoQ; 276 are quantified, including every 2018 olivine. For the 2018 olivine, L_D is 0.99 ppm and LoQ 1.44 ppm. Because the Cima olivine values are below L_D, the SR-to-Cima olivine ratio is not quoted.</p>
+<p>The other volatiles are less certain. Blanks from the 6f sessions show that F in pyroxene and P are real signals, while S, Cl and CO2 in these minerals sit at or near the blank level, so their tabulated values are counting statistics only and carry no calibration or blank term. The supplement keeps H2O, F and P as the main volatiles and gives S, Cl and CO2 in one note.</p>
+</section>
+<section id="sec-app-data-t1216" class="level2" data-number="D.4">
+<h2 data-number="D.4" class="anchored" data-anchor-id="sec-app-data-t1216"><span class="header-section-number">D.4</span> T1-216 on the opx line</h2>
+<p>T1-216 (analysis CA18-05x-OPX_Core) is an opx analysis that was reduced at SiO2 55 and, as deposited, not on the opx line. The 2026 edition and the compiled data use its opx-line value, 129.70 ppm (90 % interval 119.93–139.09), from the opx columns of the 2023 processing sheet, against 131.26 ppm as deposited. It is the maximum of the Cima xenolith opx (35–130 ppm in the 2026 edition). The 2023 edition and the figure data keep 131.26.</p>
+</section>
+<section id="sec-app-data-empa" class="level2" data-number="D.5">
+<h2 data-number="D.5" class="anchored" data-anchor-id="sec-app-data-empa"><span class="header-section-number">D.5</span> Electron microprobe coverage</h2>
+<p>EMPA supplies the SiO2 used in the SIMS reduction, the Mg# and Cr of the pyroxenes, and the olivine Fo profiles. Coverage is uneven.</p>
+<ul>
+<li><strong>SR.</strong> The compiled EMPA table has one analysis per SR xenolith: cpx Mg# 91.7 (GCB1), 90.9 (WHT1) and 92.5 (WHT06_1). Per-grain 2018 data for GCB1 were recovered (82 points; 9 cpx and 7 opx grains linked to SIMS grains) and added as a separate table. The GCB1 grains are uniform: cpx Mg# 91.3–91.8, opx 90.3–90.4.</li>
+<li><strong>One phase label corrected.</strong> The GCB1 spot R-21_OPX-1 B, named as opx in the earlier files, is cpx by EMPA (renamed R-21_CPX-1); the SIMS dataset already lists it as cpx and its value is unchanged.</li>
+<li><strong>No usable EMPA exists</strong> for VT8504, VT8505, VT8506, VT8536, VT8535 cluster 3, cip98-19 clusters 1, 8 and 10, CA18-05x, CA18-Lavablock, or the WHT06_2 xenolith grains, after a search of every EMPA session found.</li>
+<li><strong>Olivine Fo profiles</strong> come from the EMPA master sheet of the melt-vein study (phenocrysts, xenocrysts, WHT1 exterior grains and melt-pocket overgrowths).</li>
+</ul>
+</section>
+<section id="sec-app-data-issues" class="level2" data-number="D.6">
+<h2 data-number="D.6" class="anchored" data-anchor-id="sec-app-data-issues"><span class="header-section-number">D.6</span> Disagreements between the deposited text and the data</h2>
+<p>A sweep of 65 quantitative claims in the deposited Chapter 3 against the final data found 33 consistent, 15 inconsistent and 17 that need model output to check. <a href="#tbl-app-data-issues" class="quarto-xref">Table&nbsp;<span>D.3</span></a> groups the inconsistencies and the open questions about the SIMS dataset.</p>
+<div id="tbl-app-data-issues" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-data-issues-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;D.3: Most disagreements are deposited-text values that predate the 2023 recalibration; the data themselves trace cleanly to the raw instrument files. Summary of the text-versus-data sweep and the issue list of the SIMS dataset.
+</figcaption>
+<div aria-describedby="tbl-app-data-issues-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Text or figure says</th>
+<th>Final data give</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Olivine values in the text</td>
+<td>Interior cores 6–12 ppm (mean ~9); phenocryst cores 8–11 (mean 9); rims 5–7</td>
+<td>4.3–8.7 (mean 6.89); 5.9–7.9 (mean 6.77); rims 4.6 (xenolith), 3.6 (phenocryst)</td>
+<td>Text written before the 2023 recalibration (ratio about 1.3); rewrite to the SIMS dataset</td>
+</tr>
+<tr class="even">
+<td>Lowest olivine rims</td>
+<td>3–4 ppm</td>
+<td>2.2–3.6 ppm</td>
+<td>Data lower than text, so not a scale factor; update the text</td>
+</tr>
+<tr class="odd">
+<td>Cpx ranges and means</td>
+<td>65–500 ppm; WHT01 and WHT06 both ~350</td>
+<td>63–594 (Vulcan’s Throne up to 594); WHT01 315, WHT06_1 340</td>
+<td>Update the text</td>
+</tr>
+<tr class="even">
+<td>Zoning statements</td>
+<td>“Most” opx rims &gt; 100 ppm below cores; “all” cpx rims lower</td>
+<td>3 of 10 opx grains; two cpx exceptions</td>
+<td>Reword</td>
+</tr>
+<tr class="odd">
+<td>WHT1 opx rims</td>
+<td>Interior rims ~300 ppm</td>
+<td>209–242 ppm</td>
+<td>Update the text</td>
+</tr>
+<tr class="even">
+<td>SR inclusion hosts</td>
+<td>All Fo 85–87</td>
+<td>Fo 79.3–87.1; 5 of 13 below Fo 85</td>
+<td>Update the text</td>
+</tr>
+<tr class="odd">
+<td>Cima magma H2O in the abstract</td>
+<td>~1 wt%</td>
+<td>Results and Fig. 15 use 1.5 wt%</td>
+<td>Make consistent</td>
+</tr>
+<tr class="even">
+<td>Cima xenolith opx range</td>
+<td>35–131 ppm</td>
+<td>35–130 ppm after T1-216 on the opx line</td>
+<td>Updated in the 2026 edition</td>
+</tr>
+<tr class="odd">
+<td>Flagged and excluded rows</td>
+<td>not applicable</td>
+<td>13 rows flagged by grain-location notes (“bad”, “crack”); T1-002 excluded as a duplicate of an opx analysis reduced with the cpx calibration</td>
+<td>Decided; the SIMS dataset is kept verbatim</td>
+</tr>
+<tr class="even">
+<td>Open questions about the dataset</td>
+<td>not applicable</td>
+<td>T1-076 replicate (302 ppm) not in the final Fig. 7a; which WHT06 CPX-3 spots are rims (T1-090, 091, 092, 094); VT8535 spots T1-153 and 154 left out of Fig. 15c; GCB1 Ol-6 rim T1-170 (7.70 ppm at 20 µm) omitted from Figs. 3b and 3c; missing rim distances for T1-229 and T1-240</td>
+<td>Open</td>
+</tr>
+<tr class="odd">
+<td>Figures against the dataset</td>
+<td>Fig. 3b averages and error bars; Fig. 7 version; Fig. 15 host-magma H2O and VT points; Fig. 8 “WHT06 MV glass”</td>
+<td>Small differences or missing sources</td>
+<td>Partly resolved; others open</td>
+</tr>
+<tr class="even">
+<td>Re-reductions kept as in the dataset</td>
+<td>T1-218 and T1-219 re-reduced at SiO2 37.14 and 48.52 against 34.94 and 48.00; 15 cpx typed with the rounded 78x − 7 line (0.2–1.4 ppm low)</td>
+<td>not applicable</td>
+<td>Open: keep as deposited?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Inclusion-side data issues (the supplement table S9 row mismatch, GC2_ol6, GC2_ol4, the input changes between 2023 and 2026) are in <a href="b-melt-inclusions.html" class="quarto-xref"><span>Appendix B</span></a>.</p>
+</section>
+<section id="sec-app-data-compiled" class="level2" data-number="D.7">
+<h2 data-number="D.7" class="anchored" data-anchor-id="sec-app-data-compiled"><span class="header-section-number">D.7</span> Compiled-workbook checks</h2>
+<p><code>scripts/build_compiled_workbook.py</code> builds the compiled workbook from the final chapter tables and the raw session files, <code>scripts/recalc.py</code> recalculates it and <code>scripts/verify_compiled.py</code> checks it. The SIMS dataset is copied verbatim from the 2023 chapter tables; cleaned columns (phase, locality, position, core/rim, flag, grain ID) are added beside the original ones, and the 2018 GCB1 EMPA is a separate table. The last full check gave:</p>
+<ul>
+<li>284 rows with 0 cell differences from the source table;</li>
+<li>every row linked to a raw instrument row with the identical H2O value (64 rows from the 2013 6f session, 103 from 2018, 117 from NanoSIMS 2020); all 117 NanoSIMS rows also linked to a ratio row with no mismatch;</li>
+<li>0 lookup mismatches in the data behind the regenerated chapter figures;</li>
+<li>82 GCB1 EMPA points with 0 mismatches against the raw export, and 14 of 15 grains linked to SIMS grains.</li>
+</ul>
+<p>[CHECK: this check predates the total 1σ columns, the detection-limit tags and the T1-216 re-reduction in the compiled data; rerun <code>verify_compiled.py</code> and report the new counts.]</p>
+</section>
+<section id="sec-app-data-fo" class="level2" data-number="D.8">
+<h2 data-number="D.8" class="anchored" data-anchor-id="sec-app-data-fo"><span class="header-section-number">D.8</span> Olivine Fo populations</h2>
+<p>The olivine Fo data separate the crystals by origin (<a href="#tbl-app-data-fo" class="quarto-xref">Table&nbsp;<span>D.4</span></a>) (<code>scripts/olivine_fo_populations.py</code>, <code>data/olivine_fo_populations/grains.csv</code>).</p>
+<div id="tbl-app-data-fo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-data-fo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;D.4: The pit rims converge on lava equilibrium whatever the core, while every roadside grain ends below it. Core and rim Fo per population, from the EMPA master sheet with bad points removed.
+</figcaption>
+<div aria-describedby="tbl-app-data-fo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Grains</th>
+<th>Profiles</th>
+<th>Core Fo</th>
+<th>Rim Fo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>WHT06 phenocrysts (pit)</td>
+<td>11</td>
+<td>83.0–88.2 (ol44 reverse-zoned, 75.9)</td>
+<td>83.3–85.8 (median 84.5)</td>
+</tr>
+<tr class="even">
+<td>WHT06 xenocrysts ol43, ol48 (pit)</td>
+<td>2</td>
+<td>88.2–89.5</td>
+<td>84.0–84.9</td>
+</tr>
+<tr class="odd">
+<td>GCB1 xenocrysts ol6, ol23 (roadside)</td>
+<td>3</td>
+<td>90.5–90.6</td>
+<td>81.5–83.0</td>
+</tr>
+<tr class="even">
+<td>GCB1 Ol-2, the H2O profile grain (roadside)</td>
+<td>1</td>
+<td>88.1 (plateau 88.0–88.3)</td>
+<td>80.7 at 5 µm</td>
+</tr>
+<tr class="odd">
+<td>WHT1 exterior grains (roadside)</td>
+<td>3</td>
+<td>89.5–89.7</td>
+<td>80.7–83.9</td>
+</tr>
+<tr class="even">
+<td>Melt-pocket overgrowths</td>
+<td>12</td>
+<td>89.6–91.6</td>
+<td>90.5–93.4 (rims rise; grown from the vein melt)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<ul>
+<li><strong>Ol-2 grew early, from a more primitive melt.</strong> Its core plateau sits about 3 Fo units above lava equilibrium and above every WHT06 phenocryst core except ol40 (88.1–88.2). It was then re-equilibrated toward the carrier from the rim. A late, shallow origin is unlikely, which supports starting the H2O model in equilibrium with the deep melt.</li>
+<li><strong>The two localities had different final histories.</strong> The roadside rims need a melt with MgO 6.6–8.6 wt% (MgO/FeOT 0.58–0.74), about 6–11 % olivine removed from the AZ09-GCB whole rock (<a href="b-melt-inclusions.html#sec-app-mi-rims" class="quarto-xref"><span>Section B.12</span></a>).</li>
+<li><strong>Fe–Mg diffusion times</strong> (1250 °C, 500 MPa) are 0.15–0.37 d for the roadside xenocrysts, 1.9–3.0 d for the pit xenocrysts and about 18 d (15–22) for Ol-2 along [100] (<a href="a-diffusion.html#sec-app-diffusion-femg" class="quarto-xref"><span>Section A.10</span></a>).</li>
+<li><strong>Inclusion H2O has no usable Fo trend.</strong> The SR correlation (r = 0.54) is carried by the two Ol36 inclusions in Fo 79 hosts; among the Fo 84–86 hosts H2O follows Cl, not Fo.</li>
+</ul>
+</section>
+<section id="sec-app-data-methods" class="level2" data-number="D.9">
+<h2 data-number="D.9" class="anchored" data-anchor-id="sec-app-data-methods"><span class="header-section-number">D.9</span> Measurement methods</h2>
+<p><strong>SIMS and NanoSIMS.</strong> The SR xenolith sections, scoria phenocrysts and xenocrysts were analyzed on the Cameca 6f SIMS at the Carnegie Institution for Science in 2018 (GCB1 and its scoria) and on the Cameca NanoSIMS at Caltech in 2020 (WHT01 and WHT06, Mounts A and B). The Cima and Vulcan’s Throne samples were analyzed on the Carnegie 6f in 2013, following Lloyd et al.&nbsp;(2013) and Newcombe et al.&nbsp;(2020). The 2013 session could not measure olivine above background routinely, and the 2020 session had too high a background for olivine, so 48 of the 52 olivine analyses are from 2018. Samples were cleaned in acetone, toluene, distilled water and isopropanol baths, with only acetone-soluble plastics used in preparation, mounted in indium, held at 90 °C under vacuum for 2 days and held under ultrahigh vacuum (10^-9 Torr) for 72 hours before analysis. A Cs+ beam measured 16O1H, 12C, 19F, 31P, 32S and 35Cl relative to 30Si. Calibration curves were built for each phase from standards analyzed in the same session. Other protocols followed Towbin et al.&nbsp;(2023), including the revised opx standard values.</p>
+<p><strong>EMPA.</strong> Major elements were measured on the Cameca SX100 at the American Museum of Natural History in 2018 (GCB1) and on the Cameca Tactis in several sessions from summer 2020 to February 2022 (protocols as in Chapter 2). The GCB1 per-grain data were recovered from the July 2018 workbook and checked point by point against the raw instrument export. Phases were assigned by composition (cpx CaO ≥ 15 wt%; opx CaO &lt; 3 and MgO 28–37 wt%); Mg# is molar with all Fe as FeO.</p>
+<p><strong>Olivine Fo populations.</strong> The script reads the “Olivine” sheet of the melt-vein EMPA master workbook with bad and ignored points removed, assigns each profile to a population (phenocryst, xenocryst in scoria, WHT1 exterior grain, melt-pocket overgrowth, xenolith olivine), takes the core Fo as the median beyond 70 % of the profile length and the rim Fo as the analysis nearest the edge. Olivine in equilibrium with the AZ09-UK01 lava was computed for Fe3+/FeT 0.167–0.20 and Kd 0.30–0.34 (Fo 83.6–85.7).</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../appendices26/c-degassing.html" class="pagination-link" aria-label="Degassing models">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Degassing models</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../appendices26/e-decisions.html" class="pagination-link" aria-label="Decisions, crosswalk and reproducibility">
+        <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Decisions, crosswalk and reproducibility</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
